@@ -46,68 +46,41 @@ class Bases {
 
     walk(batter: Batter) {
         if (this.first == null) {
-            return {
-                bases: new Bases(batter, this.second, this.third),
-                runs_scored: 0
-            };
+            return new BasesResult(batter, this.second, this.third);
         } else if (this.second == null) {
-            return {
-                bases: new Bases(batter, this.first, this.third),
-                runs_scored: 0
-            };
+            return new BasesResult(batter, this.first, this.third);
         } else if (this.third == null) {
-            return {
-                bases: new Bases(batter, this.second, this.third),
-                runs_scored: 0
-            };
+            return new BasesResult(batter, this.first, this.second);
         } else {
-            return {
-                bases: new Bases(batter, this.second, this.third),
-                runs_scored: 1
-            };
+            return new BasesResult(batter, this.first, this.second, [this.third]);
         }
     }
 
     advanceOne(first?: Batter): BasesResult {
-        console.log("1");
-        return {
-            bases: new Bases(first, this.first, this.second),
-            runs_scored: this.third ? 1 : 0
-        };
+        return new BasesResult(first, this.first, this.second, [this.third]);
     }
 
     advanceTwo(first?: Batter, second?: Batter) {
-        console.log("2");
-        return {
-            bases: new Bases(first, second, this.first),
-            runs_scored: (this.second ? 1 : 0) + (this.third ? 1 : 0)
-        };
+        return new BasesResult(first, second, this.first, [this.second, this.third]);
     }
 
     advanceThree(first?: Batter, second?: Batter, third?: Batter) {
-        console.log("3");
-        return {
-            bases: new Bases(first, second, third),
-            runs_scored: (this.first ? 1 : 0) + (this.second ? 1 : 0) + (this.third ? 1 : 0)
-        };
+        return new BasesResult(first, second, third, [this.first, this.second, this.third]);
     }
 
-    advanceAll() {
-        console.log("4");
-        return {
-            bases: new Bases(),
-            runs_scored: (this.first ? 1 : 0) + (this.second ? 1 : 0) + (this.third ? 1 : 0) + 1
-        };
-    }
-
-    getCount() {
-        return (this.first ? 1 : 0) + (this.second ? 1 : 0) + (this.third ? 1 : 0);
+    advanceAll(batter: Batter) {
+        return new BasesResult(null, null, null, [batter, this.first, this.second, this.third]);
     }
 }
 
-interface BasesResult {
-    bases: Bases;
-    runs_scored: number;
+class BasesResult {
+    readonly bases: Bases;
+    readonly runs_scored: Batter[];
+
+    constructor(first?: Batter, second?: Batter, third?: Batter, runs_scored?: Batter[]) {
+        this.bases = new Bases(first, second, third);
+        this.runs_scored = (runs_scored || []).filter(b => b != null);
+    }
 }
 
 class PlateAppearanceResult {
@@ -132,7 +105,7 @@ class PlateAppearanceResult {
                 this.basesResult = bases.advanceThree(null, null, batter);
                 break;
             case PlateApperanceResultType.HomeRun:
-                this.basesResult = bases.advanceAll();
+                this.basesResult = bases.advanceAll(batter);
                 break;
             case PlateApperanceResultType.Walk:
             case PlateApperanceResultType.HitByPitch:
@@ -146,7 +119,7 @@ class PlateAppearanceResult {
             case PlateApperanceResultType.Out:
                 this.basesResult = {
                     bases: bases,
-                    runs_scored: 0
+                    runs_scored: []
                 };
                 this.out = true;
                 break;

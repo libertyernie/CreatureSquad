@@ -133,8 +133,11 @@ class ViewModel {
             this.outs(0);
             this.inning(this.inning() + 1);
         } else {
-            if (result.basesResult.runs_scored > 0) {
-                this.runs(this.runs() + result.basesResult.runs_scored);
+            if (result.basesResult.runs_scored.length > 0) {
+                this.runs(this.runs() + result.basesResult.runs_scored.length);
+                for (let scored of result.basesResult.runs_scored) {
+                    this.lastResult(`${this.lastResult()}, ${scored.name} scored`);
+                }
             }
         }
         this.lineupIndex(this.lineupIndex() + 1);
