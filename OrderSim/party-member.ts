@@ -114,36 +114,36 @@ class PlateAppearanceResult {
     readonly basesResult: BasesResult;
     readonly out: boolean;
 
-    constructor(batter: Batter, bases: Bases, br: BatterResult) {
+    constructor(batter: Batter, bases: Bases, br: PlateApperanceResultType) {
         switch (br) {
-            case BatterResult.Single:
+            case PlateApperanceResultType.Single:
                 this.basesResult = bases.advanceOne(batter);
                 break;
-            case BatterResult.Single_ExtraBase:
+            case PlateApperanceResultType.Single_ExtraBase:
                 this.basesResult = bases.advanceTwo(batter);
                 break;
-            case BatterResult.Double:
+            case PlateApperanceResultType.Double:
                 this.basesResult = bases.advanceTwo(null, batter);
                 break;
-            case BatterResult.Double_ExtraBase:
+            case PlateApperanceResultType.Double_ExtraBase:
                 this.basesResult = bases.advanceThree(null, batter);
                 break;
-            case BatterResult.Triple:
+            case PlateApperanceResultType.Triple:
                 this.basesResult = bases.advanceThree(null, null, batter);
                 break;
-            case BatterResult.HomeRun:
+            case PlateApperanceResultType.HomeRun:
                 this.basesResult = bases.advanceAll();
                 break;
-            case BatterResult.Walk:
-            case BatterResult.HitByPitch:
+            case PlateApperanceResultType.Walk:
+            case PlateApperanceResultType.HitByPitch:
                 this.basesResult = bases.walk(batter);
                 break;
-            case BatterResult.SacrificeFly:
-            case BatterResult.Out_ExtraBase:
+            case PlateApperanceResultType.SacrificeFly:
+            case PlateApperanceResultType.Out_ExtraBase:
                 this.basesResult = bases.advanceOne(null);
                 this.out = true;
                 break;
-            case BatterResult.Out:
+            case PlateApperanceResultType.Out:
                 this.basesResult = {
                     bases: bases,
                     runs_scored: 0
@@ -154,113 +154,3 @@ class PlateAppearanceResult {
     }
 }
 
-enum BatterResult {
-    Single,
-    Single_ExtraBase,
-    Double,
-    Double_ExtraBase,
-    Triple,
-    HomeRun,
-    Walk,
-    HitByPitch,
-    SacrificeFly,
-    Out,
-    Out_ExtraBase
-}
-
-class Batter {
-    private averages: PlateAppearanceAverages;
-    bgcolor: string;
-
-    constructor(
-        readonly name: string,
-        averages: OffensiveAverages
-    ) {
-        this.averages = calculateAverages(averages);
-        this.bgcolor = "#" + Batter.hashCode(name).toString(16).substr(-6);
-    }
-
-    private static hashCode(s: string) {
-        let hash = 0;
-        for (let i = 0; i < s.length; i++) {
-            let chr = s.charCodeAt(i);
-            hash = ((hash << 5) - hash) + chr;
-            hash |= 0;
-        }
-        return hash;
-    }
-
-    bat(): BatterResult {
-        let total = this.averages.plate_appearances
-            - this.averages.intentional_walks
-            - this.averages.sacrifice_hits;
-
-        let random = Math.random() * total;
-        let walk = 0;
-
-        walk += this.averages.singles;
-        if (walk >= random) {
-            if (Math.random() < 0.2) {
-                console.log("Single (1st to 3rd)");
-                return BatterResult.Single_ExtraBase;
-            } else {
-                console.log("Single");
-                return BatterResult.Single;
-            }
-        }
-
-        walk += this.averages.doubles;
-        if (walk >= random) {
-            if (Math.random() < 0.2) {
-                console.log("Double (score from 1st)");
-                return BatterResult.Double_ExtraBase;
-            } else {
-                console.log("Double");
-                return BatterResult.Double;
-            }
-        }
-
-        walk += this.averages.triples;
-        if (walk >= random) {
-            console.log("Triple");
-            return BatterResult.Triple;
-        }
-
-        walk += this.averages.home_runs;
-        if (walk >= random) {
-            console.log("Home run");
-            return BatterResult.HomeRun;
-        }
-
-        walk += this.averages.unintentional_walks;
-        if (walk >= random) {
-            console.log("Walk");
-            return BatterResult.Walk;
-        }
-
-        walk += this.averages.hit_by_pitch;
-        if (walk >= random) {
-            console.log("HBP");
-            return BatterResult.HitByPitch;
-        }
-
-        walk += this.averages.sacrifice_flies;
-        if (walk >= random) {
-            console.log("Sac fly");
-            return BatterResult.SacrificeFly;
-        }
-
-        walk += this.averages.other_outs;
-        if (walk >= random) {
-            if (Math.random() < 0.2) {
-                console.log("Out (baserunners advance)");
-                return BatterResult.Out_ExtraBase;
-            } else {
-                console.log("Out");
-                return BatterResult.Out;
-            }
-        }
-
-        throw new Error("Invalid probability");
-    }
-}

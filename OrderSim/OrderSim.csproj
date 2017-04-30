@@ -29,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="batter.ts" />
     <TypeScriptCompile Include="knockout.d.ts" />
     <TypeScriptCompile Include="party-member.ts" />
   </ItemGroup>

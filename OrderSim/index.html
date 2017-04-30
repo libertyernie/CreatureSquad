@@ -6,6 +6,7 @@
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    <script src="batter.js"></script>
     <script src="party-member.js"></script>
     <script src="app.js"></script>
     <style>
@@ -55,16 +56,28 @@
                     Inning: <span data-bind="text: inning"></span>
                 </div>
                 <div class="score">
-                    <div class="team-score">
+                    <div>
                         <div>Runs</div>
                         <div class="big-number" data-bind="text: runs"></div>
                     </div>
+                    <div class="spacer"></div>
                     <div>
+                        <div>Outs</div>
+                        <div class="big-number" data-bind="text: outs"></div>
                     </div>
-                    <div class="team-score">
+                    <div class="spacer"></div>
+                    <div>
                         <div>Runs</div>
                         <div class="big-number">0</div>
                     </div>
+                </div>
+                <div class="score">
+                    <div class="spacer"></div>
+                    <div>
+                        <div>Inning</div>
+                        <div class="big-number" data-bind="text: inning"></div>
+                    </div>
+                    <div class="spacer"></div>
                 </div>
                 <button data-bind="click: bat">Bat</button>
             </div>

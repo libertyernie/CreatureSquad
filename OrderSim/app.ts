@@ -121,15 +121,9 @@ class ViewModel {
     }
 
     bat() {
-        let total_batters_expected = this.bases().getCount() + 1;
         let result1 = this.batter().bat();
-        this.lastResult(`${this.batter().name} - ${BatterResult[result1]}`);
+        this.lastResult(`${this.batter().name} - ${PlateApperanceResultType[result1]}`);
         let result = new PlateAppearanceResult(this.batter(), this.bases(), result1);
-        let total_batters_actual = result.basesResult.bases.getCount() + result.basesResult.runs_scored + (result.out ? 1 : 0);
-        if (total_batters_expected != total_batters_actual) {
-            console.log(result);
-            throw new Error(`Expected ${total_batters_expected}, got ${total_batters_actual}`);
-        }
         this.bases(result.basesResult.bases);
         if (result.out) {
             this.outs(this.outs() + 1);
