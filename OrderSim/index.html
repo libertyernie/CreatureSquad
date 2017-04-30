@@ -15,38 +15,63 @@
     </style>
 </head>
 <body>
-    <h1>TypeScript HTML App</h1>
-
     <div id="content">
-        <div style="float: left" data-bind="foreach: Lineup">
-            <div>
-                <span data-bind="text: name, css: { current: $data === $parent.batter() }"></span>
+        <div id="mainScreen">
+            <div class="lineup" data-bind="foreach: Lineup">
+                <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
+                    <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
+                    <span data-bind="text: name"></span>
+                </div>
             </div>
-        </div>
+            <div class="center">
+                <div data-bind="text: lastResult" style="text-align: center"></div>
+                <div data-bind="with: bases">
+                    <div>
+                        First base:
+                        <span data-bind="with: first">
+                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                        </span>
+                    </div>
+                    <div>
+                        Second base:
+                        <span data-bind="with: second">
+                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                        </span>
+                    </div>
+                    <div>
+                        Third base:
+                        <span data-bind="with: third">
+                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    Runs: <span data-bind="text: runs"></span>
+                </div>
+                <div>
+                    Outs: <span data-bind="text: outs"></span>
+                </div>
+                <div>
+                    Inning: <span data-bind="text: inning"></span>
+                </div>
+                <div class="score">
+                    <div class="team-score">
+                        <div>Runs</div>
+                        <div class="big-number" data-bind="text: runs"></div>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="team-score">
+                        <div>Runs</div>
+                        <div class="big-number">0</div>
+                    </div>
+                </div>
+                <button data-bind="click: bat">Bat</button>
+            </div>
+            <div class="lineup" data-bind="foreach: Lineup">
 
-        <div data-bind="text: lastResult"></div>
-        <hr />
-        <div data-bind="with: bases">
-            <div>
-                First base: <span data-bind="text: first ? first.name : ''"></span>
-            </div>
-            <div>
-                Second base: <span data-bind="text: second ? second.name : ''"></span>
-            </div>
-            <div>
-                Third base: <span data-bind="text: third ? third.name : ''"></span>
             </div>
         </div>
-        <div>
-            Runs: <span data-bind="text: runs"></span>
-        </div>
-        <div>
-            Outs: <span data-bind="text: outs"></span>
-        </div>
-        <div>
-            Inning: <span data-bind="text: inning"></span>
-        </div>
-        <button data-bind="click: bat">Bat</button>
     </div>
 </body>
 </html>

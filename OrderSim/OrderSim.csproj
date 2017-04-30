@@ -24,6 +24,7 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="sabina.png" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

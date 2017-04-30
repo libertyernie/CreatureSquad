@@ -170,13 +170,24 @@ enum BatterResult {
 
 class Batter {
     private averages: PlateAppearanceAverages;
+    bgcolor: string;
 
     constructor(
         readonly name: string,
         averages: OffensiveAverages
     ) {
         this.averages = calculateAverages(averages);
-        console.log(this.averages);
+        this.bgcolor = "#" + Batter.hashCode(name).toString(16).substr(-6);
+    }
+
+    private static hashCode(s: string) {
+        let hash = 0;
+        for (let i = 0; i < s.length; i++) {
+            let chr = s.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0;
+        }
+        return hash;
     }
 
     bat(): BatterResult {
