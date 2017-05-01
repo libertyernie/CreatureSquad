@@ -145,7 +145,7 @@ class ViewModel {
 }
 
 window.onload = () => {
-    var el = document.getElementById('content');
+    var el = document.body;
     var viewModel = new ViewModel();
     ko.applyBindings(viewModel, el);
 };

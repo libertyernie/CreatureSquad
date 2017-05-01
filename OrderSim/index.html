@@ -16,74 +16,79 @@
     </style>
 </head>
 <body>
-    <div id="content">
-        <div id="mainScreen">
-            <div class="lineup" data-bind="foreach: Lineup">
-                <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
-                    <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
-                    <span data-bind="text: name"></span>
-                </div>
+    <div id="mainScreen">
+        <div class="lineup">
+            <!-- ko foreach: Lineup -->
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
+                <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
+                <span data-bind="text: name"></span>
             </div>
-            <div class="center">
-                <div data-bind="text: lastResult" style="text-align: center"></div>
-                <div data-bind="with: bases">
-                    <div>
-                        First base:
-                        <span data-bind="with: first">
-                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                        </span>
-                    </div>
-                    <div>
-                        Second base:
-                        <span data-bind="with: second">
-                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                        </span>
-                    </div>
-                    <div>
-                        Third base:
-                        <span data-bind="with: third">
-                            <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                        </span>
-                    </div>
+            <!-- /ko -->
+            <div class="spacer"></div>
+        </div>
+        <div class="center">
+            <div data-bind="text: lastResult" style="text-align: center"></div>
+            <div data-bind="with: bases">
+                <div>
+                    First base:
+                    <span data-bind="with: first">
+                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                    </span>
                 </div>
                 <div>
-                    Runs: <span data-bind="text: runs"></span>
+                    Second base:
+                    <span data-bind="with: second">
+                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                    </span>
                 </div>
                 <div>
-                    Outs: <span data-bind="text: outs"></span>
+                    Third base:
+                    <span data-bind="with: third">
+                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
+                    </span>
                 </div>
+            </div>
+            <div>
+                Runs: <span data-bind="text: runs"></span>
+            </div>
+            <div>
+                Outs: <span data-bind="text: outs"></span>
+            </div>
+            <div>
+                Inning: <span data-bind="text: inning"></span>
+            </div>
+            <div class="score">
                 <div>
-                    Inning: <span data-bind="text: inning"></span>
+                    <div>Runs</div>
+                    <div class="big-number" data-bind="text: runs"></div>
                 </div>
-                <div class="score">
-                    <div>
-                        <div>Runs</div>
-                        <div class="big-number" data-bind="text: runs"></div>
-                    </div>
-                    <div class="spacer"></div>
-                    <div>
-                        <div>Outs</div>
-                        <div class="big-number" data-bind="text: outs"></div>
-                    </div>
-                    <div class="spacer"></div>
-                    <div>
-                        <div>Runs</div>
-                        <div class="big-number">0</div>
-                    </div>
+                <div class="spacer"></div>
+                <div>
+                    <div>Outs</div>
+                    <div class="big-number" data-bind="text: outs"></div>
                 </div>
-                <div class="score">
-                    <div class="spacer"></div>
-                    <div>
-                        <div>Inning</div>
-                        <div class="big-number" data-bind="text: inning"></div>
-                    </div>
-                    <div class="spacer"></div>
+                <div class="spacer"></div>
+                <div>
+                    <div>Runs</div>
+                    <div class="big-number">0</div>
                 </div>
-                <button data-bind="click: bat">Bat</button>
             </div>
-            <div class="lineup" data-bind="foreach: Lineup">
-
+            <div class="score">
+                <div class="spacer"></div>
+                <div>
+                    <div>Inning</div>
+                    <div class="big-number" data-bind="text: inning"></div>
+                </div>
+                <div class="spacer"></div>
             </div>
+            <button data-bind="click: bat">Bat</button>
+        </div>
+        <div class="lineup">
+            <div class="batter">
+                <img src="sabina.png" />
+                <span>Name</span>
+            </div>
+            <div class="spacer"></div>
         </div>
     </div>
 </body>

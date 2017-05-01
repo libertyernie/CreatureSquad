@@ -12,7 +12,9 @@
 }
 
 #mainScreen > .lineup {
-    flex: 0 0 250px;
+    flex: 0 1 250px;
+    display: flex;
+    flex-direction: column;
 }
 
 #mainScreen > .center {
@@ -27,6 +29,7 @@
 }
 
 .score > :not(.spacer) {
+    display: inline-block;
     text-align: center;
     padding: 0 12px;
     margin: 4px;
@@ -35,6 +38,7 @@
 }
 
 .spacer {
+    display: inline;
     flex: 1 0 auto;
 }
 
@@ -43,16 +47,18 @@
 }
 
 .batter {
+    display: inline-block;
+    flex: 0 1 48px;
     border: 1px solid black;
     border-radius: 8px;
     padding: 7px;
+    overflow-y: hidden;
 }
 
 .batter img {
-    width: 48px;
     height: 48px;
     border-radius: 8px;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .batter.current {
