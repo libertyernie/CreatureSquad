@@ -54,7 +54,31 @@ class PlateAppearanceResult {
     constructor(batter: Batter, bases: Bases, br: PlateApperanceResultType) {
         this.batter = batter;
         this.resultType = br;
-        this.resultTypeName = PlateApperanceResultType[br];
+        switch (br) {
+            case PlateApperanceResultType.Single:
+            case PlateApperanceResultType.Single_ExtraBase:
+                this.resultTypeName = "Hit";
+                break;
+            case PlateApperanceResultType.Double:
+            case PlateApperanceResultType.Double_ExtraBase:
+                this.resultTypeName = "Hit 2x";
+                break;
+            case PlateApperanceResultType.Triple:
+                this.resultTypeName = "Hit 3x";
+                break;
+            case PlateApperanceResultType.HomeRun:
+                this.resultTypeName = "Hit 4x";
+                break;
+            case PlateApperanceResultType.Walk:
+            case PlateApperanceResultType.HitByPitch:
+                this.resultTypeName = "Pass";
+                break;
+            case PlateApperanceResultType.SacrificeFly:
+            case PlateApperanceResultType.Out_ExtraBase:
+            case PlateApperanceResultType.Out:
+                this.resultTypeName = "Miss";
+                break;
+        }
         switch (br) {
             case PlateApperanceResultType.Single:
                 this.basesResult = bases.advanceOne(batter);
