@@ -106,8 +106,10 @@ class ViewModel {
     readonly inning: KnockoutObservable<number>;
 
     readonly lineupIndex: KnockoutObservable<number>;
-    readonly batter: KnockoutComputed<Batter>;
     readonly lastResult: KnockoutObservable<PlateAppearanceResult | null>;
+
+    readonly batter: KnockoutComputed<Batter>;
+    readonly baserunners: KnockoutComputed<Batter[]>;
 
     constructor() {
         this.bases = ko.observable(new Bases());
@@ -116,16 +118,32 @@ class ViewModel {
         this.inning = ko.observable(1);
 
         this.lineupIndex = ko.observable(0);
-        this.batter = ko.pureComputed(() => Lineup[this.lineupIndex() % Lineup.length]);
         this.lastResult = ko.observable(null);
+
+        this.batter = ko.pureComputed(() => Lineup[this.lineupIndex() % Lineup.length]);
+        this.baserunners = ko.pureComputed(() => {
+            if (this.bases() == null) return [];
+            return [this.bases().first, this.bases().second, this.bases().third].filter(b => b != null);
+        });
     }
 
     bat() {
-        if (this.outs() >= 3) {
-            return;
-        }
+        if (this.outs() >= 3) return;
 
         let result = new PlateAppearanceResult(this.batter(), this.bases(), this.batter().bat());
+        this.processResult(result);
+    }
+
+    bunt() {
+        if (this.outs() >= 3) return;
+
+        let result = Math.random() < 0.5
+            ? PlateApperanceResultType.SacrificeBunt
+            : PlateApperanceResultType.Out;
+        this.processResult(new PlateAppearanceResult(this.batter(), this.bases(), result));
+    }
+
+    private processResult(result: PlateAppearanceResult) {
         this.lastResult(result);
         this.bases(result.basesResult.bases);
         if (result.out) {

@@ -86,7 +86,8 @@
                 <div class="spacer"></div>
             </div>
             <div class="buttons">
-                <button data-bind="click: bat, disable: outs() >= 3">Bat</button>
+                <button data-bind="click: bat, disable: outs() >= 3">Attack</button>
+                <button data-bind="click: bunt, enable: outs() < 3 && baserunners().length > 0">Sacrifice</button>
                 <button data-bind="click: nextInning, enable: outs() >= 3">Next inning</button>
             </div>
         </div>

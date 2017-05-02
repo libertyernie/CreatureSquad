@@ -71,7 +71,13 @@ class PlateAppearanceResult {
                 break;
             case PlateApperanceResultType.Walk:
             case PlateApperanceResultType.HitByPitch:
+                this.resultTypeName = "Sneak";
+                break;
+            case PlateApperanceResultType.IntentionalWalk:
                 this.resultTypeName = "Pass";
+                break;
+            case PlateApperanceResultType.SacrificeBunt:
+                this.resultTypeName = "Sacrifice";
                 break;
             case PlateApperanceResultType.SacrificeFly:
             case PlateApperanceResultType.Out_ExtraBase:
@@ -100,10 +106,13 @@ class PlateAppearanceResult {
                 break;
             case PlateApperanceResultType.Walk:
             case PlateApperanceResultType.HitByPitch:
+            case PlateApperanceResultType.IntentionalWalk:
                 this.basesResult = bases.walk(batter);
                 break;
             case PlateApperanceResultType.SacrificeFly:
             case PlateApperanceResultType.Out_ExtraBase:
+            case PlateApperanceResultType.SacrificeBunt:
+                // TODO: special behavior when a batter is at third base.
                 this.basesResult = bases.advanceOne(null);
                 this.out = true;
                 break;
@@ -114,6 +123,8 @@ class PlateAppearanceResult {
                 };
                 this.out = true;
                 break;
+            default:
+                throw new Error("Unrecognized result type");
         }
     }
 }

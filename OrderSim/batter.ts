@@ -9,7 +9,9 @@
     HitByPitch,
     SacrificeFly,
     Out,
-    Out_ExtraBase
+    Out_ExtraBase,
+    IntentionalWalk,
+    SacrificeBunt
 }
 
 class Batter {
