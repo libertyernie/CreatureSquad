@@ -107,7 +107,7 @@ class ViewModel {
 
     readonly lineupIndex: KnockoutObservable<number>;
     readonly batter: KnockoutComputed<Batter>;
-    readonly lastResult: KnockoutObservable<string>;
+    readonly lastResult: KnockoutObservable<PlateAppearanceResult | null>;
 
     constructor() {
         this.bases = ko.observable(new Bases());
@@ -117,30 +117,36 @@ class ViewModel {
 
         this.lineupIndex = ko.observable(0);
         this.batter = ko.pureComputed(() => Lineup[this.lineupIndex() % Lineup.length]);
-        this.lastResult = ko.observable("-");
+        this.lastResult = ko.observable(null);
     }
 
     bat() {
-        let result1 = this.batter().bat();
-        this.lastResult(`${this.batter().name} - ${PlateApperanceResultType[result1]}`);
-        let result = new PlateAppearanceResult(this.batter(), this.bases(), result1);
+        if (this.outs() >= 3) {
+            return;
+        }
+
+        let result = new PlateAppearanceResult(this.batter(), this.bases(), this.batter().bat());
+        this.lastResult(result);
         this.bases(result.basesResult.bases);
         if (result.out) {
             this.outs(this.outs() + 1);
         }
-        if (this.outs() >= 3) {
-            this.bases(new Bases());
-            this.outs(0);
-            this.inning(this.inning() + 1);
-        } else {
-            if (result.basesResult.runs_scored.length > 0) {
-                this.runs(this.runs() + result.basesResult.runs_scored.length);
-                for (let scored of result.basesResult.runs_scored) {
-                    this.lastResult(`${this.lastResult()}, ${scored.name} scored`);
-                }
-            }
+        if (this.outs() < 3 && result.basesResult.runs_scored.length > 0) {
+            this.runs(this.runs() + result.basesResult.runs_scored.length);
         }
         this.lineupIndex(this.lineupIndex() + 1);
+    }
+
+    nextInning() {
+        while (this.outs() < 3) {
+            this.outs(this.outs() + 1);
+            this.lineupIndex(this.lineupIndex() + 1);
+        }
+
+        this.lastResult(null);
+        this.bases(new Bases());
+        this.outs(0);
+        this.inning(this.inning() + 1);
     }
 }
 

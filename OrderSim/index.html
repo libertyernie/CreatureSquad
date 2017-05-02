@@ -10,11 +10,6 @@
     <script src="bases.js"></script>
     <script src="averages.js"></script>
     <script src="app.js"></script>
-    <style>
-        .current {
-            background-color: lightgray;
-        }
-    </style>
 </head>
 <body>
     <div id="mainScreen">
@@ -28,7 +23,15 @@
             <div class="spacer"></div>
         </div>
         <div class="center">
-            <div data-bind="text: lastResult" style="text-align: center"></div>
+            <div id="result" data-bind="with: lastResult">
+                <div class="batterName" data-bind="text: batter.name"></div>
+                <div class="type" data-bind="text: resultTypeName"></div>
+                <!-- ko if: $root.outs() < 3 -->
+                <div data-bind="foreach: basesResult.runs_scored">
+                    <div data-bind="text: $data.name"></div>
+                </div>
+                <!-- /ko -->
+            </div>
             <div data-bind="with: bases">
                 <div>
                     First base:
@@ -82,7 +85,10 @@
                 </div>
                 <div class="spacer"></div>
             </div>
-            <button data-bind="click: bat">Bat</button>
+            <div class="buttons">
+                <button data-bind="click: bat, disable: outs() >= 3">Bat</button>
+                <button data-bind="click: nextInning, enable: outs() >= 3">Next inning</button>
+            </div>
         </div>
         <div class="lineup">
             <div class="batter">

@@ -45,10 +45,16 @@ class BasesResult {
 }
 
 class PlateAppearanceResult {
+    readonly batter: Batter;
+    readonly resultType: PlateApperanceResultType;
+    readonly resultTypeName: string;
     readonly basesResult: BasesResult;
     readonly out: boolean;
 
     constructor(batter: Batter, bases: Bases, br: PlateApperanceResultType) {
+        this.batter = batter;
+        this.resultType = br;
+        this.resultTypeName = PlateApperanceResultType[br];
         switch (br) {
             case PlateApperanceResultType.Single:
                 this.basesResult = bases.advanceOne(batter);
