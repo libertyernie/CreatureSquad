@@ -29,9 +29,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="bases.ts" />
     <TypeScriptCompile Include="batter.ts" />
     <TypeScriptCompile Include="knockout.d.ts" />
-    <TypeScriptCompile Include="party-member.ts" />
+    <TypeScriptCompile Include="averages.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
