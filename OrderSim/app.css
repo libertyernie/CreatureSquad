@@ -37,6 +37,10 @@
     background-color: skyblue;
 }
 
+.score > .newRuns {
+    background-color: darkseagreen;
+}
+
 .buttons {
     text-align: center;
 }

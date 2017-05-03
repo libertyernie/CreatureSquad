@@ -102,6 +102,7 @@
 class ViewModel {
     readonly bases: KnockoutObservable<Bases>;
     readonly runs: KnockoutObservable<number>;
+    readonly newRuns: KnockoutObservable<boolean>;
     readonly outs: KnockoutObservable<number>;
     readonly inning: KnockoutObservable<number>;
 
@@ -114,6 +115,7 @@ class ViewModel {
     constructor() {
         this.bases = ko.observable(new Bases());
         this.runs = ko.observable(0);
+        this.newRuns = ko.observable(false);
         this.outs = ko.observable(0);
         this.inning = ko.observable(1);
 
@@ -144,6 +146,7 @@ class ViewModel {
     }
 
     private processResult(result: PlateAppearanceResult) {
+        this.newRuns(false);
         this.lastResult(result);
         this.bases(result.basesResult.bases);
         if (result.out) {
@@ -151,6 +154,7 @@ class ViewModel {
         }
         if (this.outs() < 3 && result.basesResult.runs_scored.length > 0) {
             this.runs(this.runs() + result.basesResult.runs_scored.length);
+            this.newRuns(true);
         }
         this.lineupIndex(this.lineupIndex() + 1);
     }
@@ -164,6 +168,7 @@ class ViewModel {
         this.lastResult(null);
         this.bases(new Bases());
         this.outs(0);
+        this.newRuns(false);
         this.inning(this.inning() + 1);
     }
 }

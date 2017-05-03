@@ -62,7 +62,7 @@
                 Inning: <span data-bind="text: inning"></span>
             </div>
             <div class="score">
-                <div>
+                <div data-bind="css: { newRuns: newRuns }">
                     <div>Runs</div>
                     <div class="big-number" data-bind="text: runs"></div>
                 </div>
