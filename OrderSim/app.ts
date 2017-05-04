@@ -100,7 +100,7 @@
 })];
 
 class ViewModel {
-    readonly bases: KnockoutObservable<Bases>;
+    readonly bases: KnockoutObservable<Bases>[];
     readonly runs: KnockoutObservable<number>;
     readonly newRuns: KnockoutObservable<boolean>;
     readonly outs: KnockoutObservable<number>;
@@ -110,10 +110,13 @@ class ViewModel {
     readonly lastResult: KnockoutObservable<PlateAppearanceResult | null>;
 
     readonly batter: KnockoutComputed<Batter>;
-    readonly baserunners: KnockoutComputed<Batter[]>;
+    readonly baserunners: KnockoutComputed<number>;
 
     constructor() {
-        this.bases = ko.observable(new Bases());
+        this.bases = [];
+        for (let i = 0; i < 10; i++) {
+            this.bases.push(ko.observable(new Bases()));
+        }
         this.runs = ko.observable(0);
         this.newRuns = ko.observable(false);
         this.outs = ko.observable(0);
@@ -124,49 +127,64 @@ class ViewModel {
 
         this.batter = ko.pureComputed(() => Lineup[this.lineupIndex() % Lineup.length]);
         this.baserunners = ko.pureComputed(() => {
-            if (this.bases() == null) return [];
-            return [this.bases().first, this.bases().second, this.bases().third].filter(b => b != null);
+            let tally = 0;
+            for (let observable of this.bases) {
+                let b = observable();
+                if (b.first) tally++;
+                if (b.second) tally++;
+                if (b.third) tally++;
+            }
+            return tally;
         });
     }
 
     bat() {
-        if (this.outs() >= 3) return;
+        if (this.outs() >= 30) return;
 
-        let result = new PlateAppearanceResult(this.batter(), this.bases(), this.batter().bat());
-        this.processResult(result);
-    }
-
-    bunt() {
-        if (this.outs() >= 3) return;
-
-        let result = Math.random() < 0.5
-            ? PlateApperanceResultType.SacrificeBunt
-            : PlateApperanceResultType.Out;
-        this.processResult(new PlateAppearanceResult(this.batter(), this.bases(), result));
-    }
-
-    private processResult(result: PlateAppearanceResult) {
         this.newRuns(false);
-        this.lastResult(result);
-        this.bases(result.basesResult.bases);
-        if (result.out) {
-            this.outs(this.outs() + 1);
-        }
-        if (this.outs() < 3 && result.basesResult.runs_scored.length > 0) {
-            this.runs(this.runs() + result.basesResult.runs_scored.length);
-            this.newRuns(true);
+        for (let column of this.bases) {
+            let result = new PlateAppearanceResult(this.batter(), column(), this.batter().bat());
+            column(this.processResult(result));
         }
         this.lineupIndex(this.lineupIndex() + 1);
     }
 
+    bunt() {
+        if (this.outs() >= 30) return;
+
+        this.newRuns(false);
+        for (let column of this.bases) {
+            let r = Math.random() < 0.5
+                ? PlateApperanceResultType.SacrificeBunt
+                : PlateApperanceResultType.Out;
+            let result = new PlateAppearanceResult(this.batter(), column(), r);
+            column(this.processResult(result));
+        }
+        this.lineupIndex(this.lineupIndex() + 1);
+    }
+
+    private processResult(result: PlateAppearanceResult) {
+        this.lastResult(result);
+        if (result.out) {
+            this.outs(this.outs() + 1);
+        }
+        if (this.outs() < 30 && result.basesResult.runs_scored.length > 0) {
+            this.runs(this.runs() + result.basesResult.runs_scored.length);
+            this.newRuns(true);
+        }
+        return result.basesResult.bases;
+    }
+
     nextInning() {
-        while (this.outs() < 3) {
+        while (this.outs() < 30) {
             this.outs(this.outs() + 1);
             this.lineupIndex(this.lineupIndex() + 1);
         }
 
         this.lastResult(null);
-        this.bases(new Bases());
+        for (let column of this.bases) {
+            column(new Bases());
+        }
         this.outs(0);
         this.newRuns(false);
         this.inning(this.inning() + 1);

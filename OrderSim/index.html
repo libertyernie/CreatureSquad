@@ -32,31 +32,24 @@
                 </div>
                 <!-- /ko -->
             </div>
-            <div data-bind="with: bases">
+            <div id="basesTable" data-bind="foreach: bases">
                 <div>
-                    First base:
-                    <span data-bind="with: first">
-                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                    </span>
-                </div>
-                <div>
-                    Second base:
-                    <span data-bind="with: second">
-                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                    </span>
-                </div>
-                <div>
-                    Third base:
-                    <span data-bind="with: third">
-                        <span data-bind="text: name, style: { backgroundColor: bgcolor }"></span>
-                    </span>
+                    <div data-bind="with: first">
+                        <div data-bind="style: { backgroundColor: bgcolor }"></div>
+                    </div>
+                    <div data-bind="with: second">
+                        <div data-bind="style: { backgroundColor: bgcolor }"></div>
+                    </div>
+                    <div data-bind="with: third">
+                        <div data-bind="style: { backgroundColor: bgcolor }"></div>
+                    </div>
                 </div>
             </div>
             <div>
                 Runs: <span data-bind="text: runs"></span>
             </div>
             <div>
-                Outs: <span data-bind="text: outs"></span>
+                Outs: <span data-bind="text: outs"></span>  
             </div>
             <div>
                 Inning: <span data-bind="text: inning"></span>
@@ -86,9 +79,9 @@
                 <div class="spacer"></div>
             </div>
             <div class="buttons">
-                <button data-bind="click: bat, disable: outs() >= 3">Attack</button>
-                <button data-bind="click: bunt, enable: outs() < 2 && baserunners().length > 0">Sacrifice</button>
-                <button data-bind="click: nextInning, enable: outs() >= 3">Next inning</button>
+                <button data-bind="click: bat, disable: outs() >= 30">Attack</button>
+                <button data-bind="click: bunt, enable: baserunners() > 0">Sacrifice</button>
+                <button data-bind="click: nextInning, enable: outs() >= 30">Next inning</button>
             </div>
         </div>
         <div class="lineup">

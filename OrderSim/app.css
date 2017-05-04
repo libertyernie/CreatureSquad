@@ -91,3 +91,24 @@
 #result .type {
     font-size: 32px;
 }
+
+#basesTable {
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#basesTable > * {
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+#basesTable > * > * {
+    height: 24px;
+}
+
+#basesTable > * > * > * {
+    height: 100%;
+}
