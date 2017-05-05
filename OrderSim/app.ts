@@ -99,7 +99,7 @@
     intentional_walks: 0
 })];
 
-class ViewModel {
+class TeamModel {
     readonly bases: KnockoutObservable<Bases>[];
     readonly runs: KnockoutObservable<number>;
     readonly newRuns: KnockoutObservable<number>[];
@@ -221,6 +221,18 @@ class ViewModel {
         }
         this.outs(0);
         this.inning(this.inning() + 1);
+    }
+}
+
+class ViewModel {
+    readonly team1: TeamModel;
+    readonly team2: TeamModel;
+    readonly battingTeam: KnockoutObservable<TeamModel>;
+
+    constructor() {
+        this.team1 = new TeamModel();
+        this.team2 = new TeamModel();
+        this.battingTeam = ko.observable(this.team1);
     }
 }
 

@@ -13,7 +13,7 @@
 </head>
 <body>
     <div id="mainScreen">
-        <div class="lineup">
+        <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: Lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
@@ -22,19 +22,16 @@
             <!-- /ko -->
             <div class="spacer"></div>
         </div>
-        <div class="center">
-            <div id="result" data-bind="with: lastResult">
-                <div class="batterName" data-bind="text: batter.name, style: { backgroundColor: batter.bgcolor }"></div>
-                <div class="type">
-                    <span data-bind="text: $root.newRunsCount"></span> runs
-                    -
-                    <span data-bind="text: $root.newOutsCount"></span> outs
-                </div>
-                <!-- ko if: $root.outs() < 3 -->
-                <div data-bind="foreach: basesResult.runs_scored">
-                    <div data-bind="text: $data.name"></div>
-                </div>
+        <div class="center" data-bind="with: battingTeam">
+            <div id="result" data-bind="if: lastResult">
+                <!-- ko with: lastResult.batter -->
+                <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
                 <!-- /ko -->
+                <div class="type">
+                    <span data-bind="text: newRunsCount"></span> runs
+                    -
+                    <span data-bind="text: newOutsCount"></span> outs
+                </div>
             </div>
             <div id="outsTable" class="stateTable" data-bind="foreach: newOuts">
                 <div>
@@ -100,11 +97,13 @@
                 <button data-bind="click: nextInning, enable: outs() >= 30">Next inning</button>
             </div>
         </div>
-        <div class="lineup">
-            <div class="batter">
-                <img src="sabina.png" />
-                <span>Name</span>
+        <div class="lineup" data-bind="with: team2">
+            <!-- ko foreach: Lineup -->
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
+                <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
+                <span data-bind="text: name"></span>
             </div>
+            <!-- /ko -->
             <div class="spacer"></div>
         </div>
     </div>
