@@ -46,7 +46,7 @@
 }
 
 .buttons > * {
-    min-width: 150px;
+    min-width: 100px;
     padding: 4px 0;
 }
 
@@ -76,6 +76,7 @@
 
 .batter > * {
     flex: 1 1 auto;
+    width: 100px;
 }
 
 .batter.current {

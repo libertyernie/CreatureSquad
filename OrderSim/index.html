@@ -15,7 +15,7 @@
     <div id="mainScreen">
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: Lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <img src="sabina.png" align="left" data-bind="style: { backgroundColor: bgcolor }" />
                 <div>
                     <span data-bind="text: name"></span>
@@ -30,7 +30,8 @@
             <!-- /ko -->
             <div class="spacer"></div>
         </div>
-        <div class="center" data-bind="with: battingTeam">
+        <div class="center">
+            <!-- ko with: battingTeam -->
             <div id="result" data-bind="if: lastResult">
                 <!-- ko with: lastResult().batter -->
                 <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
@@ -66,44 +67,36 @@
                     <div data-bind="text: $data || '', css: { new: $data }"></div>
                 </div>
             </div>
-            <div>
-                Runs: <span data-bind="text: runs"></span>
-            </div>
-            <div>
-                Outs: <span data-bind="text: outs"></span>  
-            </div>
-            <div>
-                Inning: <span data-bind="text: inning"></span>
-            </div>
+            <!-- /ko -->
             <div class="score">
-                <div data-bind="css: { newRuns: newRunsCount() > 0 }">
+                <div data-bind="css: { newRuns: team1.newRunsCount() > 0 }">
                     <div>Runs</div>
-                    <div class="big-number" data-bind="text: runs"></div>
+                    <div class="big-number" data-bind="text: team1.runs"></div>
                 </div>
                 <div class="spacer"></div>
                 <div>
                     <div>Outs</div>
-                    <div class="big-number" data-bind="text: outs"></div>
+                    <div class="big-number" data-bind="text: battingTeam().outs"></div>
                 </div>
                 <div>
                     <div>Inning</div>
                     <div class="big-number" data-bind="text: inning"></div>
                 </div>
                 <div class="spacer"></div>
-                <div>
+                <div data-bind="css: { newRuns: team2.newRunsCount() > 0 }">
                     <div>Runs</div>
-                    <div class="big-number">0</div>
+                    <div class="big-number" data-bind="text: team2.runs"></div>
                 </div>
             </div>
             <div class="buttons">
-                <button data-bind="click: bat, disable: outs() >= 30">Attack</button>
-                <button data-bind="click: bunt, enable: outs() < 30 && baserunners() > 0">Sacrifice</button>
-                <button data-bind="click: nextInning, enable: outs() >= 30">Next inning</button>
+                <button data-bind="click: () => battingTeam().bat(), disable: battingTeam().outs() >= 30">Attack</button>
+                <button data-bind="click: () => battingTeam().bunt(), enable: battingTeam().outs() < 30 && battingTeam().baserunners() > 0">Sacrifice</button>
+                <button data-bind="click: nextInning, enable: battingTeam().outs() >= 30">Next inning</button>
             </div>
         </div>
         <div class="lineup" data-bind="with: team2">
             <!-- ko foreach: Lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
                 <span data-bind="text: name"></span>
             </div>

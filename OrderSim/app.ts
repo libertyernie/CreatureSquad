@@ -105,7 +105,6 @@ class TeamModel {
     readonly newRuns: KnockoutObservable<number>[];
     readonly outs: KnockoutObservable<number>;
     readonly newOuts: KnockoutObservable<boolean>[];
-    readonly inning: KnockoutObservable<number>;
 
     readonly lineupIndex: KnockoutObservable<number>;
     readonly lastResult: KnockoutObservable<PlateAppearanceResult | null>;
@@ -130,7 +129,6 @@ class TeamModel {
         for (let i = 0; i < 10; i++) {
             this.newOuts.push(ko.observable(false));
         }
-        this.inning = ko.observable(1);
 
         this.lineupIndex = ko.observable(0);
         this.lastResult = ko.observable(null);
@@ -207,7 +205,7 @@ class TeamModel {
         return result.basesResult.bases;
     }
 
-    nextInning() {
+    reset() {
         while (this.outs() < 30) {
             this.outs(this.outs() + 1);
             this.lineupIndex(this.lineupIndex() + 1);
@@ -220,7 +218,6 @@ class TeamModel {
             column(new Bases());
         }
         this.outs(0);
-        this.inning(this.inning() + 1);
     }
 }
 
@@ -228,11 +225,23 @@ class ViewModel {
     readonly team1: TeamModel;
     readonly team2: TeamModel;
     readonly battingTeam: KnockoutObservable<TeamModel>;
+    readonly inning: KnockoutObservable<number>;
 
     constructor() {
         this.team1 = new TeamModel();
         this.team2 = new TeamModel();
         this.battingTeam = ko.observable(this.team1);
+        this.inning = ko.observable(1);
+    }
+
+    nextInning() {
+        this.battingTeam().reset();
+        if (this.battingTeam() === this.team1) {
+            this.battingTeam(this.team2);
+        } else {
+            this.battingTeam(this.team1);
+            this.inning(this.inning() + 1);
+        }
     }
 }
 
