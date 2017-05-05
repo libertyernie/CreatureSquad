@@ -102,8 +102,9 @@
 class ViewModel {
     readonly bases: KnockoutObservable<Bases>[];
     readonly runs: KnockoutObservable<number>;
-    readonly newRuns: KnockoutObservable<boolean>;
+    readonly newRuns: KnockoutObservable<number>[];
     readonly outs: KnockoutObservable<number>;
+    readonly newOuts: KnockoutObservable<boolean>[];
     readonly inning: KnockoutObservable<number>;
 
     readonly lineupIndex: KnockoutObservable<number>;
@@ -111,6 +112,8 @@ class ViewModel {
 
     readonly batter: KnockoutComputed<Batter>;
     readonly baserunners: KnockoutComputed<number>;
+    readonly newRunsCount: KnockoutComputed<number>;
+    readonly newOutsCount: KnockoutComputed<number>;
 
     constructor() {
         this.bases = [];
@@ -118,8 +121,15 @@ class ViewModel {
             this.bases.push(ko.observable(new Bases()));
         }
         this.runs = ko.observable(0);
-        this.newRuns = ko.observable(false);
+        this.newRuns = [];
+        for (let i = 0; i < 10; i++) {
+            this.newRuns.push(ko.observable(0));
+        }
         this.outs = ko.observable(0);
+        this.newOuts = [];
+        for (let i = 0; i < 10; i++) {
+            this.newOuts.push(ko.observable(false));
+        }
         this.inning = ko.observable(1);
 
         this.lineupIndex = ko.observable(0);
@@ -136,15 +146,31 @@ class ViewModel {
             }
             return tally;
         });
+        this.newRunsCount = ko.pureComputed(() => {
+            let tally = 0;
+            for (let observable of this.newRuns) {
+                tally += observable();
+            }
+            return tally;
+        });
+        this.newOutsCount = ko.pureComputed(() => {
+            return this.newOuts.filter(n => n()).length;
+        });
     }
 
     bat() {
         if (this.outs() >= 30) return;
 
-        this.newRuns(false);
+        this.newRuns.forEach(o => o(0));
+        this.newOuts.forEach(o => o(false));
+        
+        let i = 0;
         for (let column of this.bases) {
             let result = new PlateAppearanceResult(this.batter(), column(), this.batter().bat());
             column(this.processResult(result));
+            this.newRuns[i](result.basesResult.runs_scored.length);
+            this.newOuts[i](result.out);
+            i++;
         }
         this.lineupIndex(this.lineupIndex() + 1);
     }
@@ -152,13 +178,19 @@ class ViewModel {
     bunt() {
         if (this.outs() >= 30) return;
 
-        this.newRuns(false);
+        this.newRuns.forEach(o => o(0));
+        this.newOuts.forEach(o => o(false));
+        
+        let i = 0;
         for (let column of this.bases) {
             let r = Math.random() < 0.5
                 ? PlateApperanceResultType.SacrificeBunt
                 : PlateApperanceResultType.Out;
             let result = new PlateAppearanceResult(this.batter(), column(), r);
             column(this.processResult(result));
+            this.newRuns[i](result.basesResult.runs_scored.length);
+            this.newOuts[i](result.out);
+            i++;
         }
         this.lineupIndex(this.lineupIndex() + 1);
     }
@@ -169,8 +201,8 @@ class ViewModel {
             this.outs(this.outs() + 1);
         }
         if (this.outs() < 30 && result.basesResult.runs_scored.length > 0) {
+            console.log(this.runs() + " + " + result.basesResult.runs_scored.length);
             this.runs(this.runs() + result.basesResult.runs_scored.length);
-            this.newRuns(true);
         }
         return result.basesResult.bases;
     }
@@ -182,11 +214,12 @@ class ViewModel {
         }
 
         this.lastResult(null);
+        this.newRuns.forEach(o => o(0));
+        this.newOuts.forEach(o => o(false));
         for (let column of this.bases) {
             column(new Bases());
         }
         this.outs(0);
-        this.newRuns(false);
         this.inning(this.inning() + 1);
     }
 }

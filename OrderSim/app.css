@@ -92,23 +92,31 @@
     font-size: 32px;
 }
 
-#basesTable {
+.stateTable {
     width: 100%;
-    border: 1px solid blue;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 4px 0;
 }
 
-#basesTable > * {
-    flex: 1 0 auto;
+.stateTable > * {
+    flex: 1 0 10%;
     text-align: center;
 }
 
-#basesTable > * > * {
+.stateTable > * > * {
     height: 24px;
 }
 
-#basesTable > * > * > * {
+.stateTable > * > * > * {
     height: 100%;
+}
+
+#runsTable {
+    background-color: lightgray;
+}
+
+.new {
+    background-color: darkseagreen;
 }

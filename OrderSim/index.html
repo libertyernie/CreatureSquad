@@ -24,15 +24,26 @@
         </div>
         <div class="center">
             <div id="result" data-bind="with: lastResult">
-                <div class="batterName" data-bind="text: batter.name"></div>
-                <div class="type" data-bind="text: resultTypeName"></div>
+                <div class="batterName" data-bind="text: batter.name, style: { backgroundColor: batter.bgcolor }"></div>
+                <div class="type">
+                    <span data-bind="text: $root.newRunsCount"></span> runs
+                    -
+                    <span data-bind="text: $root.newOutsCount"></span> outs
+                </div>
                 <!-- ko if: $root.outs() < 3 -->
                 <div data-bind="foreach: basesResult.runs_scored">
                     <div data-bind="text: $data.name"></div>
                 </div>
                 <!-- /ko -->
             </div>
-            <div id="basesTable" data-bind="foreach: bases">
+            <div id="outsTable" class="stateTable" data-bind="foreach: newOuts">
+                <div>
+                    <div data-bind="if: $data">
+                        X
+                    </div>
+                </div>
+            </div>
+            <div id="basesTable" class="stateTable" data-bind="foreach: bases">
                 <div>
                     <div data-bind="with: first">
                         <div data-bind="style: { backgroundColor: bgcolor }"></div>
@@ -45,6 +56,11 @@
                     </div>
                 </div>
             </div>
+            <div id="runsTable" class="stateTable" data-bind="foreach: newRuns">
+                <div>
+                    <div data-bind="text: $data || '', css: { new: $data }"></div>
+                </div>
+            </div>
             <div>
                 Runs: <span data-bind="text: runs"></span>
             </div>
@@ -55,7 +71,7 @@
                 Inning: <span data-bind="text: inning"></span>
             </div>
             <div class="score">
-                <div data-bind="css: { newRuns: newRuns }">
+                <div data-bind="css: { newRuns: newRunsCount() > 0 }">
                     <div>Runs</div>
                     <div class="big-number" data-bind="text: runs"></div>
                 </div>
@@ -80,7 +96,7 @@
             </div>
             <div class="buttons">
                 <button data-bind="click: bat, disable: outs() >= 30">Attack</button>
-                <button data-bind="click: bunt, enable: baserunners() > 0">Sacrifice</button>
+                <button data-bind="click: bunt, enable: outs() < 30 && baserunners() > 0">Sacrifice</button>
                 <button data-bind="click: nextInning, enable: outs() >= 30">Next inning</button>
             </div>
         </div>
