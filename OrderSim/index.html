@@ -77,19 +77,15 @@
                     <div>Outs</div>
                     <div class="big-number" data-bind="text: outs"></div>
                 </div>
-                <div class="spacer"></div>
-                <div>
-                    <div>Runs</div>
-                    <div class="big-number">0</div>
-                </div>
-            </div>
-            <div class="score">
-                <div class="spacer"></div>
                 <div>
                     <div>Inning</div>
                     <div class="big-number" data-bind="text: inning"></div>
                 </div>
                 <div class="spacer"></div>
+                <div>
+                    <div>Runs</div>
+                    <div class="big-number">0</div>
+                </div>
             </div>
             <div class="buttons">
                 <button data-bind="click: bat, disable: outs() >= 30">Attack</button>
