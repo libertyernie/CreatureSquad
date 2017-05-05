@@ -16,15 +16,23 @@
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: Lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
-                <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
-                <span data-bind="text: name"></span>
+                <img src="sabina.png" align="left" data-bind="style: { backgroundColor: bgcolor }" />
+                <div>
+                    <span data-bind="text: name"></span>
+                    <br />
+                    <span data-bind="text: ba.toFixed(3)*1000"></span>
+                    /
+                    <span data-bind="text: ops.toFixed(3)*1000"></span>
+                    /
+                    <span data-bind="text: slg.toFixed(3)*1000"></span>
+                </div>
             </div>
             <!-- /ko -->
             <div class="spacer"></div>
         </div>
         <div class="center" data-bind="with: battingTeam">
             <div id="result" data-bind="if: lastResult">
-                <!-- ko with: lastResult.batter -->
+                <!-- ko with: lastResult().batter -->
                 <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
                 <!-- /ko -->
                 <div class="type">

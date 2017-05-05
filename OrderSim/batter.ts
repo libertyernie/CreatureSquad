@@ -15,8 +15,12 @@
 }
 
 class Batter {
-    private averages: PlateAppearanceAverages;
+    readonly averages: PlateAppearanceAverages;
     bgcolor: string;
+
+    readonly ba: number;
+    readonly ops: number;
+    readonly slg: number;
 
     constructor(
         readonly name: string,
@@ -24,6 +28,10 @@ class Batter {
     ) {
         this.averages = calculateAverages(averages);
         this.bgcolor = "#" + Batter.hashCode(name).toString(16).substr(-6);
+
+        this.ba = averages.total_hits / averages.at_bats;
+        this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
+        this.slg = (this.averages.singles + 2 * averages.doubles + 3 * averages.triples + 4 * averages.home_runs) / averages.at_bats;
     }
 
     private static hashCode(s: string) {

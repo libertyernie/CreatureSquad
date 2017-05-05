@@ -60,7 +60,7 @@
 }
 
 .batter {
-    display: inline-block;
+    display: flex;
     flex: 0 1 48px;
     border: 1px solid black;
     border-radius: 8px;
@@ -68,10 +68,14 @@
     overflow-y: hidden;
 }
 
-.batter img {
-    height: 48px;
+.batter > img {
+    flex: 0 1 48px;
     border-radius: 8px;
-    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.batter > * {
+    flex: 1 1 auto;
 }
 
 .batter.current {
