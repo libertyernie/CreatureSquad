@@ -98,7 +98,15 @@
             <!-- ko foreach: Lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
-                <span data-bind="text: name"></span>
+                <div>
+                    <span data-bind="text: name"></span>
+                    <br />
+                    <span data-bind="text: ba.toFixed(3)*1000"></span>
+                    /
+                    <span data-bind="text: ops.toFixed(3)*1000"></span>
+                    /
+                    <span data-bind="text: slg.toFixed(3)*1000"></span>
+                </div>
             </div>
             <!-- /ko -->
             <div class="spacer"></div>

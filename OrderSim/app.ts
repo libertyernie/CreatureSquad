@@ -198,8 +198,7 @@ class TeamModel {
         if (result.out) {
             this.outs(this.outs() + 1);
         }
-        if (this.outs() < 30 && result.basesResult.runs_scored.length > 0) {
-            console.log(this.runs() + " + " + result.basesResult.runs_scored.length);
+        if (/*this.outs() < 30 &&*/ result.basesResult.runs_scored.length > 0) {
             this.runs(this.runs() + result.basesResult.runs_scored.length);
         }
         return result.basesResult.bases;
