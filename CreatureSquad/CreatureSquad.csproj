@@ -23,16 +23,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
-    <Content Include="images\centian.png" />
     <Content Include="images\default.png" />
-    <Content Include="images\mason.png" />
-    <Content Include="images\megan.png" />
-    <Content Include="images\paralari.png" />
-    <Content Include="images\ralph.png" />
-    <Content Include="images\tomas.png" />
-    <Content Include="images\zigzag.png" />
+    <Content Include="images\square\arike.png" />
+    <Content Include="images\square\centian.png" />
+    <Content Include="images\square\mason.png" />
+    <Content Include="images\square\megan.png" />
+    <Content Include="images\square\paralari.png" />
+    <Content Include="images\square\ralph.png" />
+    <Content Include="images\square\sabina.png" />
+    <Content Include="images\square\tomas.png" />
+    <Content Include="images\square\zigzag.png" />
     <Content Include="index.html" />
-    <Content Include="images\sabina.png" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +52,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

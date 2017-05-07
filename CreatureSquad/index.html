@@ -15,7 +15,7 @@
 <body>
     <div id="characterInfo" data-bind="with: descriptionShownFor">
         <a href="#" class="close" data-bind="click: closeDescription">Close</a>
-        <img data-bind="attr: { src: image }" />
+        <img data-bind="attr: { src: thumbnail }" />
         <h1 data-bind="text: name"></h1>
         <p data-bind="text: description"></p>
         <p>
@@ -30,7 +30,7 @@
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <a href="#" data-bind="click: showDescription">
-                    <img align="left" data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
+                    <img align="left" data-bind="attr: { src: thumbnail }, style: { backgroundColor: bgcolor }" />
                 </a>
                 <div>
                     <span data-bind="text: name"></span>
@@ -112,7 +112,9 @@
         <div class="lineup" data-bind="with: team2">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
+                <a href="#" data-bind="click: showDescription">
+                    <img align="left" data-bind="attr: { src: thumbnail }, style: { backgroundColor: bgcolor }" />
+                </a>
                 <div>
                     <span data-bind="text: name"></span>
                     <br />

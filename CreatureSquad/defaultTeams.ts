@@ -2,7 +2,7 @@
   "starters": [
     {
       "name": "Mason",
-      "image": "images/mason.png",
+      "thumbnail": "images/square/mason.png",
       "description": "Sabina's brother, a dedicated young warrior who has made it his personal mission to protect her.",
       "likes": "Loyalty",
       "dislikes": "Dogma",
@@ -19,7 +19,7 @@
     },
     {
       "name": "Ralph",
-      "image": "images/ralph.png",
+      "thumbnail": "images/square/ralph.png",
       "description": "A shy raccoon born with the ability to talk, something nobody else in his family could ever do.",
       "likes": "Being able to talk to humans",
       "dislikes": "Not being able to talk to other raccoons",
@@ -36,7 +36,7 @@
     },
     {
       "name": "Sabina",
-      "image": "images/sabina.png",
+      "thumbnail": "images/square/sabina.png",
       "description": "A part-human, part-dragon teenager. She can shapeshift between the two forms, but her anxiety often causes her to do so involuntarily.",
       "likes": "Athletics",
       "dislikes": "Turning into a dragon",
@@ -53,7 +53,7 @@
     },
     {
       "name": "Zigzag",
-      "image": "images/zigzag.png",
+      "thumbnail": "images/square/zigzag.png",
       "description": "A two foot tall jelly monster with a heart of gold. He often develops romantic feelings toward humans, but they never seem interested in him (unless they're trying to stick a sword through his eye.)",
       "likes": "Soap",
       "dislikes": "Rejection",
@@ -70,7 +70,7 @@
     },
     {
       "name": "Arike",
-      "image": "images/arike.png",
+      "thumbnail": "images/square/arike.png",
       "description": "Mason and Sabina's aunt, who came through a portal from another world to ensure that nobody else could ever use it. Very smart and kind of a geek.",
       "likes": "Star Wars Episode III: Revenge of the Sith",
       "dislikes": "Star Wars Episode I: The Phantom Menace",
@@ -87,7 +87,7 @@
     },
     {
       "name": "Megan",
-      "image": "images/megan.png",
+      "thumbnail": "images/square/megan.png",
       "description": "A young snake monster who once attacked Mason but wound up saving his life. Wants to make her parents proud.",
       "likes": "Puns",
       "dislikes": "Dead animals",
@@ -104,7 +104,7 @@
     },
     {
       "name": "Centian",
-      "image": "images/centian.png",
+      "thumbnail": "images/square/centian.png",
       "description": "The spirit of a young teenage warrior from another world who died in battle. Insists on theological grounds that he is not an angel, just a ghost with wings.",
       "likes": "God, family, monsters",
       "dislikes": "Misunderstandings",
@@ -121,7 +121,7 @@
     },
     {
       "name": "Paralari",
-      "image": "images/paralari.png",
+      "thumbnail": "images/square/paralari.png",
       "description": "A monster/fairy hybrid who has been in countless battles but never seems to get hurt. Seems suspiciouly nice when you first meet her, but that's just the way she is.",
       "likes": "Flowers made out of cake frosting",
       "dislikes": "Thunder",
@@ -138,7 +138,7 @@
     },
     {
       "name": "Tomas",
-      "image": "images/tomas.png",
+      "thumbnail": "images/square/tomas.png",
       "description": "Once a human wizard, he was turned into a book by a jealous rival. His pages contain everything he knows along with all of his most personal secrets.",
       "likes": "Librarians",
       "dislikes": "Anyone who wants to read him",

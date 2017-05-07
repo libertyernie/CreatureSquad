@@ -16,7 +16,7 @@
 
 interface SerializedBatterInfo extends OffensiveAverages {
     name: string;
-    image?: string;
+    thumbnail?: string;
     bgcolor?: string;
     description?: string;
     likes?: string;
@@ -26,8 +26,9 @@ interface SerializedBatterInfo extends OffensiveAverages {
 class Batter {
     readonly name: string;
     readonly averages: PlateAppearanceAverages;
-    readonly image: string;
     readonly bgcolor: string;
+
+    readonly thumbnail: string;
 
     readonly description?: string;
     readonly likes?: string;
@@ -40,8 +41,9 @@ class Batter {
     constructor(averages: SerializedBatterInfo) {
         this.name = averages.name;
         this.averages = calculatePAAverages(averages);
-        this.image = averages.image || "images/default.png";
         this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
+        
+        this.thumbnail = averages.thumbnail || "images/default.png";
 
         this.ba = averages.total_hits / averages.at_bats;
         this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
