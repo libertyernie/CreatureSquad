@@ -14,6 +14,7 @@
 </head>
 <body>
     <div id="characterInfo" data-bind="with: descriptionShownFor">
+        <a href="#" class="close" data-bind="click: closeDescription">Close</a>
         <img data-bind="attr: { src: image }" />
         <h1 data-bind="text: name"></h1>
         <p data-bind="text: description"></p>
@@ -84,7 +85,7 @@
             <!-- /ko -->
             <div class="score">
                 <div data-bind="css: { newRuns: team1.newRunsCount() > 0 }">
-                    <div>Runs</div>
+                    <div>Points</div>
                     <div class="big-number" data-bind="text: team1.runs"></div>
                 </div>
                 <div class="spacer"></div>
@@ -98,7 +99,7 @@
                 </div>
                 <div class="spacer"></div>
                 <div data-bind="css: { newRuns: team2.newRunsCount() > 0 }">
-                    <div>Runs</div>
+                    <div>Points</div>
                     <div class="big-number" data-bind="text: team2.runs"></div>
                 </div>
             </div>

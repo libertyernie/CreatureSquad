@@ -1,7 +1,11 @@
 ﻿const team1 = {
   "starters": [
     {
-      "name": "Dexter Fowler",
+      "name": "Mason",
+      "image": "images/mason.png",
+      "description": "Sabina's brother, a dedicated young warrior who has made it his personal mission to protect her.",
+      "likes": "Loyalty",
+      "dislikes": "Dogma",
       "at_bats": 456,
       "total_hits": 126,
       "doubles": 25,
@@ -14,7 +18,11 @@
       "intentional_walks": 0
     },
     {
-      "name": "Kris Bryant",
+      "name": "Ralph",
+      "image": "images/ralph.png",
+      "description": "A shy raccoon born with the ability to talk, something nobody else in his family could ever do.",
+      "likes": "Being able to talk to humans",
+      "dislikes": "Not being able to talk to other raccoons",
       "at_bats": 603,
       "total_hits": 176,
       "doubles": 35,
@@ -44,7 +52,11 @@
       "intentional_walks": 8
     },
     {
-      "name": "Ben Zobrist",
+      "name": "Zigzag",
+      "image": "images/zigzag.png",
+      "description": "A two foot tall jelly monster with a heart of gold. He often develops romantic feelings toward humans, but they never seem interested in him (unless they're trying to stick a sword through his eye.)",
+      "likes": "Soap",
+      "dislikes": "Rejection",
       "at_bats": 523,
       "total_hits": 142,
       "doubles": 31,
@@ -57,7 +69,11 @@
       "intentional_walks": 6
     },
     {
-      "name": "Addison Russell",
+      "name": "Arike",
+      "image": "images/arike.png",
+      "description": "Mason and Sabina's aunt, who came through a portal from another world to ensure that nobody else could ever use it. Very smart and kind of a geek.",
+      "likes": "Star Wars Episode III: Revenge of the Sith",
+      "dislikes": "Star Wars Episode I: The Phantom Menace",
       "at_bats": 525,
       "total_hits": 125,
       "doubles": 25,
@@ -70,7 +86,11 @@
       "intentional_walks": 6
     },
     {
-      "name": "Jorge Soler",
+      "name": "Megan",
+      "image": "images/megan.png",
+      "description": "A young snake monster who once attacked Mason but wound up saving his life. Wants to make her parents proud.",
+      "likes": "Puns",
+      "dislikes": "Dead animals",
       "at_bats": 227,
       "total_hits": 54,
       "doubles": 9,
@@ -100,7 +120,11 @@
       "intentional_walks": 0
     },
     {
-      "name": "Miguel Montero",
+      "name": "Paralari",
+      "image": "images/paralari.png",
+      "description": "A monster/fairy hybrid who has been in countless battles but never seems to get hurt. Seems suspiciouly nice when you first meet her, but that's just the way she is.",
+      "likes": "Flowers made out of cake frosting",
+      "dislikes": "Thunder",
       "at_bats": 241,
       "total_hits": 52,
       "doubles": 8,

@@ -136,3 +136,13 @@
     max-width: 250px;
     margin: 25px;
 }
+
+#characterInfo .close {
+    float: right;
+    margin-right: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: gray;
+    color: white;
+}

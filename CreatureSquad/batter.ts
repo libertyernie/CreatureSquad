@@ -56,6 +56,10 @@ class Batter {
         viewModel.descriptionShownFor(this);
     }
 
+    closeDescription() {
+        viewModel.descriptionShownFor(null);
+    }
+
     private static hashCode(s: string) {
         let hash = 0;
         for (let i = 0; i < s.length; i++) {
