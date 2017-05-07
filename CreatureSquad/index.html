@@ -6,6 +6,7 @@
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    <script src="defaultTeams.js"></script>
     <script src="batter.js"></script>
     <script src="bases.js"></script>
     <script src="averages.js"></script>
@@ -14,9 +15,9 @@
 <body>
     <div id="mainScreen">
         <div class="lineup" data-bind="with: team1">
-            <!-- ko foreach: Lineup -->
+            <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img src="images/sabina.png" align="left" data-bind="style: { backgroundColor: bgcolor }" />
+                <img align="left" data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
                 <div>
                     <span data-bind="text: name"></span>
                     <br />
@@ -95,9 +96,9 @@
             </div>
         </div>
         <div class="lineup" data-bind="with: team2">
-            <!-- ko foreach: Lineup -->
+            <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img src="images/centian.png" data-bind="style: { backgroundColor: bgcolor }" />
+                <img data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
                 <div>
                     <span data-bind="text: name"></span>
                     <br />

@@ -34,7 +34,7 @@ class Batter {
         this.name = averages.name;
         this.averages = calculatePAAverages(averages);
         this.image = averages.image || "images/sabina.png";
-        this.bgcolor = averages.bgcolor || `#${Batter.hashCode(name).toString(16).substr(-6)}`;
+        this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
 
         this.ba = averages.total_hits / averages.at_bats;
         this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
