@@ -33,7 +33,7 @@ class Batter {
     constructor(averages: SerializedBatterInfo) {
         this.name = averages.name;
         this.averages = calculatePAAverages(averages);
-        this.image = averages.image || "images/sabina.png";
+        this.image = averages.image || "images/default.png";
         this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
 
         this.ba = averages.total_hits / averages.at_bats;

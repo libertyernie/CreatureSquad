@@ -24,6 +24,8 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="images\centian.png" />
+    <Content Include="images\default.png" />
+    <Content Include="images\tomas.png" />
     <Content Include="index.html" />
     <Content Include="images\sabina.png" />
     <Content Include="web.config" />

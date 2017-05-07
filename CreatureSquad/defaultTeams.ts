@@ -2,7 +2,6 @@
   "starters": [
     {
       "name": "Dexter Fowler",
-      "image": "images/sabina.png",
       "at_bats": 456,
       "total_hits": 126,
       "doubles": 25,
@@ -16,7 +15,6 @@
     },
     {
       "name": "Kris Bryant",
-      "image": "images/sabina.png",
       "at_bats": 603,
       "total_hits": 176,
       "doubles": 35,
@@ -29,7 +27,7 @@
       "intentional_walks": 5
     },
     {
-      "name": "Anthony Rizzo",
+      "name": "Sabina",
       "image": "images/sabina.png",
       "at_bats": 583,
       "total_hits": 170,
@@ -44,7 +42,6 @@
     },
     {
       "name": "Ben Zobrist",
-      "image": "images/sabina.png",
       "at_bats": 523,
       "total_hits": 142,
       "doubles": 31,
@@ -58,7 +55,6 @@
     },
     {
       "name": "Addison Russell",
-      "image": "images/sabina.png",
       "at_bats": 525,
       "total_hits": 125,
       "doubles": 25,
@@ -72,7 +68,6 @@
     },
     {
       "name": "Jorge Soler",
-      "image": "images/sabina.png",
       "at_bats": 227,
       "total_hits": 54,
       "doubles": 9,
@@ -85,8 +80,8 @@
       "intentional_walks": 0
     },
     {
-      "name": "Jason Heyward",
-      "image": "images/sabina.png",
+      "name": "Centian",
+      "image": "images/centian.png",
       "at_bats": 530,
       "total_hits": 122,
       "doubles": 27,
@@ -100,7 +95,6 @@
     },
     {
       "name": "Miguel Montero",
-      "image": "images/sabina.png",
       "at_bats": 241,
       "total_hits": 52,
       "doubles": 8,
@@ -113,8 +107,8 @@
       "intentional_walks": 5
     },
     {
-      "name": "Jon Lester",
-      "image": "images/sabina.png",
+      "name": "Tomas",
+      "image": "images/tomas.png",
       "at_bats": 59,
       "total_hits": 6,
       "doubles": 3,
