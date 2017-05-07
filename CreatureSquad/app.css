@@ -68,10 +68,15 @@
     overflow-y: hidden;
 }
 
-.batter > img {
+.batter > :first-child {
     flex: 0 1 48px;
     border-radius: 8px;
     margin-right: 8px;
+}
+
+.batter > :first-child img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .batter > * {
@@ -124,4 +129,10 @@
 
 .new {
     background-color: darkseagreen;
+}
+
+#characterInfo img {
+    float: left;
+    max-width: 250px;
+    margin: 25px;
 }

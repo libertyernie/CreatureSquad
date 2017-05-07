@@ -125,11 +125,15 @@ class ViewModel {
     readonly battingTeam: KnockoutObservable<TeamModel>;
     readonly inning: KnockoutObservable<number>;
 
+    readonly descriptionShownFor: KnockoutObservable<Batter | null>;
+
     constructor(team1: Batter[], team2: Batter[]) {
         this.team1 = new TeamModel(team1);
         this.team2 = new TeamModel(team2);
         this.battingTeam = ko.observable(this.team1);
         this.inning = ko.observable(1);
+
+        this.descriptionShownFor = ko.observable(null);
     }
 
     nextInning() {
@@ -143,9 +147,8 @@ class ViewModel {
     }
 }
 
+var viewModel = new ViewModel(team1.starters.map(x => new Batter(x)), team1.starters.map(x => new Batter(x)));
 window.onload = () => {
-    let batters1 = team1.starters.map(x => new Batter(x));
     var el = document.body;
-    var viewModel = new ViewModel(batters1, batters1);
     ko.applyBindings(viewModel, el);
 };

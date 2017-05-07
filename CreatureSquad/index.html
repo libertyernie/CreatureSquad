@@ -13,11 +13,24 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <div id="mainScreen">
+    <div id="characterInfo" data-bind="with: descriptionShownFor">
+        <img data-bind="attr: { src: image }" />
+        <h1 data-bind="text: name"></h1>
+        <p data-bind="text: description"></p>
+        <p>
+            Likes: <span data-bind="text: likes"></span>
+        </p>
+        <p>
+            Dislikes: <span data-bind="text: dislikes"></span>
+        </p>
+    </div>
+    <div id="mainScreen" data-bind="if: !descriptionShownFor()">
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img align="left" data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
+                <a href="#" data-bind="click: showDescription">
+                    <img align="left" data-bind="attr: { src: image }, style: { backgroundColor: bgcolor }" />
+                </a>
                 <div>
                     <span data-bind="text: name"></span>
                     <br />

@@ -29,6 +29,9 @@
     {
       "name": "Sabina",
       "image": "images/sabina.png",
+      "description": "A part-human, part-dragon teenager. She can shapeshift between the two forms, but her anxiety often causes her to do so involuntarily.",
+      "likes": "Athletics",
+      "dislikes": "Turning into a dragon",
       "at_bats": 583,
       "total_hits": 170,
       "doubles": 43,
@@ -82,6 +85,9 @@
     {
       "name": "Centian",
       "image": "images/centian.png",
+      "description": "The spirit of a young teenage warrior from another world who died in battle. Insists on theological grounds that he is not an angel, just a ghost with wings.",
+      "likes": "God, family, monsters",
+      "dislikes": "Misunderstandings",
       "at_bats": 530,
       "total_hits": 122,
       "doubles": 27,
@@ -109,6 +115,9 @@
     {
       "name": "Tomas",
       "image": "images/tomas.png",
+      "description": "Once a human wizard, he was turned into a book by a jealous rival. His pages contain everything he knows along with all of his most personal secrets.",
+      "likes": "Librarians",
+      "dislikes": "Anyone who wants to read him",
       "at_bats": 59,
       "total_hits": 6,
       "doubles": 3,
@@ -123,3 +132,5 @@
   ],
   "bench": [ ]
 };
+
+// TODO: add opposing team.
