@@ -96,12 +96,34 @@
     }
 
     auto() {
-        if (this.ai() && this.outs() < 30) {
-            setTimeout(() => {
-                this.bat();
+        setTimeout(() => {
+            if (this.ai() && this.outs() < 30) {
+                let battingNewRuns = 0;
+                let battingNewOuts = 0;
+                for (let column of this.bases) {
+                    let predictedResult = new PlateAppearanceResult(this.batter(), column(), this.batter().bat());
+                    battingNewRuns += predictedResult.basesResult.runs_scored.length;
+                    if (predictedResult.out) battingNewOuts++;
+                }
+                let buntingNewRuns = 0;
+                for (let column of this.bases) {
+                    let predictedResult = new PlateAppearanceResult(this.batter(), column(), PlateApperanceResultType.SacrificeBunt);
+                    buntingNewRuns += predictedResult.basesResult.runs_scored.length / 2;
+                }
+                if (battingNewOuts + this.outs() >= 30) {
+                    console.log({
+                        battingNewRuns: battingNewRuns,
+                        buntingNewRuns: buntingNewRuns
+                    });
+                }
+                if (battingNewOuts + this.outs() >= 30 && battingNewRuns < buntingNewRuns) {
+                    this.bunt();
+                } else {
+                    this.bat();
+                }
                 this.auto();
-            }, 1000);
-        }
+            }
+        }, 500);
     }
 
     private processResult(result: PlateAppearanceResult) {
