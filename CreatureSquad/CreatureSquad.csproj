@@ -23,8 +23,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="images\centian.png" />
     <Content Include="index.html" />
-    <Content Include="sabina.png" />
+    <Content Include="images\sabina.png" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

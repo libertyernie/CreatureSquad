@@ -16,7 +16,7 @@
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: Lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img src="sabina.png" align="left" data-bind="style: { backgroundColor: bgcolor }" />
+                <img src="images/sabina.png" align="left" data-bind="style: { backgroundColor: bgcolor }" />
                 <div>
                     <span data-bind="text: name"></span>
                     <br />
@@ -97,7 +97,7 @@
         <div class="lineup" data-bind="with: team2">
             <!-- ko foreach: Lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <img src="sabina.png" data-bind="style: { backgroundColor: bgcolor }" />
+                <img src="images/centian.png" data-bind="style: { backgroundColor: bgcolor }" />
                 <div>
                     <span data-bind="text: name"></span>
                     <br />
