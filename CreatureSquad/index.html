@@ -104,8 +104,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <button data-bind="click: () => battingTeam().bat(), disable: battingTeam().outs() >= 30">Attack</button>
-                <button data-bind="click: () => battingTeam().bunt(), enable: battingTeam().outs() < 30 && battingTeam().baserunners() > 0">Sacrifice</button>
+                <button data-bind="click: () => battingTeam().bat(), enable: !battingTeam().ai() && battingTeam().outs() < 30">Attack</button>
+                <button data-bind="click: () => battingTeam().bunt(), enable: !battingTeam().ai() && battingTeam().outs() < 30 && battingTeam().baserunners() > 0">Sacrifice</button>
                 <button data-bind="click: nextInning, enable: battingTeam().outs() >= 30">Next inning</button>
             </div>
         </div>

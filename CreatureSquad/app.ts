@@ -13,6 +13,8 @@
     readonly newRunsCount: KnockoutComputed<number>;
     readonly newOutsCount: KnockoutComputed<number>;
 
+    readonly ai: KnockoutObservable<boolean>;
+
     constructor(readonly lineup: Batter[]) {
         this.bases = [];
         for (let i = 0; i < 10; i++) {
@@ -53,6 +55,7 @@
         this.newOutsCount = ko.pureComputed(() => {
             return this.newOuts.filter(n => n()).length;
         });
+        this.ai = ko.observable(false);
     }
 
     bat() {
@@ -90,6 +93,13 @@
             i++;
         }
         this.lineupIndex(this.lineupIndex() + 1);
+    }
+
+    auto() {
+        if (this.ai() && this.outs() < 30) {
+            this.bat();
+            setTimeout(() => this.auto(), 1000);
+        }
     }
 
     private processResult(result: PlateAppearanceResult) {
@@ -130,6 +140,7 @@ class ViewModel {
     constructor(team1: Batter[], team2: Batter[]) {
         this.team1 = new TeamModel(team1);
         this.team2 = new TeamModel(team2);
+        this.team2.ai(true);
         this.battingTeam = ko.observable(this.team1);
         this.inning = ko.observable(1);
 
@@ -143,6 +154,10 @@ class ViewModel {
         } else {
             this.battingTeam(this.team1);
             this.inning(this.inning() + 1);
+        }
+
+        if (this.battingTeam().ai()) {
+            setTimeout(() => this.battingTeam().auto(), 500);
         }
     }
 }
