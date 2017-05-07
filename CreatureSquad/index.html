@@ -47,14 +47,17 @@
         </div>
         <div class="center">
             <!-- ko with: battingTeam -->
-            <div id="result" data-bind="if: lastResult">
-                <!-- ko with: lastResult().batter -->
+            <div id="result" data-bind="if: lastBatter">
+                <!-- ko with: lastBatter -->
                 <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
                 <!-- /ko -->
                 <div class="type">
                     <span data-bind="text: newRunsCount"></span> runs
                     -
                     <span data-bind="text: newOutsCount"></span> outs
+                    <span data-bind="if: lastBunted">
+                        (sacrifice)
+                    </span>
                 </div>
             </div>
             <div id="outsTable" class="stateTable" data-bind="foreach: newOuts">

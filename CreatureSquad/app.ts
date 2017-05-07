@@ -6,7 +6,8 @@
     readonly newOuts: KnockoutObservable<boolean>[];
 
     readonly lineupIndex: KnockoutObservable<number>;
-    readonly lastResult: KnockoutObservable<PlateAppearanceResult | null>;
+    readonly lastBatter: KnockoutObservable<Batter | null>;
+    readonly lastBunted: KnockoutObservable<boolean>;
 
     readonly batter: KnockoutComputed<Batter>;
     readonly baserunners: KnockoutComputed<number>;
@@ -32,7 +33,8 @@
         }
 
         this.lineupIndex = ko.observable(0);
-        this.lastResult = ko.observable(null);
+        this.lastBatter = ko.observable(null);
+        this.lastBunted = ko.observable(false);
 
         this.batter = ko.pureComputed(() => lineup[this.lineupIndex() % lineup.length]);
         this.baserunners = ko.pureComputed(() => {
@@ -61,6 +63,7 @@
     bat() {
         if (this.outs() >= 30) return;
 
+        this.lastBunted(false);
         this.newRuns.forEach(o => o(0));
         this.newOuts.forEach(o => o(false));
         
@@ -78,6 +81,7 @@
     bunt() {
         if (this.outs() >= 30) return;
 
+        this.lastBunted(true);
         this.newRuns.forEach(o => o(0));
         this.newOuts.forEach(o => o(false));
         
@@ -95,28 +99,43 @@
         this.lineupIndex(this.lineupIndex() + 1);
     }
 
-    auto() {
-        setTimeout(() => {
-            if (this.ai() && this.outs() < 30) {
-                let battingNewRuns = 0;
-                let battingNewOuts = 0;
+    private shouldBunt() {
+        if (this.ai() && this.outs() < 30) {
+            let battingNewRuns = 0;
+            let battingNewOuts = 0;
+            for (let i = 0; i < 8; i++) {
                 for (let column of this.bases) {
                     let predictedResult = new PlateAppearanceResult(this.batter(), column(), this.batter().bat());
                     battingNewRuns += predictedResult.basesResult.runs_scored.length;
                     if (predictedResult.out) battingNewOuts++;
                 }
-                let buntingNewRuns = 0;
+            }
+            battingNewRuns /= 8;
+            battingNewOuts /= 8;
+            if (battingNewOuts + this.outs() < 30) {
+                return false;
+            }
+
+            let buntingNewRuns = 0;
+            for (let i = 0; i < 8; i++) {
                 for (let column of this.bases) {
                     let predictedResult = new PlateAppearanceResult(this.batter(), column(), PlateApperanceResultType.SacrificeBunt);
                     buntingNewRuns += predictedResult.basesResult.runs_scored.length / 2;
                 }
-                if (battingNewOuts + this.outs() >= 30) {
-                    console.log({
-                        battingNewRuns: battingNewRuns,
-                        buntingNewRuns: buntingNewRuns
-                    });
-                }
-                if (battingNewOuts + this.outs() >= 30 && battingNewRuns < buntingNewRuns) {
+            }
+            buntingNewRuns /= 8;
+            console.log({
+                battingNewRuns: battingNewRuns,
+                buntingNewRuns: buntingNewRuns
+            });
+            return battingNewRuns < buntingNewRuns;
+        }
+    }
+
+    auto() {
+        setTimeout(() => {
+            if (this.ai() && this.outs() < 30) {
+                if (this.shouldBunt()) {
                     this.bunt();
                 } else {
                     this.bat();
@@ -127,7 +146,7 @@
     }
 
     private processResult(result: PlateAppearanceResult) {
-        this.lastResult(result);
+        this.lastBatter(result.batter);
         if (result.out) {
             this.outs(this.outs() + 1);
         }
@@ -143,7 +162,8 @@
             this.lineupIndex(this.lineupIndex() + 1);
         }
 
-        this.lastResult(null);
+        this.lastBatter(null);
+        this.lastBunted(false);
         this.newRuns.forEach(o => o(0));
         this.newOuts.forEach(o => o(false));
         for (let column of this.bases) {
