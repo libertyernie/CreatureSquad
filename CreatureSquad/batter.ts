@@ -38,7 +38,7 @@ class Batter {
     readonly ops: number;
     readonly slg: number;
 
-    constructor(averages: SerializedBatterInfo) {
+    constructor(averages: SerializedBatterInfo, readonly altColor?: string) {
         this.name = averages.name;
         this.averages = calculatePAAverages(averages);
         this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;

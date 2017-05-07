@@ -97,8 +97,10 @@
 
     auto() {
         if (this.ai() && this.outs() < 30) {
-            this.bat();
-            setTimeout(() => this.auto(), 1000);
+            setTimeout(() => {
+                this.bat();
+                this.auto();
+            }, 1000);
         }
     }
 
@@ -157,12 +159,27 @@ class ViewModel {
         }
 
         if (this.battingTeam().ai()) {
-            setTimeout(() => this.battingTeam().auto(), 500);
+            setTimeout(() => this.battingTeam().auto(), 0);
         }
     }
 }
 
-var viewModel = new ViewModel(team1.starters.map(x => new Batter(x)), team1.starters.map(x => new Batter(x)));
+var viewModel: ViewModel;
+(() => {
+    const colors = [
+        "#eee",
+        "#ddd",
+        "#ccc",
+        "#bbb",
+        "#aaa",
+        "#888",
+        "#666",
+        "#444",
+        "#222"
+    ];
+    const batters = team1.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
+    viewModel = new ViewModel(batters, batters);
+})();
 window.onload = () => {
     var el = document.body;
     ko.applyBindings(viewModel, el);
