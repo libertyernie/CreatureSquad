@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>TypeScript HTML App</title>
+    <title>Creature Squad</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
-    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    <script src="knockout-3.4.2.js"></script>
     <script src="defaultTeams.js"></script>
     <script src="batter.js"></script>
     <script src="bases.js"></script>
@@ -92,6 +92,7 @@
                     <div class="big-number" data-bind="text: team1.runs"></div>
                 </div>
                 <div class="spacer"></div>
+                <!-- ko if: !final() -->
                 <div>
                     <div>Outs</div>
                     <div class="big-number" data-bind="text: battingTeam().outs"></div>
@@ -100,16 +101,27 @@
                     <div>Inning</div>
                     <div class="big-number" data-bind="text: inning"></div>
                 </div>
+                <!-- /ko -->
                 <div class="spacer"></div>
                 <div data-bind="css: { newRuns: team2.newRunsCount() > 0 }">
                     <div>Points</div>
                     <div class="big-number" data-bind="text: team2.runs"></div>
                 </div>
             </div>
-            <div class="buttons">
+            <div class="buttons" data-bind="if: !final()">
                 <button data-bind="click: () => battingTeam().bat(), enable: !battingTeam().ai() && battingTeam().outs() < 30">Attack</button>
                 <button data-bind="click: () => battingTeam().bunt(), enable: !battingTeam().ai() && battingTeam().outs() < 30 && battingTeam().baserunners() > 0">Sacrifice</button>
                 <button data-bind="click: nextInning, enable: battingTeam().outs() >= 30">Next inning</button>
+            </div>
+            <div class="buttons" data-bind="if: final">
+                <!-- ko if: team1.runs() > team2.runs() -->
+                Team 1 wins!
+                <!-- /ko -->
+                <!-- ko if: team2.runs() > team1.runs() -->
+                Team 2 wins!
+                <!-- /ko -->
+                <br />
+                <button data-bind="click: startOver">Play again</button>
             </div>
         </div>
         <div class="lineup" data-bind="with: team2">

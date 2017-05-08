@@ -34,6 +34,7 @@
     <Content Include="images\square\tomas.png" />
     <Content Include="images\square\zigzag.png" />
     <Content Include="index.html" />
+    <Content Include="knockout-3.4.2.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

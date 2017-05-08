@@ -133,16 +133,14 @@
     }
 
     auto() {
-        setTimeout(() => {
-            if (this.ai() && this.outs() < 30) {
-                if (this.shouldBunt()) {
-                    this.bunt();
-                } else {
-                    this.bat();
-                }
-                this.auto();
+        if (this.ai() && this.outs() < 30) {
+            if (this.shouldBunt()) {
+                this.bunt();
+            } else {
+                this.bat();
             }
-        }, 500);
+            setTimeout(() => this.auto(), 500);
+        }
     }
 
     private processResult(result: PlateAppearanceResult) {
@@ -176,8 +174,9 @@
 class ViewModel {
     readonly team1: TeamModel;
     readonly team2: TeamModel;
-    readonly battingTeam: KnockoutObservable<TeamModel>;
+    readonly battingTeam: KnockoutObservable<TeamModel | null>;
     readonly inning: KnockoutObservable<number>;
+    readonly final: KnockoutObservable<boolean>;
 
     readonly descriptionShownFor: KnockoutObservable<Batter | null>;
 
@@ -187,22 +186,44 @@ class ViewModel {
         this.team2.ai(true);
         this.battingTeam = ko.observable(this.team1);
         this.inning = ko.observable(1);
+        this.final = ko.observable(false);
 
         this.descriptionShownFor = ko.observable(null);
     }
 
     nextInning() {
-        this.battingTeam().reset();
         if (this.battingTeam() === this.team1) {
             this.battingTeam(this.team2);
         } else {
-            this.battingTeam(this.team1);
-            this.inning(this.inning() + 1);
+            if (this.inning() < 5 || this.team1.runs() == this.team2.runs()) {
+                this.battingTeam(this.team1);
+                this.inning(this.inning() + 1);
+            } else {
+                //this.battingTeam(null);
+                this.final(true);
+                return;
+            }
         }
 
-        if (this.battingTeam().ai()) {
-            setTimeout(() => this.battingTeam().auto(), 0);
+        const team = this.battingTeam();
+        if (team) {
+            team.reset();
+            if (team.ai()) {
+                setTimeout(() => team.auto(), 500);
+            }
         }
+    }
+
+    startOver() {
+        this.team1.reset();
+        this.team1.runs(0);
+        this.team1.lineupIndex(0);
+        this.team2.reset();
+        this.team2.runs(0);
+        this.team2.lineupIndex(0);
+        this.battingTeam(this.team1);
+        this.inning(1);
+        this.final(false);
     }
 }
 
