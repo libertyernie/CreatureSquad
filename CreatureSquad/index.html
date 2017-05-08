@@ -25,14 +25,13 @@
             Dislikes: <span data-bind="text: dislikes"></span>
         </p>
     </div>
-    <div id="mainScreen" data-bind="if: !descriptionShownFor()">
+    <div id="mainScreen">
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <a href="#" data-bind="click: showDescription">
-                    <img align="left" data-bind="attr: { src: thumbnail }, style: { backgroundColor: bgcolor }" />
+                <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
-                <div>
+                <div class="batterInfo">
                     <span data-bind="text: name"></span>
                     <br />
                     <span data-bind="text: ba.toFixed(3)*1000"></span>
@@ -125,10 +124,9 @@
         <div class="lineup" data-bind="with: team2">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
-                <a href="#" data-bind="click: showDescription">
-                    <img align="left" data-bind="attr: { src: thumbnail }, style: { backgroundColor: bgcolor }" />
+                <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
-                <div>
+                <div class="batterInfo">
                     <span data-bind="text: name"></span>
                     <br />
                     <span data-bind="text: ba.toFixed(3)*1000"></span>

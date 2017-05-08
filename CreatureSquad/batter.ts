@@ -31,6 +31,7 @@ class Batter {
 
     readonly thumbnail: string;
     readonly image: string;
+    readonly thumbnailBackgroundImage: string;
 
     readonly description?: string;
     readonly likes?: string;
@@ -47,6 +48,7 @@ class Batter {
         
         this.thumbnail = averages.thumbnail || "images/default.png";
         this.image = averages.image || this.thumbnail;
+        this.thumbnailBackgroundImage = `url('${this.thumbnail}')`;
 
         this.ba = averages.total_hits / averages.at_bats;
         this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
