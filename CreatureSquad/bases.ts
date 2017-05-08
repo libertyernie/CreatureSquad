@@ -17,15 +17,15 @@
         }
     }
 
-    advanceOne(first?: Batter): BasesResult {
+    advanceOne(first?: Batter | null): BasesResult {
         return new BasesResult(first, this.first, this.second, [this.third]);
     }
 
-    advanceTwo(first?: Batter, second?: Batter) {
+    advanceTwo(first?: Batter | null, second?: Batter | null) {
         return new BasesResult(first, second, this.first, [this.second, this.third]);
     }
 
-    advanceThree(first?: Batter, second?: Batter, third?: Batter) {
+    advanceThree(first?: Batter | null, second?: Batter | null, third?: Batter | null) {
         return new BasesResult(first, second, third, [this.first, this.second, this.third]);
     }
 
@@ -38,9 +38,17 @@ class BasesResult {
     readonly bases: Bases;
     readonly runs_scored: Batter[];
 
-    constructor(first?: Batter, second?: Batter, third?: Batter, runs_scored?: Batter[]) {
+    constructor(
+        first?: Batter | null,
+        second?: Batter | null,
+        third?: Batter | null,
+        runs?: (Batter | null | undefined)[]
+    ) {
         this.bases = new Bases(first, second, third);
-        this.runs_scored = (runs_scored || []).filter(b => b != null);
+        this.runs_scored = [];
+        for (let b of runs || []) {
+            if (b) this.runs_scored.push(b);
+        }
     }
 }
 
