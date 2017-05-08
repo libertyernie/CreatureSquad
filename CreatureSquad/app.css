@@ -34,6 +34,10 @@
     padding: 0 12px;
     margin: 4px;
     border-radius: 8px;
+    background-color: white;
+}
+
+.score > .runs {
     background-color: skyblue;
 }
 
@@ -158,7 +162,7 @@
 }
 
 #characterInfo .close {
-    position: fixed;
+    position: absolute;
     top: 8px;
     left: 8px;
     padding: 4px;
