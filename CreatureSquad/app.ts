@@ -133,13 +133,10 @@
     }
 
     auto() {
-        if (this.ai() && this.outs() < 30) {
-            if (this.shouldBunt()) {
-                this.bunt();
-            } else {
-                this.bat();
-            }
-            setTimeout(() => this.auto(), 500);
+        if (this.shouldBunt()) {
+            this.bunt();
+        } else {
+            this.bat();
         }
     }
 
@@ -180,6 +177,8 @@ class ViewModel {
 
     readonly descriptionShownFor: KnockoutObservable<Batter | null>;
 
+    private aiInterval: number;
+
     constructor(team1: Batter[], team2: Batter[]) {
         this.team1 = new TeamModel(team1);
         this.team2 = new TeamModel(team2);
@@ -189,13 +188,25 @@ class ViewModel {
         this.final = ko.observable(false);
 
         this.descriptionShownFor = ko.observable(null);
+
+        this.team2.runs.subscribe(() => this.team2WinCheck());
+    }
+
+    team2WinCheck() {
+        if (this.inning() >= 5 && this.team2.runs() > this.team1.runs()) {
+            // This team has enough runs to win - stop the AI and skip the rest of the inning
+            clearInterval(this.aiInterval);
+            this.nextInning();
+        }
     }
 
     nextInning() {
         if (this.battingTeam() === this.team1) {
+            this.team1.reset();
             this.battingTeam(this.team2);
         } else {
             if (this.inning() < 5 || this.team1.runs() == this.team2.runs()) {
+                this.team2.reset();
                 this.battingTeam(this.team1);
                 this.inning(this.inning() + 1);
             } else {
@@ -205,12 +216,17 @@ class ViewModel {
             }
         }
 
-        const team = this.battingTeam();
-        if (team) {
-            team.reset();
-            if (team.ai()) {
-                setTimeout(() => team.auto(), 500);
-            }
+        const teamB = this.battingTeam();
+        if (teamB && teamB.ai()) {
+            this.aiInterval = setInterval(() => this.auto(teamB), 500);
+            this.team2WinCheck();
+        }
+    }
+
+    auto(team: TeamModel) {
+        team.auto();
+        if (!team.ai() || team.outs() >= 30) {
+            clearInterval(this.aiInterval);
         }
     }
 
