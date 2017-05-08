@@ -136,7 +136,8 @@
 
 #characterInfo img {
     float: left;
-    max-width: 250px;
+    max-width: 300px;
+    max-height: 300px;
     margin: 25px;
 }
 
