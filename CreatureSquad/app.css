@@ -97,6 +97,14 @@
     overflow-y: auto;
 }
 
+#outMeter {
+    height: 16px;
+    background-color: darkred;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 #result .batterName {
     font-weight: bold;
 }

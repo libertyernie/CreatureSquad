@@ -58,6 +58,9 @@
         </div>
         <div class="center">
             <!-- ko with: battingTeam -->
+            <div id="outMeter" data-bind="style: { width: outPercentage }">
+                <span data-bind="text: outs"></span>/30
+            </div>
             <div id="result" data-bind="if: lastBatter">
                 <!-- ko with: lastBatter -->
                 <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
@@ -103,10 +106,10 @@
                     <div class="big-number" data-bind="text: team1.runs"></div>
                 </div>
                 <div class="spacer"></div>
-                <div>
+                <!--<div>
                     <div>Outs</div>
                     <div class="big-number" data-bind="text: battingTeam().outs"></div>
-                </div>
+                </div>-->
                 <div>
                     <div>Round</div>
                     <div class="big-number" data-bind="text: inning"></div>

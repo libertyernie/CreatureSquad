@@ -13,6 +13,7 @@
     readonly baserunners: KnockoutComputed<number>;
     readonly newRunsCount: KnockoutComputed<number>;
     readonly newOutsCount: KnockoutComputed<number>;
+    readonly outPercentage: KnockoutComputed<string>;
 
     readonly ai: KnockoutObservable<boolean>;
 
@@ -56,6 +57,9 @@
         });
         this.newOutsCount = ko.pureComputed(() => {
             return this.newOuts.filter(n => n()).length;
+        });
+        this.outPercentage = ko.pureComputed(() => {
+            return (Math.min(1, this.outs() / 30) * 100) + "%";
         });
         this.ai = ko.observable(false);
     }
