@@ -10,6 +10,7 @@
     <script src="batter.js"></script>
     <script src="bases.js"></script>
     <script src="averages.js"></script>
+    <script src="team-setup-model.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
@@ -24,6 +25,16 @@
         <p>
             Dislikes: <span data-bind="text: dislikes"></span>
         </p>
+    </div>
+    <div id="teamSetup" data-bind="with: teamSetupModel">
+        <div class="main">
+            <textarea data-bind="text: json1"></textarea>
+            <textarea data-bind="text: json2"></textarea>
+        </div>
+        <div class="buttons">
+            <button data-bind="click: save">Save</button>
+            <button data-bind="click: cancel">Cancel</button>
+        </div>
     </div>
     <div id="mainScreen">
         <div class="lineup" data-bind="with: team1">
@@ -119,6 +130,11 @@
                 <!-- /ko -->
                 <br />
                 <button data-bind="click: startOver">Play again</button>
+            </div>
+            <div class="links">
+                <a href="#" data-bind="click: teamSetup">Team setup</a>
+                -
+                <a href="#" data-bind="click: about">About</a>
             </div>
         </div>
         <div class="lineup" data-bind="with: team2">

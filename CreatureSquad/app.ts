@@ -176,6 +176,7 @@ class ViewModel {
     readonly final: KnockoutObservable<boolean>;
 
     readonly descriptionShownFor: KnockoutObservable<Batter | null>;
+    readonly teamSetupModel: KnockoutObservable<TeamSetupModel | null>;
 
     private aiInterval: number;
 
@@ -188,6 +189,7 @@ class ViewModel {
         this.final = ko.observable(false);
 
         this.descriptionShownFor = ko.observable(null);
+        this.teamSetupModel = ko.observable(null);
 
         this.team2.runs.subscribe(() => this.team2WinCheck());
     }
@@ -240,6 +242,16 @@ class ViewModel {
         this.battingTeam(this.team1);
         this.inning(1);
         this.final(false);
+    }
+
+    teamSetup() {
+        this.teamSetupModel(new TeamSetupModel(this.team1, this.team2, () => {
+            this.teamSetupModel(null);
+        }));
+    }
+
+    about() {
+
     }
 }
 

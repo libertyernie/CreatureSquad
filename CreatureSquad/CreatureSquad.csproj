@@ -44,6 +44,7 @@
     <TypeScriptCompile Include="defaultTeams.ts" />
     <TypeScriptCompile Include="knockout.d.ts" />
     <TypeScriptCompile Include="averages.ts" />
+    <TypeScriptCompile Include="team-setup-model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />

@@ -45,7 +45,7 @@
     background-color: darkseagreen;
 }
 
-.buttons {
+.buttons, .links {
     text-align: center;
 }
 
@@ -133,7 +133,7 @@
     background-color: darkseagreen;
 }
 
-#characterInfo {
+#characterInfo, #teamSetup {
     box-sizing: border-box;
     background-color: Window;
     color: WindowText;
@@ -149,7 +149,7 @@
     text-align: center;
 }
 
-#characterInfo:empty {
+#characterInfo:empty, #teamSetup:empty {
     display: none;
 }
 
@@ -170,6 +170,11 @@
     border-radius: 4px;
     background-color: gray;
     color: white;
+}
+
+#teamSetup textarea {
+    width: calc(50% - 10px);
+    height: 400px;
 }
 
 @media screen and (max-width: 740px) {
@@ -223,12 +228,14 @@
     .batter {
         text-align: center;
         padding: 0;
+        flex: 1 1 auto;
     }
 
     .batter > .batterImage {
         display: inline-block;
         float: none;
         margin: 0;
+        width: 80%;
     }
 
     .batter.current {
