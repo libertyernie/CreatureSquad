@@ -1,7 +1,23 @@
-﻿class TeamModel {
+﻿class ColumnRunTally {
+    readonly lastBatter: number;
+    readonly inning: number;
+    readonly f: false;
+
+    constructor(previous?: number | ColumnRunTally, add?: number) {
+        if (!previous) previous = 0;
+        if (!add) add = 0;
+        if (previous instanceof ColumnRunTally) {
+            previous = previous.inning;
+        }
+        this.lastBatter = add;
+        this.inning = previous + add;
+    }
+}
+
+class TeamModel {
     readonly bases: KnockoutObservable<Bases>[];
     readonly runs: KnockoutObservable<number>;
-    readonly newRuns: KnockoutObservable<number>[];
+    readonly newRuns: KnockoutObservable<ColumnRunTally>[];
     readonly outs: KnockoutObservable<number>;
     readonly newOuts: KnockoutObservable<boolean>[];
 
@@ -25,7 +41,7 @@
         this.runs = ko.observable(0);
         this.newRuns = [];
         for (let i = 0; i < 10; i++) {
-            this.newRuns.push(ko.observable(0));
+            this.newRuns.push(ko.observable(new ColumnRunTally()));
         }
         this.outs = ko.observable(0);
         this.newOuts = [];
@@ -51,7 +67,7 @@
         this.newRunsCount = ko.pureComputed(() => {
             let tally = 0;
             for (let observable of this.newRuns) {
-                tally += observable();
+                tally += observable().lastBatter || 0;
             }
             return tally;
         });
@@ -68,14 +84,14 @@
         if (this.outs() >= 30) return;
 
         this.lastBunted(false);
-        this.newRuns.forEach(o => o(0));
+        //this.newRuns.forEach(o => o(new ColumnRunTally()));
         this.newOuts.forEach(o => o(false));
         
         let i = 0;
         for (let column of this.bases) {
             let result = new PlateAppearanceResult(this.batter(), column(), this.batter().bat());
             column(this.processResult(result));
-            this.newRuns[i](result.basesResult.runs_scored.length);
+            this.newRuns[i](new ColumnRunTally(this.newRuns[i](), result.basesResult.runs_scored.length));
             this.newOuts[i](result.out);
             i++;
         }
@@ -86,7 +102,7 @@
         if (this.outs() >= 30) return;
 
         this.lastBunted(true);
-        this.newRuns.forEach(o => o(0));
+        //this.newRuns.forEach(o => o(new ColumnRunTally()));
         this.newOuts.forEach(o => o(false));
         
         let i = 0;
@@ -96,7 +112,7 @@
                 : PlateApperanceResultType.Out;
             let result = new PlateAppearanceResult(this.batter(), column(), r);
             column(this.processResult(result));
-            this.newRuns[i](result.basesResult.runs_scored.length);
+            this.newRuns[i](new ColumnRunTally(this.newRuns[i](), result.basesResult.runs_scored.length));
             this.newOuts[i](result.out);
             i++;
         }
@@ -163,7 +179,7 @@
 
         this.lastBatter(null);
         this.lastBunted(false);
-        this.newRuns.forEach(o => o(0));
+        this.newRuns.forEach(o => o(new ColumnRunTally()));
         this.newOuts.forEach(o => o(false));
         for (let column of this.bases) {
             column(new Bases());

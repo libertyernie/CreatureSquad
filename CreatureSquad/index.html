@@ -96,7 +96,7 @@
             </div>
             <div id="runsTable" class="stateTable" data-bind="foreach: newRuns">
                 <div>
-                    <div data-bind="text: $data || '', css: { new: $data }"></div>
+                    <div data-bind="text: inning || '', css: { new: lastBatter }"></div>
                 </div>
             </div>
             <!-- /ko -->
