@@ -202,7 +202,7 @@
 
 @media screen and (max-width: 660px) {
     #mainScreen > .center {
-        flex: 0 0 200px;
+        flex: 0 0 180px;
     }
 
     #mainScreen > .center > .buttons:not(:empty) {
@@ -242,6 +242,7 @@
     .buttons > * {
         min-width: 0px;
         width: 75%;
+        max-height: 64px;
     }
 
     .big-number {
@@ -253,17 +254,23 @@
         text-align: center;
         padding: 0;
         flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 1vh;
+        align-items: center;
+    }
+
+    .batter > * {
+        display: none;
     }
 
     .batter > .batterImage {
-        display: inline-block;
-        float: none;
+        flex: 1 0 auto;
         margin: 0;
-        width: 80%;
-        height: 100%;
-        margin: 1vh;
-        width: calc(100% - 2vh);
-        height: calc(100% - 2vh);
+    }
+
+    .lineup > .spacer {
+        flex-grow: 0;
     }
 
     .batter.current {
