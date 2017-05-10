@@ -38,6 +38,7 @@
         </div>
     </div>
     <div id="mainScreen">
+        <div class="spacer"></div>
         <div class="lineup" data-bind="with: team1">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
@@ -121,8 +122,10 @@
                 </div>
             </div>
             <div class="buttons" data-bind="if: !final()">
-                <button data-bind="click: () => battingTeam().bat(), enable: !battingTeam().ai() && battingTeam().outs() < 30">Attack</button>
-                <button data-bind="click: () => battingTeam().bunt(), enable: !battingTeam().ai() && battingTeam().outs() < 30 && battingTeam().baserunners() > 0">Sacrifice</button>
+                <!-- ko with: battingTeam -->
+                <button data-bind="click: bat, enable: !ai() && outs() < 30">Attack</button>
+                <button data-bind="click: bunt, enable: !ai() && outs() < 30 && baserunners() > 0">Sacrifice</button>
+                <!-- /ko -->
                 <button data-bind="click: nextInning, enable: battingTeam().outs() >= 30">Next round</button>
             </div>
             <div class="buttons" data-bind="if: final">
@@ -159,6 +162,7 @@
             <!-- /ko -->
             <div class="spacer"></div>
         </div>
+        <div class="spacer"></div>
     </div>
 </body>
 </html>

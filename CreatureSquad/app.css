@@ -18,7 +18,7 @@
 }
 
 #mainScreen > .center {
-    flex: 1 0 auto;
+    flex: 0 0 350px;
     display: flex;
     flex-direction: column;
 }
@@ -98,7 +98,7 @@
 }
 
 #outMeter {
-    height: 16px;
+    flex: 0 0 16px;
     background-color: darkred;
     color: white;
     font-size: 12px;
@@ -200,7 +200,7 @@
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 470px) {
     #mainScreen > .center {
         flex: 0 0 180px;
     }
@@ -249,7 +249,9 @@
         font-size: 100%;
         font-weight: bold;
     }
+}
 
+@media screen and (max-width: 700px) {
     .batter {
         text-align: center;
         padding: 0;
@@ -288,7 +290,7 @@
     }
 }
 
-@media screen and (max-height: 500px) and (min-width: 661px) {
+@media screen and (max-height: 500px) and (min-width: 701px) {
     .batter {
         padding: 0;
     }
