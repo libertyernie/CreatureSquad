@@ -3,9 +3,14 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="IE=11,9">
     <meta charset="utf-8" />
     <title>Creature Squad</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
+    <link rel="stylesheet alternate" href="horizontal.css" type="text/css" title="Horizontal Attack Display" />
+    <!--[if lt IE 10]>
+        <link rel="stylesheet" href="ie9.css" />
+    <![endif]-->
     <script src="knockout-3.4.2.js"></script>
     <script src="defaultTeams.js"></script>
     <script src="batter.js"></script>
@@ -75,29 +80,31 @@
                     </span>
                 </div>
             </div>
-            <div id="outsTable" class="stateTable" data-bind="foreach: newOuts">
-                <div>
-                    <div data-bind="if: $data">
-                        X
+            <div id="tables">
+                <div id="outsTable" class="stateTable" data-bind="foreach: newOuts">
+                    <div>
+                        <div data-bind="if: $data">
+                            X
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="basesTable" class="stateTable" data-bind="foreach: bases">
-                <div>
-                    <div data-bind="with: first">
-                        <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
-                    </div>
-                    <div data-bind="with: second">
-                        <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
-                    </div>
-                    <div data-bind="with: third">
-                        <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
+                <div id="basesTable" class="stateTable" data-bind="foreach: bases">
+                    <div>
+                        <div data-bind="with: first">
+                            <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
+                        </div>
+                        <div data-bind="with: second">
+                            <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
+                        </div>
+                        <div data-bind="with: third">
+                            <div data-bind="style: { backgroundColor: bgcolor, borderColor: altColor }"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="runsTable" class="stateTable" data-bind="foreach: newRuns">
-                <div>
-                    <div data-bind="text: inning || '', css: { new: lastBatter }"></div>
+                <div id="runsTable" class="stateTable" data-bind="foreach: newRuns">
+                    <div>
+                        <div data-bind="text: inning || '', css: { new: lastBatter }"></div>
+                    </div>
                 </div>
             </div>
             <!-- /ko -->
