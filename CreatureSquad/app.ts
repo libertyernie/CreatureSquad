@@ -302,7 +302,12 @@ function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
 }
 
 window.onload = () => {
+    const json1 = localStorage.getItem("team1");
+    const t1 = json1 ? JSON.parse(json1) : team1;
+    const json2 = localStorage.getItem("team2");
+    const t2 = json2 ? JSON.parse(json2) : team1;
+
     var el = document.body;
     ko.applyBindings(mainModel, el);
-    reloadViewModel(team1, team1);
+    reloadViewModel(t1, t2);
 };

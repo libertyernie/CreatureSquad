@@ -24,7 +24,18 @@
         this.onClose();
     }
 
+    reset() {
+        reloadViewModel(team1, team1);
+        this.onClose();
+        if (confirm("Would you also like to clear the previously set custom teams so they don't load next time?")) {
+            localStorage.removeItem("team1");
+            localStorage.removeItem("team2");
+        }
+    }
+
     save() {
+        localStorage.setItem("team1", this.json1());
+        localStorage.setItem("team2", this.json2());
         reloadViewModel(JSON.parse(this.json1()), JSON.parse(this.json2()));
         this.onClose();
     }
