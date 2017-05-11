@@ -60,11 +60,11 @@ class Batter {
     }
 
     showDescription() {
-        viewModel.descriptionShownFor(this);
+        mainModel.viewModel().descriptionShownFor(this);
     }
 
     closeDescription() {
-        viewModel.descriptionShownFor(null);
+        mainModel.viewModel().descriptionShownFor(null);
     }
 
     private static hashCode(s: string) {

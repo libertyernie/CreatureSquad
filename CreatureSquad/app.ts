@@ -275,8 +275,16 @@ class ViewModel {
     }
 }
 
-var viewModel: ViewModel;
-(() => {
+var mainModel: {
+    viewModel: KnockoutObservable<ViewModel>;
+    battingTeam: KnockoutComputed<TeamModel | null>;
+} = {
+    viewModel: ko.observable<ViewModel>(),
+    battingTeam: ko.pureComputed(() => mainModel.viewModel().battingTeam())
+};
+
+function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
+    console.log(t1, t1.starters.length, t2, t2.starters.length);
     const colors = [
         "#eee",
         "#ddd",
@@ -288,10 +296,13 @@ var viewModel: ViewModel;
         "#444",
         "#222"
     ];
-    const batters = team1.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
-    viewModel = new ViewModel(batters, batters);
-})();
+    const batters1 = t1.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
+    const batters2 = t2.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
+    mainModel.viewModel(new ViewModel(batters1, batters2));
+}
+
 window.onload = () => {
     var el = document.body;
-    ko.applyBindings(viewModel, el);
+    ko.applyBindings(mainModel, el);
+    reloadViewModel(team1, team1);
 };

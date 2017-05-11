@@ -19,7 +19,7 @@
     <script src="team-setup-model.js"></script>
     <script src="app.js"></script>
 </head>
-<body>
+<body data-bind="with: viewModel">
     <div id="characterInfo" data-bind="with: descriptionShownFor">
         <a href="#" class="close" data-bind="click: closeDescription">Close</a>
         <img data-bind="attr: { src: image }" />
@@ -34,8 +34,8 @@
     </div>
     <div id="teamSetup" data-bind="with: teamSetupModel">
         <div class="main">
-            <textarea data-bind="text: json1"></textarea>
-            <textarea data-bind="text: json2"></textarea>
+            <textarea data-bind="value: json1"></textarea>
+            <textarea data-bind="value: json2"></textarea>
         </div>
         <div class="buttons">
             <button data-bind="click: save">Save</button>

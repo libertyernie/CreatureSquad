@@ -152,11 +152,11 @@
     background-color: Window;
     color: WindowText;
     position: fixed;
-    width: 680px;
-    max-height: calc(100vh - 80px);
+    width: 90%;
+    height: 90%;
     overflow-y: auto;
-    left: calc(50% - 350px);
-    top: 20px;
+    left: 5%;
+    top: 5%;
     border: 1px solid black;
     border-radius: 4px;
     padding: 9px;
@@ -186,9 +186,22 @@
     color: white;
 }
 
+#teamSetup .main {
+    height: calc(100% - 32px);
+}
+
+#teamSetup .main {
+    height: calc(100% - 32px);
+}
+
 #teamSetup textarea {
     width: calc(50% - 10px);
-    height: 400px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#teamSetup .buttons {
+    margin: 4px;
 }
 
 @media screen and (max-width: 740px) {

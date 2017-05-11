@@ -1,4 +1,8 @@
-﻿const team1 = {
+﻿interface TeamInfo {
+    starters: SerializedBatterInfo[]
+}
+
+const team1 = {
   "starters": [
     {
       "name": "Mason",
@@ -76,7 +80,7 @@
       "name": "Arike",
       "thumbnail": "images/square/arike.png",
       "image": "images/arike.png",
-      "description": "A scientist who arrived through a portal from another world to ensure that nobody else would ever use it. Very smart and kind of a geek.",
+      "description": "A scientist who arrived through a portal from another world, just to ensure that nobody else would ever use it. Very smart and kind of a geek.",
       "likes": "Star Wars Episode III: Revenge of the Sith",
       "dislikes": "Star Wars Episode I: The Phantom Menace",
       "at_bats": 525,
