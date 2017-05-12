@@ -6,8 +6,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
     "starters": [
         {
             "name": "Mason",
-            "thumbnail": "images/square/mason.png",
-            "image": "images/mason.png",
+            "thumbnail": "images/team1/square/mason.png",
+            "image": "images/team1/mason.png",
             "description": [
                 "Sabina's brother, a dedicated young warrior who has made it his personal mission to protect her.",
                 "Likes: Loyalty",
@@ -26,8 +26,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Ralph",
-            "thumbnail": "images/square/ralph.png",
-            "image": "images/ralph.png",
+            "thumbnail": "images/team1/square/ralph.png",
+            "image": "images/team1/ralph.png",
             "description": [
                 "A shy raccoon born with the ability to talk, something nobody else in his family could ever do.",
                 "Likes: Being able to talk to humans",
@@ -46,8 +46,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Sabina",
-            "thumbnail": "images/square/sabina.png",
-            "image": "images/sabina.png",
+            "thumbnail": "images/team1/square/sabina.png",
+            "image": "images/team1/sabina.png",
             "description": [
                 "A part-human, part-dragon teenager. She can shapeshift between the two forms, but her anxiety often causes her to do so involuntarily.",
                 "Likes: Athletics",
@@ -66,8 +66,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Zigzag",
-            "thumbnail": "images/square/zigzag.png",
-            "image": "images/zigzag.png",
+            "thumbnail": "images/team1/square/zigzag.png",
+            "image": "images/team1/zigzag.png",
             "description": [
                 "A two foot tall jelly monster with a heart of gold. He often develops romantic feelings toward humans, but they never seem interested in him (unless they're trying to stick a sword through his eye.)",
                 "Likes: Soap",
@@ -86,8 +86,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Arike",
-            "thumbnail": "images/square/arike.png",
-            "image": "images/arike.png",
+            "thumbnail": "images/team1/square/arike.png",
+            "image": "images/team1/arike.png",
             "description": [
                 "A scientist who arrived through a portal from another world, just to ensure that nobody else would ever use it. Very smart and kind of a geek.",
                 "Likes: Star Wars Episode III: Revenge of the Sith",
@@ -106,8 +106,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Megan",
-            "thumbnail": "images/square/megan.png",
-            "image": "images/megan.png",
+            "thumbnail": "images/team1/square/megan.png",
+            "image": "images/team1/megan.png",
             "description": [
                 "A young snake monster who once attacked Mason but wound up saving his life. Wants to make her parents proud.",
                 "Likes: Puns",
@@ -126,8 +126,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Centian",
-            "thumbnail": "images/square/centian.png",
-            "image": "images/centian.png",
+            "thumbnail": "images/team1/square/centian.png",
+            "image": "images/team1/centian.png",
             "description": [
                 "The spirit of a young teenage warrior from another world who died in battle. Insists on theological grounds that he is not an angel, just a ghost with wings.",
                 "Likes: God, family, monsters",
@@ -146,8 +146,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Paralari",
-            "thumbnail": "images/square/paralari.png",
-            "image": "images/paralari.png",
+            "thumbnail": "images/team1/square/paralari.png",
+            "image": "images/team1/paralari.png",
             "description": [
                 "A monster/fairy hybrid who has been in countless battles but never seems to get hurt. Seems suspiciouly nice when you first meet her, but that's just the way she is.",
                 "Likes: Flowers made out of cake frosting",
@@ -166,8 +166,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
         },
         {
             "name": "Tomas",
-            "thumbnail": "images/square/tomas.png",
-            "image": "images/tomas.png",
+            "thumbnail": "images/team1/square/tomas.png",
+            "image": "images/team1/tomas.png",
             "description": [
                 "Once a human wizard, he was turned into a book by a jealous rival who wanted to learn his secrets.",
                 "Likes: Librarians",
@@ -190,7 +190,9 @@ const team1: { starters: SerializedBatterInfo[] } = {
 const team2: { starters: SerializedBatterInfo[] } = {
     "starters": [
         {
-            name: "Carlos Santana",
+            name: "Angie Coderre",
+            thumbnail: "images/team2/square/angie.svg",
+            image: "images/team2/angie.svg",
             at_bats: 582,
             total_hits: 151,
             doubles: 31,
@@ -229,7 +231,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 3
         },
         {
-            name: "Mike Napoli",
+            name: "Kris \"Bandit\" Everett",
+            thumbnail: "images/team2/square/bandit.svg",
+            image: "images/team2/bandit.svg",
             at_bats: 557,
             total_hits: 133,
             doubles: 22,
@@ -255,7 +259,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks:1
         },
         {
-            name: "Yan Gomes",
+            name: "Robert Coderre",
+            thumbnail: "images/team2/square/robert.svg",
+            image: "images/team2/robert.svg",
             at_bats: 251,
             total_hits: 42,
             doubles: 11,
