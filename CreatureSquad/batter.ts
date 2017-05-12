@@ -34,7 +34,7 @@ class Batter {
     readonly description?: string[];
 
     readonly ba: number;
-    readonly ops: number;
+    readonly obp: number;
     readonly slg: number;
 
     constructor(averages: SerializedBatterInfo, readonly altColor?: string) {
@@ -47,7 +47,7 @@ class Batter {
         this.thumbnailBackgroundImage = `url('${this.thumbnail}')`;
 
         this.ba = averages.total_hits / averages.at_bats;
-        this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
+        this.obp = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
         this.slg = (this.averages.singles + 2 * averages.doubles + 3 * averages.triples + 4 * averages.home_runs) / averages.at_bats;
 
         if (averages.description) {
