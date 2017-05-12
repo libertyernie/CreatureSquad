@@ -284,7 +284,6 @@ var mainModel: {
 };
 
 function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
-    console.log(t1, t1.starters.length, t2, t2.starters.length);
     const colors = [
         "#eee",
         "#ddd",
