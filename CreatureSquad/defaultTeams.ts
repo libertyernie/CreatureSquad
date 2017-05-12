@@ -218,7 +218,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Francisco Lindor",
+            name: "Jenny Looper",
+            thumbnail: "images/team2/square/looper.svg",
+            image: "images/team2/looper.svg",
             at_bats: 604,
             total_hits: 182,
             doubles: 30,
