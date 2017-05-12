@@ -24,15 +24,9 @@
         <a href="#" class="close" data-bind="click: closeDescription">Close</a>
         <img data-bind="attr: { src: image }" />
         <h1 data-bind="text: name"></h1>
-        <!-- foreach: description -->
+        <!-- ko foreach: description -->
         <p data-bind="text: $data"></p>
         <!-- /ko -->
-        <p>
-            Likes: <span data-bind="text: likes"></span>
-        </p>
-        <p>
-            Dislikes: <span data-bind="text: dislikes"></span>
-        </p>
     </div>
     <div id="teamSetup" data-bind="with: teamSetupModel">
         <div class="main">
