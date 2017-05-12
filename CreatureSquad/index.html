@@ -24,7 +24,9 @@
         <a href="#" class="close" data-bind="click: closeDescription">Close</a>
         <img data-bind="attr: { src: image }" />
         <h1 data-bind="text: name"></h1>
-        <p data-bind="text: description"></p>
+        <!-- foreach: description -->
+        <p data-bind="text: $data"></p>
+        <!-- /ko -->
         <p>
             Likes: <span data-bind="text: likes"></span>
         </p>

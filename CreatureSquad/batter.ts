@@ -19,9 +19,7 @@ interface SerializedBatterInfo extends OffensiveAverages {
     thumbnail?: string;
     image?: string;
     bgcolor?: string;
-    description?: string;
-    likes?: string;
-    dislikes?: string;
+    description?: string[];
 }
 
 class Batter {
@@ -33,9 +31,7 @@ class Batter {
     readonly image: string;
     readonly thumbnailBackgroundImage: string;
 
-    readonly description?: string;
-    readonly likes?: string;
-    readonly dislikes?: string;
+    readonly description?: string[];
 
     readonly ba: number;
     readonly ops: number;
@@ -54,9 +50,9 @@ class Batter {
         this.ops = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
         this.slg = (this.averages.singles + 2 * averages.doubles + 3 * averages.triples + 4 * averages.home_runs) / averages.at_bats;
 
-        this.description = averages.description;
-        this.likes = averages.likes;
-        this.dislikes = averages.dislikes;
+        if (averages.description) {
+            this.description = averages.description;
+        }
     }
 
     showDescription() {

@@ -9,8 +9,6 @@
                 thumbnail: b.thumbnail,
                 image: b.image,
                 description: b.description,
-                likes: b.likes,
-                dislikes: b.dislikes,
                 ...calculateOAverages(b.averages)
             };
         };

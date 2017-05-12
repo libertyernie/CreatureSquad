@@ -305,7 +305,7 @@ window.onload = () => {
     const json1 = localStorage.getItem("team1");
     const t1 = json1 ? JSON.parse(json1) : team1;
     const json2 = localStorage.getItem("team2");
-    const t2 = json2 ? JSON.parse(json2) : team1;
+    const t2 = json2 ? JSON.parse(json2) : team2;
 
     var el = document.body;
     ko.applyBindings(mainModel, el);
