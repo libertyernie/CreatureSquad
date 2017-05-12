@@ -23,7 +23,7 @@
     }
 
     reset() {
-        reloadViewModel(team1, team1);
+        reloadViewModel(team1, team2);
         this.onClose();
         if (confirm("Would you also like to clear the previously set custom teams so they don't load next time?")) {
             localStorage.removeItem("team1");
