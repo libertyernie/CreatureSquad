@@ -189,21 +189,71 @@ const team1: { starters: SerializedBatterInfo[] } = {
 
 const team2: { starters: SerializedBatterInfo[] } = {
     "starters": [
-        //{
-        //    name: "Carlos Santana",
-        //},
-        //{
-        //    name: "Jason Kipnis",
-        //},
-        //{
-        //    name: "Francisco Lindor",
-        //},
-        //{
-        //    name: "Mike Napoli",
-        //},
-        //{
-        //    name: "Jose Ramirez",
-        //},
+        {
+            name: "Carlos Santana",
+            at_bats: 582,
+            total_hits: 151,
+            doubles: 31,
+            triples: 3,
+            home_runs: 34,
+            walks: 99,
+            hit_by_pitch: 2,
+            sacrifice_hits: 0,
+            sacrifice_flies: 2,
+            intentional_walks: 0
+        },
+        {
+            name: "Jason Kipnis",
+            at_bats: 610,
+            total_hits: 168,
+            doubles: 41,
+            triples: 4,
+            home_runs: 23,
+            walks: 60,
+            hit_by_pitch: 6,
+            sacrifice_hits: 5,
+            sacrifice_flies: 7,
+            intentional_walks: 0
+        },
+        {
+            name: "Francisco Lindor",
+            at_bats: 604,
+            total_hits: 182,
+            doubles: 30,
+            triples: 3,
+            home_runs: 15,
+            walks: 57,
+            hit_by_pitch: 5,
+            sacrifice_hits: 3,
+            sacrifice_flies: 15,
+            intentional_walks: 3
+        },
+        {
+            name: "Mike Napoli",
+            at_bats: 557,
+            total_hits: 133,
+            doubles: 22,
+            triples: 1,
+            home_runs: 34,
+            walks: 78,
+            hit_by_pitch: 5,
+            sacrifice_hits: 0,
+            sacrifice_flies: 5,
+            intentional_walks: 2
+        },
+        {
+            name: "Jose Ramirez",
+            at_bats: 565,
+            total_hits: 84,
+            doubles: 46,
+            triples: 3,
+            home_runs: 11,
+            walks: 44,
+            hit_by_pitch: 4,
+            sacrifice_hits: 1,
+            sacrifice_flies: 4,
+            intentional_walks:1
+        },
         {
             name: "Yan Gomes",
             at_bats: 251,
@@ -217,14 +267,44 @@ const team2: { starters: SerializedBatterInfo[] } = {
             sacrifice_flies: 2,
             intentional_walks: 0
         },
-        //{
-        //    name: "Lonnie Chisenhall",
-        //},
-        //{
-        //    name: "Rajai Davis",
-        //},
-        //{
-        //    name: "Tyler Naquin",
-        //}
+        {
+            name: "Lonnie Chisenhall",
+            at_bats: 385,
+            total_hits: 110,
+            doubles: 25,
+            triples: 5,
+            home_runs: 8,
+            walks: 23,
+            hit_by_pitch: 3,
+            sacrifice_hits: 3,
+            sacrifice_flies: 4,
+            intentional_walks: 2
+        },
+        {
+            name: "Rajai Davis",
+            at_bats: 454,
+            total_hits: 113,
+            doubles: 23,
+            triples: 2,
+            home_runs: 12,
+            walks: 33,
+            hit_by_pitch: 5,
+            sacrifice_hits: 1,
+            sacrifice_flies: 2,
+            intentional_walks: 0
+        },
+        {
+            name: "Tyler Naquin",
+            at_bats: 321,
+            total_hits: 95,
+            doubles: 18,
+            triples: 5,
+            home_runs: 14,
+            walks: 36,
+            hit_by_pitch: 4,
+            sacrifice_hits: 2,
+            sacrifice_flies: 2,
+            intentional_walks: 4
+        }
     ]
 }
