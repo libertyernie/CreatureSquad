@@ -6,8 +6,9 @@
         const map: ((b: Batter) => SerializedBatterInfo) = b => {
             return {
                 name: b.name,
+                fullName: b.fullName === b.name ? undefined : b.fullName,
                 thumbnail: b.thumbnail,
-                image: b.image,
+                image: b.image === b.thumbnail ? undefined : b.image,
                 description: b.description,
                 ...calculateOAverages(b.averages)
             };

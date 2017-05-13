@@ -14,12 +14,11 @@
     background-color: Window;
     color: WindowText;
     position: fixed;
-    width: 90%;
-    height: 90%;
     overflow-y: auto;
-    left: 5%;
-    top: 5%;
-    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
     border-radius: 4px;
     padding: 9px;
     text-align: center;
@@ -31,7 +30,6 @@
 }
 
 #characterInfo img {
-    float: left;
     max-width: 300px;
     max-height: 300px;
     margin: 25px;
@@ -259,6 +257,19 @@
         flex: 1 1 0px;
     }
     @media screen and (min-height: 570px) and (min-width: 800px) {
+        #characterInfo, #teamSetup {
+            width: 90%;
+            height: auto;
+            left: 5%;
+            top: 5%;
+            border: 1px solid black;
+        }
+        #teamSetup {
+            height: 90%;
+        }
+        #characterInfo img {
+            float: left;
+        }
         .spacer {
             display: initial;
             flex: 1 1 0px;

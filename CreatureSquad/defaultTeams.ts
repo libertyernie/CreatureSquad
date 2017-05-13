@@ -190,7 +190,8 @@ const team1: { starters: SerializedBatterInfo[] } = {
 const team2: { starters: SerializedBatterInfo[] } = {
     "starters": [
         {
-            name: "Angie Coderre",
+            name: "Angie",
+            fullName: "Angie Coderre",
             thumbnail: "images/team2/square/angie.svg",
             image: "images/team2/angie.svg",
             at_bats: 582,
@@ -218,7 +219,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Jenny Looper",
+            name: "Looper",
+            fullName: "Jenny Looper",
             thumbnail: "images/team2/square/looper.svg",
             image: "images/team2/looper.svg",
             at_bats: 604,
@@ -233,7 +235,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 3
         },
         {
-            name: "Kris \"Bandit\" Everett",
+            name: "Bandit",
+            fullName: "Kris \"Bandit\" Everett",
             thumbnail: "images/team2/square/bandit.svg",
             image: "images/team2/bandit.svg",
             at_bats: 557,
@@ -261,7 +264,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks:1
         },
         {
-            name: "Robert Coderre",
+            name: "Robert",
+            fullName: "Robert Coderre",
             thumbnail: "images/team2/square/robert.svg",
             image: "images/team2/robert.svg",
             at_bats: 251,

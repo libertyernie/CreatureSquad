@@ -19,7 +19,7 @@
     <div id="characterInfo" data-bind="with: descriptionShownFor">
         <a href="#" class="close" data-bind="click: closeDescription">Close</a>
         <img data-bind="attr: { src: image }" />
-        <h1 data-bind="text: name"></h1>
+        <h1 data-bind="text: fullName"></h1>
         <!-- ko foreach: description -->
         <p data-bind="text: $data"></p>
         <!-- /ko -->

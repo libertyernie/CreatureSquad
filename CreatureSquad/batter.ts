@@ -16,6 +16,7 @@
 
 interface SerializedBatterInfo extends OffensiveAverages {
     name: string;
+    fullName?: string;
     thumbnail?: string;
     image?: string;
     bgcolor?: string;
@@ -24,6 +25,7 @@ interface SerializedBatterInfo extends OffensiveAverages {
 
 class Batter {
     readonly name: string;
+    readonly fullName: string;
     readonly averages: PlateAppearanceAverages;
     readonly bgcolor: string;
 
@@ -39,6 +41,7 @@ class Batter {
 
     constructor(averages: SerializedBatterInfo, readonly altColor?: string) {
         this.name = averages.name;
+        this.fullName = averages.fullName || this.name;
         this.averages = calculatePAAverages(averages);
         this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
         
