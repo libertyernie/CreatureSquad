@@ -22,9 +22,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="horizontal.css" />
     <Content Include="app.css" />
-    <Content Include="ie9.css" />
     <Content Include="images\team1\arike.png" />
     <Content Include="images\team1\centian.png" />
     <Content Include="images\default.png" />

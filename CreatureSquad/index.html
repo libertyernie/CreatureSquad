@@ -7,10 +7,6 @@
     <meta charset="utf-8" />
     <title>Creature Squad</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
-    <link rel="stylesheet alternate" href="horizontal.css" type="text/css" title="Horizontal Attack Display" />
-    <!--[if lt IE 10]>
-        <link rel="stylesheet" href="ie9.css" />
-    <![endif]-->
     <script src="knockout-3.4.2.js"></script>
     <script src="defaultTeams.js"></script>
     <script src="batter.js"></script>
@@ -41,7 +37,7 @@
     </div>
     <div id="mainScreen">
         <div class="spacer"></div>
-        <div class="lineup" data-bind="with: team1">
+        <div class="lineup lineup1" data-bind="with: team1">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
@@ -148,7 +144,7 @@
                 <a href="#" data-bind="click: about">About</a>
             </div>
         </div>
-        <div class="lineup" data-bind="with: team2">
+        <div class="lineup lineup2" data-bind="with: team2">
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">

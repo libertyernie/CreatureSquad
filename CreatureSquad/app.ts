@@ -301,10 +301,14 @@ function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
 }
 
 window.onload = () => {
-    const json1 = localStorage.getItem("team1");
-    const t1 = json1 ? JSON.parse(json1) : team1;
-    const json2 = localStorage.getItem("team2");
-    const t2 = json2 ? JSON.parse(json2) : team2;
+    let t1 = team1;
+    let t2 = team2;
+    if (window.localStorage) {
+        const json1 = localStorage.getItem("team1");
+        if (json1) t1 = JSON.parse(json1);
+        const json2 = localStorage.getItem("team2");
+        if (json2) t2 = JSON.parse(json2);
+    }
 
     var el = document.body;
     ko.applyBindings(mainModel, el);

@@ -5,147 +5,8 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-#mainScreen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-#mainScreen > .lineup {
-    flex: 0 1 250px;
-    display: flex;
-    flex-direction: column;
-}
-
-#mainScreen > .center {
-    flex: 0 0 350px;
-    display: flex;
-    flex-direction: column;
-}
-
-.score {
-    display: flex;
-    flex-direction: row;
-}
-
-.score > :not(.spacer) {
-    display: inline-block;
-    text-align: center;
-    padding: 0 12px;
-    margin: 4px;
-    border-radius: 8px;
-    background-color: white;
-}
-
-.score > .runs {
-    background-color: skyblue;
-}
-
-.score > .newRuns {
-    background-color: darkseagreen;
-}
-
-.buttons, .links {
-    text-align: center;
-}
-
-.buttons > * {
-    min-width: 100px;
-    padding: 4px 0;
-}
-
 .spacer {
-    display: inline;
-    flex: 1 0 auto;
-}
-
-.big-number {
-    font-size: 200%;
-}
-
-.batter {
-    display: block;
-    flex: 0 1 50px;
-    border: 1px solid black;
-    border-radius: 8px;
-    padding: 3px;
-    overflow-y: hidden;
-}
-
-.batter > .batterImage {
-    float: left;
-    width: 50px;
-    height: 100%;
-    min-height: 36px;
-    border-radius: 8px;
-    margin-right: 8px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-    text-align: center;
-}
-
-.batter.current {
-    background-color: lightgray;
-}
-
-#result {
-    flex: 0 0 auto;
-    text-align: center;
-    font-size: 24px;
-    height: 70px;
-    overflow-y: auto;
-}
-
-#outMeter {
-    flex: 0 0 16px;
-    background-color: darkred;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-#result .batterName {
-    font-weight: bold;
-}
-
-#tables {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.stateTable {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 4px 0;
-}
-
-.stateTable > * {
-    flex: 1 0 10%;
-    text-align: center;
-}
-
-.stateTable > * > * {
-    height: 24px;
-}
-
-.stateTable > * > * > * {
-    height: 100%;
-    border-width: 8px;
-    border-style: solid;
-    box-sizing: border-box;
-}
-
-#runsTable {
-    background-color: lightgray;
-}
-
-.new {
-    background-color: darkseagreen;
+    display: none;
 }
 
 #characterInfo, #teamSetup {
@@ -162,6 +23,7 @@
     border-radius: 4px;
     padding: 9px;
     text-align: center;
+    z-index: 1;
 }
 
 #characterInfo:empty, #teamSetup:empty {
@@ -205,117 +67,248 @@
     margin: 4px;
 }
 
-@media screen and (max-width: 740px) {
-    #characterInfo {
+#mainScreen > .lineup {
+    position: absolute;
+    top: 0;
+    width: 64px;
+    height: 100%;
+}
+
+#mainScreen > .lineup1 {
+    left: 0;
+}
+
+#mainScreen > .lineup2 {
+    right: 0;
+}
+
+.batter {
+    display: block;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 3px;
+    overflow-y: hidden;
+}
+
+.batter > .batterImage {
+    float: left;
+    width: 100%;
+    height: 100%;
+    min-height: 24px;
+    border-radius: 8px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    text-align: center;
+}
+
+.batter.current {
+    background-color: black;
+    color: white;
+}
+
+.batterInfo {
+    display: none;
+}
+
+#result {
+    height: 70px;
+    overflow-y: auto;
+}
+
+#mainScreen > .center {
+    position: absolute;
+    top: 0;
+    left: 64px;
+    width: 192px;
+    width: calc(100% - 128px);
+    text-align: center;
+}
+
+#outMeter {
+    height: 16px;
+    background-color: darkred;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#tables {
+    display: block;
+}
+
+.stateTable {
+	display: inline-table;
+	width: 32px;
+	vertical-align: bottom;
+    font-size: 8px;
+}
+
+#basesTable {
+	width: 96px;
+}
+
+.stateTable > * {
+    text-align: center;
+	display: table-row;
+}
+
+.stateTable > * > * {
+	display: table-cell;
+	width: 32px;
+	height: 12px;
+}
+
+.stateTable > * > * > * {
+    height: 100%;
+    border-style: solid;
+    border-width: 2px;
+    box-sizing: border-box;
+}
+
+.new {
+    background-color: darkseagreen;
+}
+
+.score > :not(.spacer) {
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 1px;
+    background-color: white;
+}
+
+.score > .runs {
+    background-color: skyblue;
+}
+
+.score > .newRuns {
+    background-color: darkseagreen;
+}
+
+.buttons, .links {
+    text-align: center;
+}
+
+#mainScreen .buttons > * {
+    width: calc(100% - 32px);
+    padding: 4px 0;
+    margin: 4px;
+}
+
+.buttons:not(:empty) {
+    text-align: center;
+    margin: 10px 0;
+}
+
+@media screen and (min-width: 400px) {
+    .score > :not(.spacer) {
+        font-size: 16px;
+    }
+}
+
+@supports (display: flex) {
+    #mainScreen {
         width: 100%;
         height: 100%;
-        max-height: 100%;
-        top: 0;
-        left: 0;
+        display: flex;
+        flex-direction: row;
     }
-
-    #characterInfo img {
-        float: none;
-        max-width: calc(100% - 50px);
+    #mainScreen > .lineup {
+        position: initial;
+        flex: 1 0 64px;
+        display: flex;
+        flex-direction: column;
     }
-}
-
-@media screen and (max-width: 470px) {
     #mainScreen > .center {
-        flex: 0 0 180px;
+        position: initial;
+        flex: 0 0 50%;
+    }
+    .batter {
+        flex: 1 1 50px;
     }
 
-    #mainScreen > .center > .buttons:not(:empty) {
-        flex: 1 0 auto;
+    #tables {
+        display: flex;
+        flex-direction: row;
+    }
+    #tables > * {
+        flex: 1 0 20%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin: 10px 0;
     }
-
-    #mainScreen > .center > .buttons > * {
-        flex: 1 0 auto;
+    #basesTable {
+        flex: 1 0 60%;
     }
-
+    #tables > * > * {
+        display: flex;
+        flex-direction: row;
+    }
+    #tables > * > * > * {
+        flex: 1 0 32px;
+        display: block;
+    }
     .score {
-        flex-direction: column;
-    }
-
-    .score > :not(.spacer) {
-        padding: 0;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
-
-    .score > :first-child {
-        margin-left: 10px;
-    }
-
-    .score > :last-child {
-        margin-right: 10px;
-    }
-
-    .score > * > * {
-        display: inline;
-    }
-
-    .buttons > * {
-        min-width: 0px;
-        width: 75%;
-        max-height: 64px;
-    }
-
-    .big-number {
-        font-size: 100%;
-        font-weight: bold;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .batter {
-        text-align: center;
-        padding: 0;
-        flex: 1 1 auto;
         display: flex;
-        flex-direction: column;
-        padding: 1vh;
-        align-items: center;
+        flex-direction: row;
     }
-
-    .batter > * {
-        display: none;
+    .score .spacer {
+        display: initial;
+        flex: 1 1 0px;
     }
+    @media screen and (min-height: 570px) and (min-width: 800px) {
+        .spacer {
+            display: initial;
+            flex: 1 1 0px;
+        }
+        #mainScreen > .lineup {
+            flex: 0 1 250px;
+        }
+        #mainScreen > .center {
+            flex: 0 0 350px;
+        }
+        .batter {
+            flex: 0 1 50px;
+        }
+        .batter > .batterImage {
+            width: 50px;
+        }
+        .batterInfo {
+            display: inline;
+        }
+        .stateTable {
+            font-size: 16px;
+        }
+        #tables > * > * > * {
+            height: 24px;
+        }
+        .stateTable > * > * > * {
+            border-width: 4px;
+        }
 
-    .batter > .batterImage {
-        flex: 1 0 auto;
-        margin: 0;
-    }
+        .big-number {
+            font-size: 200%;
+        }
 
-    .lineup > .spacer {
-        flex-grow: 0;
-    }
+        .score > :not(.spacer) {
+            display: inline-block;
+            text-align: center;
+            padding: 0 12px;
+            margin: 4px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
 
-    .batter.current {
-        background-color: black;
-    }
+        .score > :first-child {
+            margin-left: 10px;
+        }
 
-    #result {
-        height: 40px;
-        font-size: 13px;
-        min-width: 170px;
-    }
-
-    .stateTable > * > * > * {
-        border-width: 4px;
-    }
-}
-
-@media screen and (max-height: 500px) and (min-width: 701px) {
-    .batter {
-        padding: 0;
-    }
-
-    .batterInfo {
-        font-size: 75%;
+        .score > :last-child {
+            margin-right: 10px;
+        }
     }
 }
