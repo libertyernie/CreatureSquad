@@ -89,7 +89,7 @@ const team1: { starters: SerializedBatterInfo[] } = {
             "thumbnail": "images/team1/square/arike.png",
             "image": "images/team1/arike.png",
             "description": [
-                "A scientist who arrived through a portal from another world, just to ensure that nobody else would ever use it. Very smart and kind of a geek.",
+                "A scientist who arrived through a portal from another world, leaving her friends behind, to ensure that the worlds remained separate and prevent an invasion. Very smart and kind of a geek.",
                 "Likes: Star Wars Episode III: Revenge of the Sith",
                 "Dislikes: Star Wars Episode I: The Phantom Menace"
             ],
@@ -109,7 +109,7 @@ const team1: { starters: SerializedBatterInfo[] } = {
             "thumbnail": "images/team1/square/megan.png",
             "image": "images/team1/megan.png",
             "description": [
-                "A young snake monster who once attacked Mason but wound up saving his life. Wants to make her parents proud.",
+                "A young snake monster who once tried to attack Mason but wound up saving his life. Wants to make her parents proud.",
                 "Likes: Puns",
                 "Dislikes: Dead animals"
             ],
@@ -129,7 +129,7 @@ const team1: { starters: SerializedBatterInfo[] } = {
             "thumbnail": "images/team1/square/centian.png",
             "image": "images/team1/centian.png",
             "description": [
-                "The spirit of a young teenage warrior from another world who died in battle. Insists on theological grounds that he is not an angel, just a ghost with wings.",
+                "The spirit of a young teenage warrior who died in battle. Insists on theological grounds that he is not an angel, just a ghost with wings.",
                 "Likes: God, family, monsters",
                 "Dislikes: Misunderstandings"
             ],
@@ -169,9 +169,9 @@ const team1: { starters: SerializedBatterInfo[] } = {
             "thumbnail": "images/team1/square/tomas.png",
             "image": "images/team1/tomas.png",
             "description": [
-                "Once a human wizard, he was turned into a book by a jealous rival who wanted to learn his secrets.",
+                "A wizard who was turned into a book by a jealous rival who wanted to learn his secrets.",
                 "Likes: Librarians",
-                "Dislikes: Anyone who wants to read him"
+                "Dislikes: Being read"
             ],
             "at_bats": 59,
             "total_hits": 6,
@@ -280,7 +280,10 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Lonnie Chisenhall",
+            name: "Rory",
+            fullName: "Rory Milton",
+            thumbnail: "images/team2/square/rory.svg",
+            image: "images/team2/rory.svg",
             at_bats: 385,
             total_hits: 110,
             doubles: 25,
