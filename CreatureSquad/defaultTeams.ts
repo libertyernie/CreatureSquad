@@ -190,10 +190,10 @@ const team1: { starters: SerializedBatterInfo[] } = {
 const team2: { starters: SerializedBatterInfo[] } = {
     "starters": [
         {
-            name: "Angie",
-            fullName: "Angie Coderre",
-            thumbnail: "images/team2/square/angie.svg",
-            image: "images/team2/angie.svg",
+            name: "Bandit",
+            fullName: "Kris \"Bandit\" Everett",
+            thumbnail: "images/team2/square/bandit.svg",
+            image: "images/team2/bandit.svg",
             at_bats: 582,
             total_hits: 151,
             doubles: 31,
@@ -206,7 +206,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Jason Kipnis",
+            name: "Melanie",
+            fullName: "MEchanical Lifeform / Artifical Newly Intelligent Entity",
             at_bats: 610,
             total_hits: 168,
             doubles: 41,
@@ -235,10 +236,10 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 3
         },
         {
-            name: "Bandit",
-            fullName: "Kris \"Bandit\" Everett",
-            thumbnail: "images/team2/square/bandit.svg",
-            image: "images/team2/bandit.svg",
+            name: "Angie",
+            fullName: "Angie Coderre",
+            thumbnail: "images/team2/square/angie.svg",
+            image: "images/team2/angie.svg",
             at_bats: 557,
             total_hits: 133,
             doubles: 22,
@@ -251,7 +252,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 2
         },
         {
-            name: "Jose Ramirez",
+            name: "Casey",
+            fullName: "Clock And Super Energetic Youth",
             at_bats: 565,
             total_hits: 84,
             doubles: 46,
@@ -296,7 +298,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 2
         },
         {
-            name: "Rajai Davis",
+            name: "Parker",
+            fullName: "Phone And Radio Kid (Excluding Radio)",
             at_bats: 454,
             total_hits: 113,
             doubles: 23,
@@ -309,7 +312,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Tyler Naquin",
+            name: "Maria",
+            fullName: "Maria Magnolia Maldonado Ramirez",
             at_bats: 321,
             total_hits: 95,
             doubles: 18,
