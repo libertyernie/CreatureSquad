@@ -314,6 +314,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Maria",
             fullName: "Maria Magnolia Maldonado Ramirez",
+            thumbnail: "images/team2/square/maria.svg",
+            image: "images/team2/maria.svg",
             at_bats: 321,
             total_hits: 95,
             doubles: 18,
