@@ -194,6 +194,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Kris \"Bandit\" Everett",
             thumbnail: "images/team2/square/bandit.svg",
             image: "images/team2/bandit.svg",
+            description: [
+                "Species: Lizard",
+                "Gender: Male",
+                "Bandit is smart and a bit of an eccentric; he almost always wears a mask and bandana. A New Jersey native, he's starting his first year at Princeton."
+            ],
             at_bats: 582,
             total_hits: 151,
             doubles: 31,
@@ -210,6 +215,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "MEchanical Lifeform / Artifical Newly Intelligent Entity",
             thumbnail: "images/team2/square/melanie.svg",
             image: "images/team2/melanie.svg",
+            description: [
+                "Species: Robot",
+                "Gender: Female",
+                "Bandit's roommate Melanie was created in 1999 when her brother accidentally made an AI clone of himself on an iMac. Her main computer system still runs on PowerPC."
+            ],
             at_bats: 610,
             total_hits: 168,
             doubles: 41,
@@ -226,6 +236,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Jenny Looper",
             thumbnail: "images/team2/square/looper.svg",
             image: "images/team2/looper.svg",
+            description: [
+                "Species: Cat",
+                "Gender: Female",
+                "Looper, a high school classmate of Bandit and Angie, goes to Princeton Theological Seminary and hopes to be a priest."
+            ],
             at_bats: 604,
             total_hits: 182,
             doubles: 30,
@@ -242,6 +257,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Angie Coderre",
             thumbnail: "images/team2/square/angie.svg",
             image: "images/team2/angie.svg",
+            description: [
+                "Species: Lizard",
+                "Gender: Female",
+                "Bandit's girlfriend Angie is a student at Rutgers University. She was adopted as a baby by a well-off human family from Jersey City."
+            ],
             at_bats: 557,
             total_hits: 133,
             doubles: 22,
@@ -256,6 +276,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Casey",
             fullName: "Clock And Super Energetic Youth",
+            description: [
+                "Species: Alarm clock",
+                "Gender: Alarm clock",
+                "Casey was created as an experimental AI using the body of an alarm clock. They were abadoned by their creator and now live in Melanie's dorm room."
+            ],
             at_bats: 565,
             total_hits: 84,
             doubles: 46,
@@ -272,6 +297,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Robert Coderre",
             thumbnail: "images/team2/square/robert.svg",
             image: "images/team2/robert.svg",
+            description: [
+                "Species: Human",
+                "Gender: Male",
+                "Robert is Angie's brother and Bandit's high school friend. He was the one who encouraged Bandit to apply to Princeton."
+            ],
             at_bats: 251,
             total_hits: 42,
             doubles: 11,
@@ -288,6 +318,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Rory Milton",
             thumbnail: "images/team2/square/rory.svg",
             image: "images/team2/rory.svg",
+            description: [
+                "Species: Armadillo",
+                "Gender: Female",
+                "Rory is a student in one of Bandit's math classes. She's usually confident, unless she has a crush on another girl."
+            ],
             at_bats: 385,
             total_hits: 110,
             doubles: 25,
@@ -302,6 +337,11 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Parker",
             fullName: "Phone And Radio Kid (Excluding Radio)",
+            description: [
+                "Species: Telephone",
+                "Gender: Male",
+                "Parker is another abandoned AI experiment adopted by Melanie. He acts grumpy but is always helpful when you need him."
+            ],
             at_bats: 454,
             total_hits: 113,
             doubles: 23,
@@ -318,6 +358,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             fullName: "Maria Magnolia Maldonado Ramirez",
             thumbnail: "images/team2/square/maria.svg",
             image: "images/team2/maria.svg",
+            description: [
+                "Maria is a student in Bandit's math and computer classes. She mostly stays to herself."
+            ],
             at_bats: 321,
             total_hits: 95,
             doubles: 18,
