@@ -208,6 +208,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Melanie",
             fullName: "MEchanical Lifeform / Artifical Newly Intelligent Entity",
+            thumbnail: "images/team2/square/melanie.svg",
+            image: "images/team2/melanie.svg",
             at_bats: 610,
             total_hits: 168,
             doubles: 41,

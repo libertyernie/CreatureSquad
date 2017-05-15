@@ -46,12 +46,14 @@
     <Content Include="images\team2\bandit.svg" />
     <Content Include="images\team2\looper.svg" />
     <Content Include="images\team2\maria.svg" />
+    <Content Include="images\team2\melanie.svg" />
     <Content Include="images\team2\robert.svg" />
     <Content Include="images\team2\rory.svg" />
     <Content Include="images\team2\square\angie.svg" />
     <Content Include="images\team2\square\bandit.svg" />
     <Content Include="images\team2\square\looper.svg" />
     <Content Include="images\team2\square\maria.svg" />
+    <Content Include="images\team2\square\melanie.svg" />
     <Content Include="images\team2\square\robert.svg" />
     <Content Include="images\team2\square\rory.svg" />
     <Content Include="index.html" />
