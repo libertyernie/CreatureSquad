@@ -151,10 +151,6 @@ class TeamModel {
                 }
             }
             buntingNewRuns /= 8;
-            console.log({
-                battingNewRuns: battingNewRuns,
-                buntingNewRuns: buntingNewRuns
-            });
             return battingNewRuns < buntingNewRuns;
         }
     }
@@ -215,6 +211,20 @@ class ViewModel {
 
         this.descriptionShownFor = ko.observable(null);
         this.teamSetupModel = ko.observable(null);
+
+        this.descriptionShownFor.subscribe(newValue => {
+            if (newValue) location.href = "#popup";
+        });
+        this.teamSetupModel.subscribe(newValue => {
+            if (newValue) location.href = "#popup";
+        });
+
+        window.addEventListener("popstate", e => {
+            if (location.hash != "#popup") {
+                this.descriptionShownFor(null);
+                this.teamSetupModel(null);
+            }
+        });
 
         this.team2.runs.subscribe(() => this.team2WinCheck());
     }

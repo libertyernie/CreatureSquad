@@ -16,15 +16,19 @@
     <script src="app.js"></script>
 </head>
 <body data-bind="with: viewModel">
-    <div id="characterInfo" data-bind="with: descriptionShownFor">
-        <a href="#" class="close" data-bind="click: closeDescription">Close</a>
-        <img data-bind="attr: { src: image }" />
-        <h1 data-bind="text: fullName"></h1>
-        <!-- ko foreach: description -->
-        <p data-bind="text: $data"></p>
-        <!-- /ko -->
+    <div id="characterInfo" class="popup" data-bind="with: descriptionShownFor">
+        <div class="main">
+            <img data-bind="attr: { src: image }" />
+            <h1 data-bind="text: fullName"></h1>
+            <!-- ko foreach: description -->
+            <p data-bind="text: $data"></p>
+            <!-- /ko -->
+        </div>
+        <div class="buttons">
+            <button data-bind="click: closeDescription">Close</button>
+        </div>
     </div>
-    <div id="teamSetup" data-bind="with: teamSetupModel">
+    <div id="teamSetup" class="popup" data-bind="with: teamSetupModel">
         <div class="main">
             <textarea data-bind="value: json1"></textarea>
             <textarea data-bind="value: json2"></textarea>
