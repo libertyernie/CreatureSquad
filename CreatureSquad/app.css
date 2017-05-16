@@ -59,7 +59,7 @@
 #mainScreen > .lineup {
     position: absolute;
     top: 0;
-    width: 64px;
+    width: 80px;
     height: 100%;
 }
 
@@ -69,6 +69,14 @@
 
 #mainScreen > .lineup2 {
     right: 0;
+}
+
+.currentBatterInfo {
+    display: block;
+    overflow-y: hidden;
+    font-size: 11px;
+    height: 36px;
+    text-align: center;
 }
 
 .batter {
@@ -124,7 +132,7 @@
     top: 0;
     left: 64px;
     width: 192px;
-    width: calc(100% - 128px);
+    width: calc(100% - 160px);
     text-align: center;
 }
 
@@ -230,6 +238,9 @@
     .batter {
         flex: 1 1 50px;
     }
+    .currentBatterInfo {
+        flex: 0 0 auto;
+    }
 
     #tables {
         display: flex;
@@ -282,6 +293,9 @@
         }
         #mainScreen > .center {
             flex: 0 0 350px;
+        }
+        .currentBatterInfo {
+            display: none;
         }
         .batter {
             flex: 0 1 50px;

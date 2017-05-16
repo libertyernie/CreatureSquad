@@ -43,6 +43,13 @@
     <div id="mainScreen">
         <div class="spacer"></div>
         <div class="lineup lineup1" data-bind="with: team1, css: { current: team1 === $root.battingTeam() }">
+            <div class="currentBatterInfo" data-bind="with: batter">
+                <span data-bind="text: name"></span>
+                <br />
+                <span data-bind="text: (obp*100).toFixed(1)"></span>%
+                /
+                P: <span data-bind="text: slg.toFixed(3)"></span>
+            </div>
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
@@ -50,11 +57,9 @@
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>
                     <br />
-                    <span data-bind="text: ba.toFixed(3)*1000"></span>
+                    <span data-bind="text: (obp*100).toFixed(1)"></span>%
                     /
-                    <span data-bind="text: obp.toFixed(3)*1000"></span>
-                    /
-                    <span data-bind="text: slg.toFixed(3)*1000"></span>
+                    P: <span data-bind="text: slg.toFixed(3)"></span>
                 </div>
             </div>
             <!-- /ko -->
@@ -152,6 +157,13 @@
             </div>
         </div>
         <div class="lineup lineup2" data-bind="with: team2, css: { current: team2 === $root.battingTeam() }">
+            <div class="currentBatterInfo" data-bind="with: batter">
+                <span data-bind="text: name"></span>
+                <br />
+                <span data-bind="text: (obp*100).toFixed(1)"></span>%
+                /
+                P: <span data-bind="text: slg.toFixed(3)"></span>
+            </div>
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
@@ -159,11 +171,9 @@
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>
                     <br />
-                    <span data-bind="text: ba.toFixed(3)*1000"></span>
+                    <span data-bind="text: (obp*100).toFixed(1)"></span>%
                     /
-                    <span data-bind="text: obp.toFixed(3)*1000"></span>
-                    /
-                    <span data-bind="text: slg.toFixed(3)*1000"></span>
+                    P: <span data-bind="text: slg.toFixed(3)"></span>
                 </div>
             </div>
             <!-- /ko -->
