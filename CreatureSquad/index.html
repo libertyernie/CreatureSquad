@@ -60,9 +60,11 @@
             <div id="outMeter" data-bind="style: { width: outPercentage }">
                 <span data-bind="text: outs"></span>/30
             </div>
-            <div id="result" data-bind="if: lastBatter">
+            <div id="result" data-bind="if: lastBatter() && baserunners() + outs() > 0">
                 <!-- ko with: lastBatter -->
-                <div class="batterName" data-bind="text: name, style: { backgroundColor: bgcolor }"></div>
+                <div class="batterName" data-bind="style: { backgroundColor: bgcolor }">
+                    <span data-bind="text: name"></span>
+                </div>
                 <!-- /ko -->
                 <div class="type">
                     <span data-bind="text: newRunsCount"></span> pts

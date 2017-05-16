@@ -121,6 +121,13 @@
     overflow-y: auto;
 }
 
+.batterName > span {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+    padding: 0 0.5em;
+}
+
 #mainScreen > .center {
     position: absolute;
     top: 0;
