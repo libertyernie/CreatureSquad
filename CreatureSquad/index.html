@@ -39,7 +39,7 @@
         <div class="spacer"></div>
         <div class="lineup lineup1" data-bind="with: team1, css: { current: team1 === $root.battingTeam() }">
             <!-- ko foreach: lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.lastBatter() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
                 <div class="batterInfo">
@@ -148,7 +148,7 @@
         </div>
         <div class="lineup lineup2" data-bind="with: team2, css: { current: team2 === $root.battingTeam() }">
             <!-- ko foreach: lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.lastBatter() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
                 <div class="batterInfo">
