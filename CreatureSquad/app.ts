@@ -22,11 +22,12 @@ class TeamModel {
     readonly newOuts: KnockoutObservable<boolean>[];
 
     readonly lineupIndex: KnockoutObservable<number>;
-    readonly lastBatter: KnockoutObservable<Batter | null>;
     readonly lastBunted: KnockoutObservable<boolean>;
 
     readonly batter: KnockoutComputed<Batter>;
     readonly baserunners: KnockoutComputed<number>;
+    readonly lastBatter: KnockoutComputed<Batter | null>;
+    readonly lineupByNextBatter: KnockoutComputed<Batter[]>;
     readonly newRunsCount: KnockoutComputed<number>;
     readonly newOutsCount: KnockoutComputed<number>;
     readonly outPercentage: KnockoutComputed<string>;
@@ -50,7 +51,6 @@ class TeamModel {
         }
 
         this.lineupIndex = ko.observable(0);
-        this.lastBatter = ko.observable(null);
         this.lastBunted = ko.observable(false);
 
         this.batter = ko.pureComputed(() => lineup[this.lineupIndex() % lineup.length]);
@@ -63,6 +63,13 @@ class TeamModel {
                 if (b.third) tally++;
             }
             return tally;
+        });
+        this.lastBatter = ko.pureComputed(() => lineup[(this.lineupIndex() - 1) % lineup.length]);
+        this.lineupByNextBatter = ko.pureComputed(() => {
+            let l = lineup.slice();
+            let x = l.splice(0, this.lineupIndex() % lineup.length);
+            l = l.concat(x);
+            return l;
         });
         this.newRunsCount = ko.pureComputed(() => {
             let tally = 0;
@@ -161,7 +168,6 @@ class TeamModel {
     }
 
     private processResult(result: PlateAppearanceResult) {
-        this.lastBatter(result.batter);
         if (result.out) {
             this.outs(this.outs() + 1);
         }
@@ -176,8 +182,7 @@ class TeamModel {
             this.outs(this.outs() + 1);
             this.lineupIndex(this.lineupIndex() + 1);
         }
-
-        this.lastBatter(null);
+        
         this.lastBunted(false);
         this.newRuns.forEach(o => o(new ColumnRunTally()));
         this.newOuts.forEach(o => o(false));

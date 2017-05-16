@@ -37,9 +37,9 @@
     </div>
     <div id="mainScreen">
         <div class="spacer"></div>
-        <div class="lineup lineup1" data-bind="with: team1">
+        <div class="lineup lineup1" data-bind="with: team1, css: { current: team1 === $root.battingTeam() }">
             <!-- ko foreach: lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.lastBatter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
                 <div class="batterInfo">
@@ -144,9 +144,9 @@
                 <a href="#" data-bind="click: about">About</a>
             </div>
         </div>
-        <div class="lineup lineup2" data-bind="with: team2">
+        <div class="lineup lineup2" data-bind="with: team2, css: { current: team2 === $root.battingTeam() }">
             <!-- ko foreach: lineup -->
-            <div class="batter" data-bind="css: { current: $data === $parent.batter() && $parent === $root.battingTeam() }">
+            <div class="batter" data-bind="css: { current: $data === $parent.lastBatter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
                 </a>
                 <div class="batterInfo">

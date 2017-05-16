@@ -103,6 +103,11 @@
 }
 
 .batter.current {
+    background-color: lightblue;
+    color: black;
+}
+
+.lineup.current .batter.current {
     background-color: black;
     color: white;
 }
