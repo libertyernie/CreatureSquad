@@ -14,7 +14,6 @@
     background-color: Window;
     color: WindowText;
     position: fixed;
-    overflow-y: auto;
     width: 100%;
     height: 100%;
     left: 0;
@@ -37,7 +36,8 @@
 }
 
 .popup .main {
-    height: calc(100% - 32px);
+    height: calc(100% - 40px);
+    overflow-y: auto;
 }
 
 #teamSetup textarea {
@@ -50,6 +50,10 @@
     clear: both;
     width: 100%;
     margin: 4px;
+}
+
+.popup .buttons > * {
+    padding: 4px;
 }
 
 #mainScreen > .lineup {
