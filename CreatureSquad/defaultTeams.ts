@@ -359,7 +359,7 @@ const team2: { starters: SerializedBatterInfo[] } = {
             thumbnail: "images/team2/square/maria.svg",
             image: "images/team2/maria.svg",
             description: [
-                "Maria is a student in Bandit's math and computer classes. She mostly stays to herself."
+                "Maria is a student in Bandit's math and computer classes. She mostly stays to herself, so Bandit doesn't know much about her."
             ],
             at_bats: 321,
             total_hits: 95,

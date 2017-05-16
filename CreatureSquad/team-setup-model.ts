@@ -19,6 +19,12 @@
         this.json2 = ko.observable(JSON.stringify({ starters: arr2 }, undefined, 4));
     }
 
+    swap() {
+        const s = this.json1();
+        this.json1(this.json2());
+        this.json2(s);
+    }
+
     cancel() {
         this.onClose();
     }
