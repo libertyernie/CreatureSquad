@@ -299,9 +299,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             thumbnail: "images/team2/square/rory.svg",
             image: "images/team2/rory.svg",
             description: [
-                "Species: Human",
-                "Gender: Male",
-                "Robert is Angie's brother and Bandit's high school friend. He was the one who encouraged Bandit to apply to Princeton."
+                "Species: Armadillo",
+                "Gender: Female",
+                "Rory is a student in one of Bandit's math classes. She's usually confident, unless she has a crush on another girl."
             ],
             at_bats: 251,
             total_hits: 42,
@@ -320,9 +320,9 @@ const team2: { starters: SerializedBatterInfo[] } = {
             thumbnail: "images/team2/square/robert.svg",
             image: "images/team2/robert.svg",
             description: [
-                "Species: Armadillo",
-                "Gender: Female",
-                "Rory is a student in one of Bandit's math classes. She's usually confident, unless she has a crush on another girl."
+                "Species: Human",
+                "Gender: Male",
+                "Robert is Angie's brother and Bandit's high school friend. He was the one who encouraged Bandit to apply to Princeton."
             ],
             at_bats: 385,
             total_hits: 110,
@@ -362,6 +362,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
             thumbnail: "images/team2/square/maria.svg",
             image: "images/team2/maria.svg",
             description: [
+                "Species: Human",
+                "Gender: Female",
                 "Maria is a student in Bandit's math and computer classes. She mostly stays to herself, so Bandit doesn't know much about her."
             ],
             at_bats: 321,
