@@ -276,9 +276,10 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Casey",
             fullName: "Clock And Super Energetic Youth",
+            thumbnail: "images/team2/square/casey.svg",
             description: [
                 "Species: Alarm clock",
-                "Gender: Alarm clock",
+                "Gender: None",
                 "Casey was created as an experimental AI using the body of an alarm clock. They were abadoned by their creator and now live in Melanie's dorm room."
             ],
             at_bats: 565,
@@ -293,10 +294,10 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks:1
         },
         {
-            name: "Robert",
-            fullName: "Robert Coderre",
-            thumbnail: "images/team2/square/robert.svg",
-            image: "images/team2/robert.svg",
+            name: "Rory",
+            fullName: "Rory Milton",
+            thumbnail: "images/team2/square/rory.svg",
+            image: "images/team2/rory.svg",
             description: [
                 "Species: Human",
                 "Gender: Male",
@@ -314,10 +315,10 @@ const team2: { starters: SerializedBatterInfo[] } = {
             intentional_walks: 0
         },
         {
-            name: "Rory",
-            fullName: "Rory Milton",
-            thumbnail: "images/team2/square/rory.svg",
-            image: "images/team2/rory.svg",
+            name: "Robert",
+            fullName: "Robert Coderre",
+            thumbnail: "images/team2/square/robert.svg",
+            image: "images/team2/robert.svg",
             description: [
                 "Species: Armadillo",
                 "Gender: Female",
@@ -337,6 +338,8 @@ const team2: { starters: SerializedBatterInfo[] } = {
         {
             name: "Parker",
             fullName: "Phone And Radio Kid (Excluding Radio)",
+            thumbnail: "images/team2/square/parker.svg",
+            image: "images/team2/parker.svg",
             description: [
                 "Species: Telephone",
                 "Gender: Male",
