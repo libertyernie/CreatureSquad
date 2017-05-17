@@ -170,14 +170,14 @@
 	width: 32px;
 	height: 12px;
 	height: calc(10vh - 30px);
-    min-height: 4vmax;
+    min-height: 12px;
 }
 
 .stateTable > * > * > * {
     height: 100%;
     border-style: solid;
     border-width: 2px;
-    border-width: 1vmax;
+    border-width: 1vmin;
     box-sizing: border-box;
 }
 
