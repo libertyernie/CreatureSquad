@@ -186,7 +186,8 @@
     display: inline-block;
     text-align: center;
     font-size: 12px;
-    border-radius: 1px;
+    border-radius: 2px;
+    padding: 0 2px;
     background-color: white;
 }
 
@@ -196,6 +197,14 @@
 
 .score > .newRuns {
     background-color: darkseagreen;
+}
+
+.score > :first-child {
+    margin-left: 10px;
+}
+
+.score > :last-child {
+    margin-right: 10px;
 }
 
 .buttons, .links {
@@ -331,14 +340,6 @@
             margin-right: 30px;
             border-radius: 8px;
             font-size: 16px;
-        }
-
-        .score > :first-child {
-            margin-left: 10px;
-        }
-
-        .score > :last-child {
-            margin-right: 10px;
         }
     }
 }
