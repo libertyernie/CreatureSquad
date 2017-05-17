@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Creature Squad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      maximum-scale=1">
+    <meta charset="utf-8">
+    <title>Creature Squad</title>
+    <link rel="stylesheet" href="app.css" type="text/css">
+  </head>
+  <body style="margin: 8px">
+    <h1>Creature Squad</h1>
+    <p>Welcome to Creature Squad, a simple browser game derived from
+      baseball statistics and implemented with <a
+        href="http://knockoutjs.com/">Knockout</a> and <a
+        href="http://www.typescriptlang.org/">TypeScript.</a> Source
+      code is available at <a
+        href="https://github.com/libertyernie/CreatureSquad">GitHub.</a></p>
+    <h2>
+      How To Play</h2>
+    <p>Creature Squad is primarily a game of chance. Game play takes
+      place on a board in the center of the screen made of 10 rows, each
+      of which are independent of each other. Your objective is to fill
+      in squares on the board and then push those squares past the third
+      column into the scoring zone.<br>
+    </p>
+      <table class="vertical" style="margin-bottom: 8px;">
+          <tr>
+              <td>Outs</td>
+              <td>1st</td>
+              <td>2nd</td>
+              <td>3rd</td>
+              <td>Runs</td>
+          </tr>
+      </table>
+      <div class="preview">
+
+          <div id="outsTable" class="stateTable">
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      X
+                  </div>
+              </div>
+          </div>
+          <div id="basesTable" class="stateTable">
+              <div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(172, 106, 108); border-color: rgb(68, 68, 68);"></div>
+                  </div>
+                  <div>
+                      <div style="background-color: rgb(32, 156, 114); border-color: rgb(102, 102, 102);"></div>
+                  </div>
+                  <div>
+                      <div style="background-color: rgb(108, 138, 28); border-color: rgb(136, 136, 136);"></div>
+                  </div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(211, 208, 228); border-color: rgb(34, 34, 34);"></div>
+                  </div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(172, 106, 108); border-color: rgb(68, 68, 68);"></div>
+                  </div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+                  <div>
+                      <div style="background-color: rgb(108, 138, 28); border-color: rgb(136, 136, 136);"></div>
+                  </div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(32, 156, 114); border-color: rgb(102, 102, 102);"></div>
+                  </div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(172, 106, 108); border-color: rgb(68, 68, 68);"></div>
+                  </div>
+                  <div></div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div>
+                      <div style="background-color: rgb(211, 208, 228); border-color: rgb(34, 34, 34);"></div>
+                  </div>
+                  <div>
+                      <div style="background-color: rgb(32, 156, 114); border-color: rgb(102, 102, 102);"></div>
+                  </div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+                  <div></div>
+                  <div>
+                      <div style="background-color: rgb(32, 156, 114); border-color: rgb(102, 102, 102);"></div>
+                  </div>
+              </div>
+          </div>
+          <div id="runsTable" class="stateTable">
+              <div>
+                  <div class="">1</div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div class="">1</div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div></div>
+              </div>
+
+              <div>
+                  <div class="new">1</div>
+              </div>
+          </div>
+
+      </div>
+    <p>Each team gets 5 rounds (or more if the score is tied.) A round
+      ends when your total number of outs after a turn is 30 or greater.
+      Unlike in baseball, <b>the points still count</b> even if you
+      reach 30 outs, so the best rounds are usually those where you land
+      at 28 or 29 and can get one more turn.</p>
+    <p>For each turn, you have two options: attack and sacrifice.<br>
+    </p>
+  </body>
+</html>

@@ -284,10 +284,6 @@ class ViewModel {
             this.teamSetupModel(null);
         }));
     }
-
-    about() {
-
-    }
 }
 
 var mainModel: {
