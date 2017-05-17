@@ -64,6 +64,7 @@ class Batter {
 
     closeDescription() {
         mainModel.viewModel().descriptionShownFor(null);
+        history.back();
     }
 
     private static hashCode(s: string) {

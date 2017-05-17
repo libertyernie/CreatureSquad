@@ -315,6 +315,10 @@ function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
     mainModel.viewModel(new ViewModel(batters1, batters2));
 }
 
+if (location.hash == "#popup") {
+    location.hash = "";
+}
+
 window.onload = () => {
     let t1 = team1;
     let t2 = team2;
