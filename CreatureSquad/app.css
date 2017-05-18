@@ -304,6 +304,11 @@ table.vertical td {
         display: initial;
         flex: 1 1 0px;
     }
+    @media screen and (min-height: 500px) {
+        .stateTable {
+            font-size: 16px;
+        }
+    }
     @media screen and (min-height: 570px) and (min-width: 800px) {
         #characterInfo, #teamSetup {
             width: 90%;
@@ -340,9 +345,6 @@ table.vertical td {
         }
         .batterInfo {
             display: inline;
-        }
-        .stateTable {
-            font-size: 16px;
         }
         #tables > * > * > * {
             height: 24px;
