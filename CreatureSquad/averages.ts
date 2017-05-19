@@ -35,7 +35,7 @@ function isTraditionalStatistics(o: TraditionalStatistics | PlateAppearanceAvera
 }
 
 function isPlateAppearanceAverages(o: TraditionalStatistics | PlateAppearanceAverages): o is PlateAppearanceAverages {
-    return "plate_appearances" in o;
+    return !("at_bats" in o);
 }
 
 function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
@@ -56,7 +56,7 @@ function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
 }
 
 function calculatePAAverages(a: TraditionalStatistics): PlateAppearanceAverages {
-    const o = {
+    return {
         singles: a.total_hits - a.doubles - a.triples - a.home_runs,
         doubles: a.doubles,
         triples: a.triples,
@@ -68,8 +68,4 @@ function calculatePAAverages(a: TraditionalStatistics): PlateAppearanceAverages 
         sacrifice_flies: a.sacrifice_flies,
         other_outs: a.at_bats - a.total_hits
     };
-    return {
-        plate_appearances: getPlateApperances(o),
-        ...o
-    }
 }
