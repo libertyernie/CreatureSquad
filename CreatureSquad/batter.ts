@@ -7,7 +7,6 @@
     HomeRun,
     Walk,
     HitByPitch,
-    SacrificeFly,
     Out,
     Out_ExtraBase,
     IntentionalWalk,
@@ -83,10 +82,10 @@ class Batter {
             - this.averages.sacrifice_hits;
 
         let random = Math.random() * total;
-        let walk = 0;
+        let x = 0;
 
-        walk += this.averages.singles;
-        if (walk >= random) {
+        x += this.averages.singles;
+        if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Single_ExtraBase;
             } else {
@@ -94,8 +93,8 @@ class Batter {
             }
         }
 
-        walk += this.averages.doubles;
-        if (walk >= random) {
+        x += this.averages.doubles;
+        if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Double_ExtraBase;
             } else {
@@ -103,33 +102,33 @@ class Batter {
             }
         }
 
-        walk += this.averages.triples;
-        if (walk >= random) {
+        x += this.averages.triples;
+        if (x >= random) {
             return PlateApperanceResultType.Triple;
         }
 
-        walk += this.averages.home_runs;
-        if (walk >= random) {
+        x += this.averages.home_runs;
+        if (x >= random) {
             return PlateApperanceResultType.HomeRun;
         }
 
-        walk += this.averages.unintentional_walks;
-        if (walk >= random) {
+        x += this.averages.unintentional_walks;
+        if (x >= random) {
             return PlateApperanceResultType.Walk;
         }
 
-        walk += this.averages.hit_by_pitch;
-        if (walk >= random) {
+        x += this.averages.hit_by_pitch;
+        if (x >= random) {
             return PlateApperanceResultType.HitByPitch;
         }
 
-        walk += this.averages.sacrifice_flies;
-        if (walk >= random) {
-            return PlateApperanceResultType.SacrificeFly;
+        x += this.averages.sacrifice_flies;
+        if (x >= random) {
+            return PlateApperanceResultType.Out_ExtraBase;
         }
 
-        walk += this.averages.other_outs;
-        if (walk >= random) {
+        x += this.averages.other_outs;
+        if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Out_ExtraBase;
             } else {

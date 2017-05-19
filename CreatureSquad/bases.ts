@@ -87,7 +87,6 @@ class PlateAppearanceResult {
             case PlateApperanceResultType.SacrificeBunt:
                 this.resultTypeName = "Sacrifice";
                 break;
-            case PlateApperanceResultType.SacrificeFly:
             case PlateApperanceResultType.Out_ExtraBase:
             case PlateApperanceResultType.Out:
                 this.resultTypeName = "Miss";
@@ -117,7 +116,6 @@ class PlateAppearanceResult {
             case PlateApperanceResultType.IntentionalWalk:
                 this.basesResult = bases.walk(batter);
                 break;
-            case PlateApperanceResultType.SacrificeFly:
             case PlateApperanceResultType.Out_ExtraBase:
             case PlateApperanceResultType.SacrificeBunt:
                 // TODO: special behavior when a batter is at third base.
