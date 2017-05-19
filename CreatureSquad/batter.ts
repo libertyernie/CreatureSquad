@@ -85,7 +85,7 @@ class Batter {
             ? this.averages
             : calculatePAAverages(this.averages);
 
-        let total = averages.plate_appearances
+        let total = getPlateApperances(averages)
             - averages.intentional_walks
             - averages.sacrifice_hits;
 

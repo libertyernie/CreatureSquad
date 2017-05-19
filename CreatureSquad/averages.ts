@@ -12,7 +12,6 @@
 }
 
 interface PlateAppearanceAverages {
-    plate_appearances: number;
     singles: number;
     doubles: number;
     triples: number;
@@ -25,6 +24,12 @@ interface PlateAppearanceAverages {
     other_outs: number;
 }
 
+function getPlateApperances(a: PlateAppearanceAverages) {
+    return a.singles + a.doubles + a.triples + a.home_runs
+        + a.intentional_walks + a.unintentional_walks + a.hit_by_pitch
+        + a.sacrifice_hits + a.sacrifice_flies + a.other_outs;
+}
+
 function isTraditionalStatistics(o: TraditionalStatistics | PlateAppearanceAverages): o is TraditionalStatistics {
     return "at_bats" in o;
 }
@@ -34,10 +39,11 @@ function isPlateAppearanceAverages(o: TraditionalStatistics | PlateAppearanceAve
 }
 
 function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
+    const total_hits = a.singles + a.doubles + a.triples + a.home_runs;
     const walks = a.intentional_walks + a.unintentional_walks;
     return {
-        at_bats: a.plate_appearances - walks - a.hit_by_pitch - a.sacrifice_hits - a.sacrifice_flies,
-        total_hits: a.singles + a.doubles + a.triples + a.home_runs,
+        at_bats: total_hits + a.other_outs,
+        total_hits: total_hits,
         doubles: a.doubles,
         triples: a.triples,
         home_runs: a.home_runs,
@@ -50,8 +56,7 @@ function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
 }
 
 function calculatePAAverages(a: TraditionalStatistics): PlateAppearanceAverages {
-    return {
-        plate_appearances: a.at_bats + a.walks + a.hit_by_pitch + a.sacrifice_hits + a.sacrifice_flies,
+    const o = {
         singles: a.total_hits - a.doubles - a.triples - a.home_runs,
         doubles: a.doubles,
         triples: a.triples,
@@ -63,4 +68,8 @@ function calculatePAAverages(a: TraditionalStatistics): PlateAppearanceAverages 
         sacrifice_flies: a.sacrifice_flies,
         other_outs: a.at_bats - a.total_hits
     };
+    return {
+        plate_appearances: getPlateApperances(o),
+        ...o
+    }
 }

@@ -218,7 +218,6 @@ const team2: TeamInfo = {
                 "Bandit is smart and a bit of an eccentric; he almost always wears a mask and bandana. A New Jersey native, he's starting his first year at Princeton."
             ],
             "statistics": {
-                "plate_appearances": 685,
                 "singles": 83,
                 "doubles": 31,
                 "triples": 3,
@@ -242,7 +241,6 @@ const team2: TeamInfo = {
                 "Bandit's girlfriend Angie is a student at Rutgers University. She was adopted as a baby by a well-off human family from Jersey City."
             ],
             "statistics": {
-                "plate_appearances": 688,
                 "singles": 100,
                 "doubles": 41,
                 "triples": 4,
@@ -266,7 +264,6 @@ const team2: TeamInfo = {
                 "Robert is Angie's brother and Bandit's high school friend. He was the one who encouraged Bandit to apply to Princeton."
             ],
             "statistics": {
-                "plate_appearances": 684,
                 "singles": 134,
                 "doubles": 30,
                 "triples": 3,
@@ -290,7 +287,6 @@ const team2: TeamInfo = {
                 "Looper, a high school classmate of Bandit and Angie, goes to Princeton Theological Seminary and hopes to be a priest."
             ],
             "statistics": {
-                "plate_appearances": 645,
                 "singles": 76,
                 "doubles": 22,
                 "triples": 1,
@@ -314,7 +310,6 @@ const team2: TeamInfo = {
                 "Rory is a student in one of Bandit's math classes. She's usually confident, unless she has a crush on another girl."
             ],
             "statistics": {
-                "plate_appearances": 618,
                 "singles": 24,
                 "doubles": 46,
                 "triples": 3,
@@ -338,7 +333,6 @@ const team2: TeamInfo = {
                 "Maria is a student in Bandit's math and computer classes. She mostly stays to herself, so Bandit doesn't know much about her."
             ],
             "statistics": {
-                "plate_appearances": 264,
                 "singles": 21,
                 "doubles": 11,
                 "triples": 1,
@@ -362,7 +356,6 @@ const team2: TeamInfo = {
                 "Bandit's roommate Melanie was created in 1999 when her brother accidentally made an AI clone of himself on an iMac. Her main computer system still runs on PowerPC."
             ],
             "statistics": {
-                "plate_appearances": 418,
                 "singles": 72,
                 "doubles": 25,
                 "triples": 5,
@@ -385,7 +378,6 @@ const team2: TeamInfo = {
                 "Casey was created as an experimental AI using the body of an alarm clock. They were abadoned by their creator and now live in Melanie's dorm room."
             ],
             "statistics": {
-                "plate_appearances": 495,
                 "singles": 76,
                 "doubles": 23,
                 "triples": 2,
@@ -409,7 +401,6 @@ const team2: TeamInfo = {
                 "Parker is another abandoned AI experiment adopted by Melanie. He acts grumpy but is always helpful when you need him."
             ],
             "statistics": {
-                "plate_appearances": 365,
                 "singles": 58,
                 "doubles": 18,
                 "triples": 5,
