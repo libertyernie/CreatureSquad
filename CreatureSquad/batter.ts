@@ -13,7 +13,7 @@
     SacrificeBunt
 }
 
-interface SerializedBatterInfo extends OffensiveAverages {
+interface SerializedBatterInfo {
     name: string;
     fullName?: string;
     thumbnail?: string;
@@ -38,19 +38,22 @@ class Batter {
     readonly obp: number;
     readonly slg: number;
 
-    constructor(averages: SerializedBatterInfo, readonly altColor?: string) {
+    constructor(averages: SerializedBatterInfo & (PlateAppearanceAverages | TraditionalStatistics), readonly altColor?: string) {
         this.name = averages.name;
         this.fullName = averages.fullName || this.name;
-        this.averages = calculatePAAverages(averages);
+        this.averages = isPlateAppearanceAverages(averages)
+            ? averages
+            : calculatePAAverages(averages);
         this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
         
         this.thumbnail = averages.thumbnail || "images/default.png";
         this.image = averages.image || this.thumbnail;
         this.thumbnailBackgroundImage = `url('${this.thumbnail}')`;
 
-        this.ba = averages.total_hits / averages.at_bats;
-        this.obp = (averages.total_hits + averages.walks + averages.hit_by_pitch) / (averages.at_bats + averages.walks + averages.hit_by_pitch + averages.sacrifice_flies);
-        this.slg = (this.averages.singles + 2 * averages.doubles + 3 * averages.triples + 4 * averages.home_runs) / averages.at_bats;
+        const a = calculateTradStats(this.averages);
+        this.ba = a.total_hits / a.at_bats;
+        this.obp = (a.total_hits + a.walks + a.hit_by_pitch) / (a.at_bats + a.walks + a.hit_by_pitch + a.sacrifice_flies);
+        this.slg = (a.total_hits + a.doubles + 2 * a.triples + 3 * a.home_runs) / a.at_bats;
 
         if (averages.description) {
             this.description = averages.description;
