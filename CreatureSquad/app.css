@@ -263,6 +263,20 @@ body.wiiu .stateTable > * > * > * {
     border-width: 2px;
 }
 
+noscript > div {
+    background-color: white;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 @media screen and (min-width: 400px) {
     .score > :not(.spacer) {
         font-size: 16px;
