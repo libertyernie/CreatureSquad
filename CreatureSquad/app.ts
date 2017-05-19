@@ -328,4 +328,8 @@ window.onload = () => {
     var el = document.body;
     ko.applyBindings(mainModel, el);
     reloadViewModel(t1, t2);
+
+    if ("wiiu" in window) {
+        document.body.className += " wiiu";
+    }
 };

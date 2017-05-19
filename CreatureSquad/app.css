@@ -246,6 +246,23 @@ table.vertical td {
     margin: 10px 0;
 }
 
+body.wiiu #mainScreen > .center {
+    width: 384px;
+    left: 235px;
+}
+
+body.wiiu #mainScreen .buttons > * {
+    width: 96px;
+}
+
+body.wiiu #basesTable {
+    width: 192px;
+}
+
+body.wiiu .stateTable > * > * > * {
+    border-width: 2px;
+}
+
 @media screen and (min-width: 400px) {
     .score > :not(.spacer) {
         font-size: 16px;
