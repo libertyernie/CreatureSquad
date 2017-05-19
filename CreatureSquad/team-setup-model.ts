@@ -10,7 +10,7 @@
                 thumbnail: b.thumbnail,
                 image: b.image === b.thumbnail ? undefined : b.image,
                 description: b.description,
-                ...calculateTradStats(b.averages)
+                statistics: b.averages
             };
         };
         let arr1 = team1.lineup.map(map);

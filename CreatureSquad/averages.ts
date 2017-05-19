@@ -34,9 +34,6 @@ function isPlateAppearanceAverages(o: TraditionalStatistics | PlateAppearanceAve
 }
 
 function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
-    if (isTraditionalStatistics(a)) {
-        return a;
-    }
     const walks = a.intentional_walks + a.unintentional_walks;
     return {
         at_bats: a.plate_appearances - walks - a.hit_by_pitch - a.sacrifice_hits - a.sacrifice_flies,
@@ -52,15 +49,18 @@ function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
     };
 }
 
-function calculatePAAverages(a: TraditionalStatistics): TraditionalStatistics & PlateAppearanceAverages {
-    if (isPlateAppearanceAverages(a)) {
-        return a;
-    }
+function calculatePAAverages(a: TraditionalStatistics): PlateAppearanceAverages {
     return {
         plate_appearances: a.at_bats + a.walks + a.hit_by_pitch + a.sacrifice_hits + a.sacrifice_flies,
         singles: a.total_hits - a.doubles - a.triples - a.home_runs,
+        doubles: a.doubles,
+        triples: a.triples,
+        home_runs: a.home_runs,
+        intentional_walks: a.intentional_walks,
         unintentional_walks: a.walks - a.intentional_walks,
-        other_outs: a.at_bats - a.total_hits,
-        ...a
+        hit_by_pitch: a.hit_by_pitch,
+        sacrifice_hits: a.sacrifice_hits,
+        sacrifice_flies: a.sacrifice_flies,
+        other_outs: a.at_bats - a.total_hits
     };
 }

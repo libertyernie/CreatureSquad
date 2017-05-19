@@ -20,12 +20,13 @@ interface SerializedBatterInfo {
     image?: string;
     bgcolor?: string;
     description?: string[];
+    statistics: PlateAppearanceAverages | TraditionalStatistics;
 }
 
 class Batter {
     readonly name: string;
     readonly fullName: string;
-    readonly averages: PlateAppearanceAverages;
+    readonly averages: PlateAppearanceAverages | TraditionalStatistics;
     readonly bgcolor: string;
 
     readonly thumbnail: string;
@@ -38,25 +39,25 @@ class Batter {
     readonly obp: number;
     readonly slg: number;
 
-    constructor(averages: SerializedBatterInfo & (PlateAppearanceAverages | TraditionalStatistics), readonly altColor?: string) {
-        this.name = averages.name;
-        this.fullName = averages.fullName || this.name;
-        this.averages = isPlateAppearanceAverages(averages)
-            ? averages
-            : calculatePAAverages(averages);
-        this.bgcolor = averages.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
+    constructor(info: SerializedBatterInfo, readonly altColor?: string) {
+        this.name = info.name;
+        this.fullName = info.fullName || this.name;
+        this.averages = info.statistics;
+        this.bgcolor = info.bgcolor || `#${Batter.hashCode(this.name).toString(16).substr(-6)}`;
         
-        this.thumbnail = averages.thumbnail || "images/default.png";
-        this.image = averages.image || this.thumbnail;
+        this.thumbnail = info.thumbnail || "images/default.png";
+        this.image = info.image || this.thumbnail;
         this.thumbnailBackgroundImage = `url('${this.thumbnail}')`;
 
-        const a = calculateTradStats(this.averages);
+        const a = isTraditionalStatistics(this.averages)
+            ? this.averages
+            : calculateTradStats(this.averages);
         this.ba = a.total_hits / a.at_bats;
         this.obp = (a.total_hits + a.walks + a.hit_by_pitch) / (a.at_bats + a.walks + a.hit_by_pitch + a.sacrifice_flies);
         this.slg = (a.total_hits + a.doubles + 2 * a.triples + 3 * a.home_runs) / a.at_bats;
 
-        if (averages.description) {
-            this.description = averages.description;
+        if (info.description) {
+            this.description = info.description;
         }
     }
 
@@ -80,14 +81,18 @@ class Batter {
     }
 
     bat() {
-        let total = this.averages.plate_appearances
-            - this.averages.intentional_walks
-            - this.averages.sacrifice_hits;
+        const averages = isPlateAppearanceAverages(this.averages)
+            ? this.averages
+            : calculatePAAverages(this.averages);
+
+        let total = averages.plate_appearances
+            - averages.intentional_walks
+            - averages.sacrifice_hits;
 
         let random = Math.random() * total;
         let x = 0;
 
-        x += this.averages.singles;
+        x += averages.singles;
         if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Single_ExtraBase;
@@ -96,7 +101,7 @@ class Batter {
             }
         }
 
-        x += this.averages.doubles;
+        x += averages.doubles;
         if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Double_ExtraBase;
@@ -105,32 +110,32 @@ class Batter {
             }
         }
 
-        x += this.averages.triples;
+        x += averages.triples;
         if (x >= random) {
             return PlateApperanceResultType.Triple;
         }
 
-        x += this.averages.home_runs;
+        x += averages.home_runs;
         if (x >= random) {
             return PlateApperanceResultType.HomeRun;
         }
 
-        x += this.averages.unintentional_walks;
+        x += averages.unintentional_walks;
         if (x >= random) {
             return PlateApperanceResultType.Walk;
         }
 
-        x += this.averages.hit_by_pitch;
+        x += averages.hit_by_pitch;
         if (x >= random) {
             return PlateApperanceResultType.HitByPitch;
         }
 
-        x += this.averages.sacrifice_flies;
+        x += averages.sacrifice_flies;
         if (x >= random) {
             return PlateApperanceResultType.Out_ExtraBase;
         }
 
-        x += this.averages.other_outs;
+        x += averages.other_outs;
         if (x >= random) {
             if (Math.random() < 0.2) {
                 return PlateApperanceResultType.Out_ExtraBase;
