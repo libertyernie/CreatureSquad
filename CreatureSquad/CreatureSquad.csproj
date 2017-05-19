@@ -24,6 +24,7 @@
   <ItemGroup>
     <Content Include="about.html" />
     <Content Include="app.css" />
+    <None Include="COPYING" />
     <Content Include="images\team1\arike.png" />
     <Content Include="images\team1\centian.png" />
     <Content Include="images\default.png" />
