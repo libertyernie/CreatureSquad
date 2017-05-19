@@ -24,21 +24,40 @@ interface PlateAppearanceAverages {
     other_outs: number;
 }
 
+type Statistics = TraditionalStatistics | Partial<PlateAppearanceAverages>;
+
 function getPlateApperances(a: PlateAppearanceAverages) {
     return a.singles + a.doubles + a.triples + a.home_runs
         + a.intentional_walks + a.unintentional_walks + a.hit_by_pitch
         + a.sacrifice_hits + a.sacrifice_flies + a.other_outs;
 }
 
-function isTraditionalStatistics(o: TraditionalStatistics | PlateAppearanceAverages): o is TraditionalStatistics {
+function isTraditionalStatistics(o: Statistics): o is TraditionalStatistics {
     return "at_bats" in o;
 }
 
-function isPlateAppearanceAverages(o: TraditionalStatistics | PlateAppearanceAverages): o is PlateAppearanceAverages {
+function isPlateAppearanceAverages(o: Statistics): o is Partial<PlateAppearanceAverages> {
     return !("at_bats" in o);
 }
 
-function calculateTradStats(a: PlateAppearanceAverages): TraditionalStatistics {
+function fillMissing(a: Partial<PlateAppearanceAverages>): PlateAppearanceAverages {
+    return {
+        singles: 0,
+        doubles: 0,
+        triples: 0,
+        home_runs: 0,
+        intentional_walks: 0,
+        unintentional_walks: 0,
+        hit_by_pitch: 0,
+        sacrifice_hits: 0,
+        sacrifice_flies: 0,
+        other_outs: 0,
+        ...a
+    };
+}
+
+function calculateTradStats(p: Partial<PlateAppearanceAverages>): TraditionalStatistics {
+    const a = fillMissing(p);
     const total_hits = a.singles + a.doubles + a.triples + a.home_runs;
     const walks = a.intentional_walks + a.unintentional_walks;
     return {

@@ -20,13 +20,13 @@ interface SerializedBatterInfo {
     image?: string;
     bgcolor?: string;
     description?: string[];
-    statistics: PlateAppearanceAverages | TraditionalStatistics;
+    statistics: Statistics;
 }
 
 class Batter {
     readonly name: string;
     readonly fullName: string;
-    readonly averages: PlateAppearanceAverages | TraditionalStatistics;
+    readonly averages: Statistics;
     readonly bgcolor: string;
 
     readonly thumbnail: string;
@@ -82,7 +82,7 @@ class Batter {
 
     bat() {
         const averages = isPlateAppearanceAverages(this.averages)
-            ? this.averages
+            ? fillMissing(this.averages)
             : calculatePAAverages(this.averages);
 
         let total = getPlateApperances(averages)
