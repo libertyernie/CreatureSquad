@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -9,7 +9,7 @@
     <title>Creature Squad</title>
     <link rel="stylesheet" href="app.css" type="text/css">
   </head>
-  <body style="margin: 8px">
+  <body style="margin: 8px; width: auto;">
     <h1>Creature Squad</h1>
     <p>Welcome to Creature Squad, a simple browser game derived from
       baseball statistics and implemented with <a
@@ -43,9 +43,7 @@
         <div>
           <div> X </div>
         </div>
-        <div>
-          <div></div>
-        </div>
+        <div> </div>
         <div>
           <div> X </div>
         </div>
@@ -61,126 +59,56 @@
         <div>
           <div> X </div>
         </div>
-        <div>
-          <div></div>
-        </div>
+        <div> </div>
         <div>
           <div> X </div>
         </div>
       </div>
       <div id="basesTable" class="stateTable">
+        <div> </div>
         <div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div> </div>
+          <div> </div>
+          <div> </div>
         </div>
         <div>
-          <div>
-            <div style="background-color: rgb(172, 106, 108);
-              border-color: rgb(68, 68, 68);"></div>
-          </div>
-          <div>
-            <div style="background-color: rgb(32, 156, 114);
-              border-color: rgb(102, 102, 102);"></div>
-          </div>
-          <div>
-            <div style="background-color: rgb(108, 138, 28);
-              border-color: rgb(136, 136, 136);"></div>
-          </div>
+          <div> </div>
         </div>
         <div>
-          <div>
-            <div style="background-color: rgb(211, 208, 228);
-              border-color: rgb(34, 34, 34);"></div>
-          </div>
-          <div></div>
-          <div></div>
+          <div> </div>
+        </div>
+        <div> </div>
+        <div>
+          <div> </div>
         </div>
         <div>
-          <div>
-            <div style="background-color: rgb(172, 106, 108);
-              border-color: rgb(68, 68, 68);"></div>
-          </div>
-          <div></div>
-          <div></div>
+          <div> </div>
         </div>
         <div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div> </div>
         </div>
         <div>
-          <div></div>
-          <div>
-            <div style="background-color: rgb(108, 138, 28);
-              border-color: rgb(136, 136, 136);"></div>
-          </div>
-          <div></div>
+          <div> </div>
+          <div> </div>
         </div>
         <div>
-          <div>
-            <div style="background-color: rgb(32, 156, 114);
-              border-color: rgb(102, 102, 102);"></div>
-          </div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div>
-            <div style="background-color: rgb(172, 106, 108);
-              border-color: rgb(68, 68, 68);"></div>
-          </div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div>
-            <div style="background-color: rgb(211, 208, 228);
-              border-color: rgb(34, 34, 34);"></div>
-          </div>
-          <div>
-            <div style="background-color: rgb(32, 156, 114);
-              border-color: rgb(102, 102, 102);"></div>
-          </div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-          <div>
-            <div style="background-color: rgb(32, 156, 114);
-              border-color: rgb(102, 102, 102);"></div>
-          </div>
+          <div> </div>
         </div>
       </div>
       <div id="runsTable" class="stateTable">
         <div>
           <div class="">1</div>
         </div>
-        <div>
-          <div></div>
-        </div>
+        <div> </div>
         <div>
           <div class="">1</div>
         </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
+        <div> </div>
+        <div> </div>
+        <div> </div>
+        <div> </div>
+        <div> </div>
+        <div> </div>
         <div>
           <div class="new">1</div>
         </div>
@@ -200,28 +128,39 @@
         character's stats, which are based on the statistics of actual
         major league batters. (The default Team 1 lineup mirrors the
         2016 Chicago Cubs and Team 2 is based on their World Series
-        opponent Cleveland.)<br>
-        The possible results for each row are:</li>
+        opponent Cleveland.)</li>
       <ul>
-        <li>Single: The attack lands on the 1st column, and any square
-          that's already in the row moves forward 1 or 2 spaces.<br>
-        </li>
-        <li>Double: The attack lands on the 2nd column, and any square
-          that's already in the row moves forward 2 or 3 spaces.</li>
-        <li>Triple: The attack lands on the 3rd column, and any square
-          that's already in the row moves to the end and scores.<br>
-        </li>
-        <li>Home Run: The attack and all other squares in the row score
-          immediately.<br>
-        </li>
-        <li>Walk / Hit By Pitch: The attack lands on the 1st column. Any
-          squares in the row move forward only if they are "pushed"
-          forward by the incoming square.<br>
-        </li>
-        <li>Out: The attack does not land on any of the columns, and an
-          out is recorded (marked by an X in the leftmost column.)
-          However, there is a 1 in 5 chance that any squares in the row
-          will still move forward 1 space.</li>
+        <li>Each character has two numbers displayed: the success
+          percentage (OBP), which reflects how often they avoid outs,
+          and the power rate (SLG), which is related to how far into a
+          row their squares end up (including outs, but excluding
+          walks.) On large screens, these numbers will be shown for each
+          character; on small screens, they will be shown for the
+          current character only, at the top of the screen.</li>
+        <li>The possible results for each row are:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Single: The attack lands on the 1st column, and any square
+            that's already in the row moves forward 1 or 2 spaces.<br>
+          </li>
+          <li>Double: The attack lands on the 2nd column, and any square
+            that's already in the row moves forward 2 or 3 spaces.</li>
+          <li>Triple: The attack lands on the 3rd column, and any square
+            that's already in the row moves to the end and scores.<br>
+          </li>
+          <li>Home Run: The attack and all other squares in the row
+            score immediately.<br>
+          </li>
+          <li>Walk: The attack lands on the 1st column. Any squares in
+            the row move forward only if they are "pushed" forward by
+            the incoming square.<br>
+          </li>
+          <li>Out: The attack does not land on any of the columns, and
+            an out is recorded (marked by an X in the leftmost column.)
+            However, there is a 1 in 5 chance that any squares in the
+            row will still move forward 1 space.</li>
+        </ul>
       </ul>
       <li><b>Sacrifice</b>: If you choose this option, you will get an
         out in every row (for a total of 10). However, for each row,
@@ -231,12 +170,55 @@
       </li>
       <ul>
         <li>The character about to attack does not have a very good
-          chance of success (for example, Tomas only has an 18.5%, so on
-          average he will get an out on 81.5% of the rows, or 8.15 outs
-          per turn)</li>
+          chance of success (for example, Tomas only has an 18.5%
+          success percentage, so on average he will get an out on 81.5%
+          of the rows, or 8.15 outs per turn.)</li>
         <li>You are at somewhere around 28 outs, so this is probably
           your last turn before the end of the round, and there are a
-          bunch of squares in the third column</li>
+          bunch of squares in the third column.</li>
+      </ul>
+    </ul>
+    <h2>Team customization</h2>
+    <p>You can define your own teams in the team setup window.<br>
+    </p>
+    <p>Each team is a JSON array. Each element in the array can have the
+      following attributes:<br>
+    </p>
+    <ul>
+      <li>Character Info</li>
+      <ul>
+        <li>name</li>
+        <li>fullName (optional, otherwise "name" will be used)</li>
+        <li>thumbnail (optional)</li>
+        <li>image (optional, otherwise "thumbnail" will be used)</li>
+        <li>bgcolor (optional, otherwise one will be chosen based on the
+          name)</li>
+        <li>description (an array of strings - each will be a paragraph
+          on the character description window)</li>
+      </ul>
+      <li>Statistics (you can get these from baseball-reference.com)<br>
+      </li>
+      <ul>
+        <li>at_bats</li>
+        <li>total_hits</li>
+        <li>doubles</li>
+        <li>triples</li>
+        <li>home_runs</li>
+        <li>walks</li>
+        <li>hit_by_pitch</li>
+        <li>sacrifice_hits<br>
+        </li>
+        <li>sacrifice_flies</li>
+        <li>intentional_walks</li>
+      </ul>
+    </ul>
+    <h2>Copyright</h2>
+    <p>Character images, names, and descriptions are © 2017 libertyernie<br>
+    </p>
+    <p>All other code (except MLB statistics) is © 2017 libertyernie<br>
+    </p>
+    <ul>
+      <ul>
       </ul>
     </ul>
   </body>
