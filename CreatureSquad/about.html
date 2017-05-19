@@ -185,31 +185,53 @@
       following attributes:<br>
     </p>
     <ul>
-      <li>Character Info</li>
+      <li>name</li>
+      <li>fullName (optional, otherwise "name" will be used)</li>
+      <li>thumbnail (optional)</li>
+      <li>image (optional, otherwise "thumbnail" will be used)</li>
+      <li>bgcolor (optional, otherwise one will be chosen based on the
+        name)</li>
+      <li>description (an array of strings - each will be a paragraph on
+        the character description window)</li>
+      <li>statistics</li>
       <ul>
-        <li>name</li>
-        <li>fullName (optional, otherwise "name" will be used)</li>
-        <li>thumbnail (optional)</li>
-        <li>image (optional, otherwise "thumbnail" will be used)</li>
-        <li>bgcolor (optional, otherwise one will be chosen based on the
-          name)</li>
-        <li>description (an array of strings - each will be a paragraph
-          on the character description window)</li>
-      </ul>
-      <li>Statistics (you can get these from baseball-reference.com)<br>
-      </li>
-      <ul>
-        <li>at_bats</li>
-        <li>total_hits</li>
-        <li>doubles</li>
-        <li>triples</li>
-        <li>home_runs</li>
-        <li>walks</li>
-        <li>hit_by_pitch</li>
-        <li>sacrifice_hits<br>
+        <li>Format 1 (you can find these for any given batter at a site
+          like baseball-reference.com):<br>
         </li>
-        <li>sacrifice_flies</li>
-        <li>intentional_walks</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>at_bats</li>
+          <li>total_hits</li>
+          <li>doubles</li>
+          <li>triples</li>
+          <li>home_runs</li>
+          <li>walks</li>
+          <li>hit_by_pitch</li>
+          <li>sacrifice_hits<br>
+          </li>
+          <li>sacrifice_flies</li>
+          <li>intentional_walks</li>
+        </ul>
+        <li>Format 2:</li>
+        <ul>
+          <li>plate_appearances (this will be the sum of all fields
+            below)</li>
+          <li>singles</li>
+          <li>doubles</li>
+          <li>triples</li>
+          <li>home_runs</li>
+          <li>intentional_walks (optional; these will be subtracted from
+            plate_appearances and won't happen during the game)</li>
+          <li>unintentional_walks</li>
+          <li>hit_by_pitch (optional)</li>
+          <li>sacrifice_hits (optional; these will be subtracted from
+            plate_appearances and won't happen during the game)</li>
+          <li>sacrifice_flies (optional)<br>
+          </li>
+          <li>other_outs<br>
+          </li>
+        </ul>
       </ul>
     </ul>
     <h2>Copyright</h2>
