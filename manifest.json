@@ -1,11 +1,14 @@
-{
+﻿{
   "short_name": "Creature Squad",
   "name": "Creature Squad",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#cceeff",
   "icons": [
     {
-      "src": "apple-touch-icon.png",
-      "type": "image/png",
-      "sizes": "256x256"
+      "src": "apple-touch-icon.svg",
+      "type": "image/svg",
+      "sizes": "512x512"
     }
   ],
   "start_url": "index.html"
