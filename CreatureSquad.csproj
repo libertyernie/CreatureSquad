@@ -24,6 +24,7 @@
   <ItemGroup>
     <Content Include="about.html" />
     <Content Include="app.css" />
+    <Content Include="gulpfile.js" />
     <Content Include="sw.js" />
     <Content Include="workbox-cli-config.js" />
     <Content Include="workbox-sw.prod.v1.0.0.js" />
@@ -78,6 +79,7 @@
   <ItemGroup>
     <Content Include="tsconfig.json" />
     <Content Include="manifest.json" />
+    <Content Include="package.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "name": "creaturesquad",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.6",
+    "typescript": "^2.3.2",
+    "workbox-build": "^1.0.0"
+  }
+}
