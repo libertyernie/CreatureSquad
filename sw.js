@@ -20,7 +20,7 @@ importScripts('workbox-sw.prod.v1.0.0.js');
 const fileManifest = [
   {
     "url": "about.html",
-    "revision": "7c046e0181a1b14e8e7bbfecb43c55f3"
+    "revision": "0da81815040665b7cd2761b63bfc13e8"
   },
   {
     "url": "app.css",
@@ -52,7 +52,7 @@ const fileManifest = [
   },
   {
     "url": "images/paralari.svg",
-    "revision": "2fcd38bc4e8271a2ca7261690104cb30"
+    "revision": "b48f9fdf916be2f264eba78ca969e54c"
   },
   {
     "url": "images/team1/arike.png",
@@ -196,7 +196,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "cebf077a745088a1592d1e4a154965a0"
+    "revision": "a4020a57ca41052b53e481342b4f7b26"
   },
   {
     "url": "knockout-3.4.2.js",
