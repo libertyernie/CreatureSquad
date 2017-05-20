@@ -25,9 +25,6 @@
     <Content Include="www\about.html" />
     <Content Include="www\app.css" />
     <Content Include="gulpfile.js" />
-    <Content Include="www\sw.js" />
-    <Content Include="workbox-cli-config.js" />
-    <Content Include="workbox-sw.prod.v1.0.0.js" />
     <None Include="COPYING" />
     <Content Include="www\images\paralari.svg" />
     <Content Include="www\images\team1\arike.png" />
@@ -64,7 +61,6 @@
     <Content Include="www\images\team2\square\robert.svg" />
     <Content Include="www\images\team2\square\rory.svg" />
     <Content Include="www\index.html" />
-    <Content Include="www\knockout-3.4.2.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

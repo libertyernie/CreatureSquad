@@ -39,10 +39,19 @@ gulp.task('bundle-sw', () => {
     });
 });
 
+gulp.task("lib-copy", () => {
+    return gulp.src([
+        "./workbox-sw.prod.v1.0.0.js",
+        "./node_modules/knockout/build/output/knockout-latest.js"
+    ])
+    .pipe(gulp.dest('./www'))
+});
+
 gulp.task("sw-replace", () => {
     return gulp.src(["./sw.js"])
         .pipe(replace("\\\\\\\\", "/"))
         .pipe(gulp.dest('./www'))
 });
 
-gulp.task("default", gulp.series("ts", "bundle-sw", "sw-replace"));
+gulp.task("default", gulp.series("ts", "bundle-sw",
+    gulp.parallel("sw-replace", "lib-copy")));
