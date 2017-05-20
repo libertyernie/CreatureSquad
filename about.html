@@ -7,6 +7,15 @@
       maximum-scale=1">
     <meta charset="utf-8">
     <title>Creature Squad</title>
+    <link rel="manifest" href="/manifest.json">
+    <script type="text/javascript">
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('sw.js')
+        .catch(function(err) {
+          console.error('Unable to register service worker.', err);
+        });
+      }
+    </script>
     <link rel="stylesheet" href="app.css" type="text/css">
   </head>
   <body style="margin: 8px; width: auto;">

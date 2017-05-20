@@ -6,6 +6,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta charset="utf-8" />
     <title>Creature Squad</title>
+    <link rel="manifest" href="/manifest.json">
+    <script type="text/javascript">
+        if (navigator.serviceWorker) {
+            var mx = navigator.serviceWorker.register('sw.js')
+            .catch(function(err) {
+                console.error('Unable to register service worker.', err);
+            });
+        }
+    </script>
     <link rel="icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="stylesheet" href="app.css" type="text/css" />
