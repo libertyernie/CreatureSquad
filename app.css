@@ -5,6 +5,19 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+.sr-only {
+    position: absolute;
+    top: -500px;
+    left: -500px;
+    background-color: InfoBackground;
+    color: InfoText;
+}
+
+a:focus .sr-only {
+    top: 20px;
+    left: 20px;
+}
+
 .spacer {
     display: none;
 }
@@ -139,10 +152,13 @@
 
 #outMeter {
     height: 16px;
-    background-color: darkred;
-    color: white;
     font-size: 12px;
     font-weight: bold;
+}
+
+#outMeter, #outMeter > span {
+    background-color: darkred;
+    color: white;
 }
 
 #tables {

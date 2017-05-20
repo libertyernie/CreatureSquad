@@ -20,11 +20,11 @@ importScripts('workbox-sw.prod.v1.0.0.js');
 const fileManifest = [
   {
     "url": "about.html",
-    "revision": "0da81815040665b7cd2761b63bfc13e8"
+    "revision": "cb8138712c98e98ae57f22a53168c5a0"
   },
   {
     "url": "app.css",
-    "revision": "15c7b8fd7af249cf38cf9e9b586e26a8"
+    "revision": "8377df81c571adbdfb3ad30b2a81f310"
   },
   {
     "url": "app.js",
@@ -196,7 +196,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "a4020a57ca41052b53e481342b4f7b26"
+    "revision": "0bc9971da9b86b906418dcdc27a39f0b"
   },
   {
     "url": "knockout-3.4.2.js",

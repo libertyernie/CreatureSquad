@@ -24,7 +24,11 @@
   <ItemGroup>
     <Content Include="about.html" />
     <Content Include="app.css" />
+    <Content Include="sw.js" />
+    <Content Include="workbox-cli-config.js" />
+    <Content Include="workbox-sw.prod.v1.0.0.js" />
     <None Include="COPYING" />
+    <Content Include="images\paralari.svg" />
     <Content Include="images\team1\arike.png" />
     <Content Include="images\team1\centian.png" />
     <Content Include="images\default.png" />
@@ -73,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
+    <Content Include="manifest.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

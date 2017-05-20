@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta charset="utf-8" />
     <title>Creature Squad</title>
@@ -71,6 +71,7 @@
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
+                    <span class="sr-only" data-bind="text: 'Read description for ' + name"></span>
                 </a>
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>
@@ -85,8 +86,8 @@
         </div>
         <div class="center">
             <!-- ko with: battingTeam -->
-            <div id="outMeter" data-bind="style: { width: outPercentage }">
-                <span data-bind="text: outs"></span>/30
+            <div id="outMeter" data-bind="style: { width: outPercentage }, if: outs() > 0">
+                <span data-bind="text: outs() + '/30'"></span>
             </div>
             <div id="result" data-bind="if: lastBatter() && baserunners() + outs() > 0">
                 <!-- ko with: lastBatter -->
@@ -185,6 +186,7 @@
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
+                    <span class="sr-only" data-bind="text: 'Read description for ' + name"></span>
                 </a>
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>
