@@ -219,12 +219,14 @@ class ViewModel {
             if (newValue) location.href = "#popup";
         });
 
-        window.addEventListener("popstate", e => {
-            if (location.hash != "#popup") {
-                this.descriptionShownFor(null);
-                this.teamSetupModel(null);
-            }
-        });
+        try {
+            window.addEventListener("popstate", e => {
+                if (location.hash != "#popup") {
+                    this.descriptionShownFor(null);
+                    this.teamSetupModel(null);
+                }
+            });
+        } catch (e) { }
 
         this.team2.runs.subscribe(() => this.team2WinCheck());
     }
