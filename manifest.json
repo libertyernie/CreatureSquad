@@ -3,7 +3,7 @@
   "name": "Creature Squad",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#cceeff",
+  "theme_color": "#87CEEB",
   "icons": [
     {
       "src": "apple-touch-icon.svg",
