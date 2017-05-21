@@ -25,6 +25,7 @@
     <script src="bases.js"></script>
     <script src="averages.js"></script>
     <script src="team-setup-model.js"></script>
+    <script src="team-select-model.js"></script>
     <script src="app.js"></script>
 </head>
 <body data-bind="with: viewModel">
@@ -45,6 +46,22 @@
         </div>
         <div class="buttons">
             <button data-bind="click: closeDescription">Close</button>
+        </div>
+    </div>
+    <div id="teamSelect" class="popup" data-bind="with: teamSelectModel">
+        <div class="main">
+            <div>Team 1 (player):</div>
+            <!-- ko foreach: teams -->
+            <div><label><input name="team1" type="radio" data-bind="value: $data, checked: $parent.team1"/> <span data-bind="text: name"></span></label></div>
+            <!-- /ko -->
+            <div>Team 2 (CPU):</div>
+            <!-- ko foreach: teams -->
+            <div><label><input name="team2" type="radio" data-bind="value: $data, checked: $parent.team2"/> <span data-bind="text: name"></span></label></div>
+            <!-- /ko -->
+        </div>
+        <div class="buttons">
+            <button data-bind="click: ok">OK</button>
+            <button data-bind="click: cancel">Cancel</button>
         </div>
     </div>
     <div id="teamSetup" class="popup" data-bind="with: teamSetupModel">
@@ -170,7 +187,9 @@
                 <button data-bind="click: startOver">Play again</button>
             </div>
             <div class="links">
-                <a href="#" data-bind="click: teamSetup">Team setup</a>
+                <a href="#" data-bind="click: teamSelect">Choose teams</a>
+                -
+                <a href="#" data-bind="click: teamSetup">Customize teams</a>
                 -
                 <a href="about.html" target="_blank">About</a>
             </div>

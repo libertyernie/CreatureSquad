@@ -34,7 +34,7 @@ class TeamModel {
 
     readonly ai: KnockoutObservable<boolean>;
 
-    constructor(readonly lineup: Batter[]) {
+    constructor(readonly name: string, readonly lineup: Batter[]) {
         this.bases = [];
         for (let i = 0; i < 10; i++) {
             this.bases.push(ko.observable(new Bases()));
@@ -198,12 +198,25 @@ class ViewModel {
 
     readonly descriptionShownFor: KnockoutObservable<Batter | null>;
     readonly teamSetupModel: KnockoutObservable<TeamSetupModel | null>;
+    readonly teamSelectModel: KnockoutObservable<TeamSelectModel | null>;
 
     private aiInterval: number;
 
-    constructor(team1: Batter[], team2: Batter[]) {
-        this.team1 = new TeamModel(team1);
-        this.team2 = new TeamModel(team2);
+    constructor(team1: TeamInfo, team2: TeamInfo) {
+        const colors = [
+            "#eee",
+            "#ddd",
+            "#ccc",
+            "#bbb",
+            "#aaa",
+            "#888",
+            "#666",
+            "#444",
+            "#222"
+        ];
+
+        this.team1 = new TeamModel(team1.name, team1.starters.map((x, y) => new Batter(x, colors[y % colors.length])));
+        this.team2 = new TeamModel(team2.name, team2.starters.map((x, y) => new Batter(x, colors[y % colors.length])));
         this.team2.ai(true);
         this.battingTeam = ko.observable(this.team1);
         this.inning = ko.observable(1);
@@ -211,6 +224,7 @@ class ViewModel {
 
         this.descriptionShownFor = ko.observable(null);
         this.teamSetupModel = ko.observable(null);
+        this.teamSelectModel = ko.observable(null);
 
         this.descriptionShownFor.subscribe(newValue => {
             if (newValue) location.href = "#popup";
@@ -286,6 +300,12 @@ class ViewModel {
             this.teamSetupModel(null);
         }));
     }
+
+    teamSelect() {
+        this.teamSelectModel(new TeamSelectModel(() => {
+            this.teamSelectModel(null);
+        }, this.team1.name, this.team2.name));
+    }
 }
 
 var mainModel: {
@@ -297,20 +317,20 @@ var mainModel: {
 };
 
 function reloadViewModel(t1: TeamInfo, t2: TeamInfo) {
-    const colors = [
-        "#eee",
-        "#ddd",
-        "#ccc",
-        "#bbb",
-        "#aaa",
-        "#888",
-        "#666",
-        "#444",
-        "#222"
-    ];
-    const batters1 = t1.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
-    const batters2 = t2.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
-    mainModel.viewModel(new ViewModel(batters1, batters2));
+    // const colors = [
+    //     "#eee",
+    //     "#ddd",
+    //     "#ccc",
+    //     "#bbb",
+    //     "#aaa",
+    //     "#888",
+    //     "#666",
+    //     "#444",
+    //     "#222"
+    // ];
+    // const batters1 = t1.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
+    // const batters2 = t2.starters.map((x, y) => new Batter(x, colors[y % colors.length]));
+    mainModel.viewModel(new ViewModel(t1, t2));
 }
 
 if (location.hash == "#popup") {

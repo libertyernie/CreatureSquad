@@ -1,8 +1,5 @@
-﻿interface TeamInfo {
-    starters: SerializedBatterInfo[]
-}
-
-const team1: TeamInfo = {
+﻿const team1: TeamInfo = {
+    "name": "Sabina & Paralari",
     "starters": [
         {
             "name": "Mason",
@@ -206,6 +203,7 @@ const team1: TeamInfo = {
 };
 
 const team2: TeamInfo = {
+    "name": "Bandit & Angie",
     "starters": [
         {
             "name": "Bandit",
