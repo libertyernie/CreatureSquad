@@ -56,6 +56,11 @@
     padding: 4px;
 }
 
+#teamSelect .main > div {
+    display: block;
+    padding: 4px 0;
+}
+
 #mainScreen > .lineup {
     position: absolute;
     top: 0;
