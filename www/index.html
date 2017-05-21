@@ -8,6 +8,11 @@
     <meta charset="utf-8" />
     <title>Creature Squad</title>
     <link rel="manifest" href="manifest.json">
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        location.href.replace("legacy.html");
+    </script>
+    <![endif]-->
     <script type="text/javascript">
         if (navigator.serviceWorker) {
             var mx = navigator.serviceWorker.register('sw.js')
