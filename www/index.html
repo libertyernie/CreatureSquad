@@ -72,7 +72,6 @@
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
-                    <span class="sr-only" data-bind="text: 'Read description for ' + name"></span>
                 </a>
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>
@@ -187,7 +186,6 @@
             <!-- ko foreach: lineup -->
             <div class="batter" data-bind="css: { current: $data === $parent.batter() }">
                 <a class="batterImage" href="#" data-bind="click: showDescription, style: { backgroundImage: thumbnailBackgroundImage, backgroundColor: bgcolor }">
-                    <span class="sr-only" data-bind="text: 'Read description for ' + name"></span>
                 </a>
                 <div class="batterInfo">
                     <span data-bind="text: name"></span>

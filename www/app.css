@@ -5,19 +5,6 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-.sr-only {
-    position: absolute;
-    top: -500px;
-    left: -500px;
-    background-color: InfoBackground;
-    color: InfoText;
-}
-
-a:focus .sr-only {
-    top: 20px;
-    left: 20px;
-}
-
 .spacer {
     display: none;
 }
