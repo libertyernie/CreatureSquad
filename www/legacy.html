@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Creature Squad (Legacy Browser Ver.)</title>
+    <link rel="icon" href="favicon.png" />
+    <script src="knockout-latest.js"></script>
+    <script src="defaultTeams.js"></script>
+    <script src="batter.js"></script>
+    <script src="bases.js"></script>
+    <script src="averages.js"></script>
+    <script src="team-setup-model.js"></script>
+    <script src="team-select-model.js"></script>
+    <script src="app.js"></script>
+</head>
+<body data-bind="with: viewModel">
+    <noscript>
+        <div>
+            <img src="images/paralari.svg" align="right" height="300" />
+            JavaScript is required to play this game.
+            <a href="http://www.enable-javascript.com/">Click here for instructions</a> on how to enable JavaScript.
+        </div>
+    </noscript>
+    <table>
+        <tr>
+            <td>
+                <table data-bind="foreach: team1.lineup" border=1>
+                    <tr>
+                        <td width=24>
+                            <span data-bind="if: $data === $root.battingTeam().batter()">&gt;&gt;</span>
+                        </td>
+                        <td>
+                            <img data-bind="attr: { src: thumbnail }" height="48" />
+                        </td>
+                        <td>
+                            <span data-bind="text: name"></span>
+                            <br />
+                            <span data-bind="text: (obp*100).toFixed(1)"></span>%
+                            /
+                            P: <span data-bind="text: slg.toFixed(3)"></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <!-- ko with: battingTeam -->
+                <div style="text-align: center;" data-bind="if: lastBatter() && baserunners() + outs() > 0">
+                    <!-- ko with: lastBatter -->
+                    <div class="batterName" data-bind="style: { backgroundColor: bgcolor }">
+                        <span data-bind="text: name"></span>
+                    </div>
+                    <!-- /ko -->
+                    <div class="type">
+                        <span data-bind="text: newRunsCount"></span> pts
+                        -
+                        <span data-bind="text: newOutsCount"></span> outs
+                        <span data-bind="if: lastBunted">
+                            (sacrifice)
+                        </span>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <table border=1 data-bind="with: battingTeam">
+                    <tr data-bind="foreach: newOuts">
+                        <td width=16 height=20 data-bind="if: $data">
+                            X
+                        </td>
+                    </tr>
+                    <tr data-bind="foreach: bases">
+                        <td width=16 height=20 data-bind="if: first">
+                            x
+                        </td>
+                    </tr>
+                    <tr data-bind="foreach: bases">
+                        <td width=16 height=20 data-bind="if: second">
+                            x
+                        </td>
+                    </tr>
+                    <tr data-bind="foreach: bases">
+                        <td width=16 height=20 data-bind="if: third">
+                            x
+                        </td>
+                    </tr>
+                    <tr data-bind="foreach: newRuns">
+                        <td width=16 height=20 data-bind="text: inning || ''"></td>
+                    </tr>
+                </table>
+                <table width=100% style="text-align: center">
+                    <tr>
+                        <td>
+                            <div>Points</div>
+                            <div class="big-number" data-bind="text: team1.runs"></div>
+                        </td>
+                        <td>
+                            <div>Outs</div>
+                            <div class="big-number" data-bind="text: battingTeam().outs"></div>
+                        </td>
+                        <td>
+                            <div>Round</div>
+                            <div class="big-number" data-bind="text: inning"></div>
+                        </td>
+                        <td>
+                            <div>Points</div>
+                            <div class="big-number" data-bind="text: team2.runs"></div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="buttons" data-bind="if: !final()">
+                    <!-- ko with: battingTeam -->
+                    <button data-bind="click: bat, enable: !ai() && outs() < 30">Attack</button>
+                    <button data-bind="click: bunt, enable: !ai() && outs() < 30 && baserunners() > 0">Sacrifice</button>
+                    <!-- /ko -->
+                    <button data-bind="click: nextInning, enable: battingTeam().outs() >= 30">Next round</button>
+                </div>
+                <div class="buttons" data-bind="if: final">
+                    <!-- ko if: team1.runs() > team2.runs() -->
+                    Team 1 wins!
+                    <!-- /ko -->
+                    <!-- ko if: team2.runs() > team1.runs() -->
+                    Team 2 wins!
+                    <!-- /ko -->
+                    <br />
+                    <button data-bind="click: startOver">Play again</button>
+                </div>
+                <div class="links">
+                    <a href="#" data-bind="click: teamSetup">Team setup</a>
+                    -
+                    <a href="about.html" target="_blank">About</a>
+                </div>
+            </td>
+            <td>
+                <table data-bind="foreach: team2.lineup" border=1>
+                    <tr>
+                        <td>
+                            <span data-bind="text: name"></span>
+                            <br />
+                            <span data-bind="text: (obp*100).toFixed(1)"></span>%
+                            /
+                            P: <span data-bind="text: slg.toFixed(3)"></span>
+                        </td>
+                        <td>
+                            <img data-bind="attr: { src: thumbnail }" height="48" />
+                        </td>
+                        <td width=24>
+                            <span data-bind="if: $data === $root.battingTeam().batter()">&lt;&lt;</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
