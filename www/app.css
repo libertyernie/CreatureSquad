@@ -36,7 +36,7 @@
 }
 
 .popup .main {
-    height: calc(100% - 40px);
+    height: calc(100% - 56px);
     overflow-y: auto;
 }
 
@@ -54,6 +54,7 @@
 
 .popup .buttons > * {
     padding: 4px;
+    min-width: 64px;
 }
 
 #teamSelect .main > div {
@@ -354,7 +355,7 @@ noscript > div {
         }
     }
     @media screen and (min-height: 570px) and (min-width: 800px) {
-        #characterInfo, #teamSetup {
+        .popup {
             width: 90%;
             height: auto;
             left: 5%;
