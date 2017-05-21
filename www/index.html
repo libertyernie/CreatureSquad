@@ -51,10 +51,12 @@
     <div id="teamSelect" class="popup" data-bind="with: teamSelectModel">
         <div class="main">
             <div style="font-weight: bold">Team 1 (player):</div>
+            <div><label><input name="team1" type="radio" data-bind="value: 'random', checked: team1"/> Random</label></div>
             <!-- ko foreach: teams -->
             <div><label><input name="team1" type="radio" data-bind="value: $data, checked: $parent.team1"/> <span data-bind="text: name"></span></label></div>
             <!-- /ko -->
             <div style="font-weight: bold">Team 2 (CPU):</div>
+            <div><label><input name="team2" type="radio" data-bind="value: 'random', checked: team2"/> Random</label></div>
             <!-- ko foreach: teams -->
             <div><label><input name="team2" type="radio" data-bind="value: $data, checked: $parent.team2"/> <span data-bind="text: name"></span></label></div>
             <!-- /ko -->
@@ -70,7 +72,6 @@
             <textarea data-bind="value: json2"></textarea>
         </div>
         <div class="buttons">
-            <button data-bind="click: swap">Swap</button>
             <button data-bind="click: reset">Reset</button>
             <button data-bind="click: save">Save</button>
             <button data-bind="click: cancel">Cancel</button>

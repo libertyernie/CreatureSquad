@@ -344,7 +344,9 @@ window.onload = () => {
     var el = document.body;
     ko.applyBindings(mainModel, el);
     reloadViewModel(t1, t2);
-    mainModel.viewModel().teamSelect();
+    mainModel.viewModel().teamSelectModel(new TeamSelectModel(() => {
+        mainModel.viewModel().teamSelectModel(null);
+    }));
 
     if ("wiiu" in window) {
         document.body.className += " wiiu";
