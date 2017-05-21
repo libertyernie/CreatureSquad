@@ -8,6 +8,7 @@ var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 var wbBuild = require('workbox-build');
 var replace = require('gulp-string-replace');
+var del = require('del');
 
 gulp.task("ts", function () {
     return tsProject.src()
@@ -50,5 +51,12 @@ gulp.task("sw-replace", function () {
         .pipe(gulp.dest('./www'))
 });
 
-gulp.task("default", gulp.series("ts", "bundle-sw",
-    gulp.parallel("sw-replace", "lib-copy")));
+gulp.task("sw-clean", function () {
+    return del(["./sw.js", "./workbox-sw.prod.v1.0.0.js"]);
+});
+
+gulp.task("default", gulp.series(
+    "ts",
+    "bundle-sw",
+    gulp.parallel("sw-replace", "lib-copy"),
+    "sw-clean"));
