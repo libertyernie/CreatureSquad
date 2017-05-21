@@ -340,16 +340,11 @@ if (location.hash == "#popup") {
 window.onload = () => {
     let t1 = team1;
     let t2 = team2;
-    if (window.localStorage) {
-        const json1 = localStorage.getItem("team1");
-        if (json1) t1 = JSON.parse(json1);
-        const json2 = localStorage.getItem("team2");
-        if (json2) t2 = JSON.parse(json2);
-    }
 
     var el = document.body;
     ko.applyBindings(mainModel, el);
     reloadViewModel(t1, t2);
+    mainModel.viewModel().teamSelect();
 
     if ("wiiu" in window) {
         document.body.className += " wiiu";
